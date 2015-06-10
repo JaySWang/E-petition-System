@@ -1,6 +1,15 @@
 package model;
 
-public class Proposal extends BaseEntityBean  {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table
+public class Proposal extends BaseEntityBean  implements Serializable {
 
 	
 	

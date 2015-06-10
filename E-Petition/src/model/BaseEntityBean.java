@@ -1,5 +1,4 @@
 package model;
-import java.util.Date;
 
 import javax.persistence.*;
 
@@ -11,7 +10,7 @@ public class BaseEntityBean {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		 Integer id;
+		private Integer id;
 
 		
 
