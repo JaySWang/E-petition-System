@@ -11,7 +11,7 @@ public class BaseEntityBean {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		private Integer id;
+		 Integer id;
 
 		
 
