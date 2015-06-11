@@ -31,4 +31,10 @@ public class ProposalDAO {
 		}
 	
 	}
+
+	public Proposal getProposalById(int id) {
+		
+		Proposal p = (Proposal) dao.find(Proposal.class, id);
+		return p;
+	}
 }
