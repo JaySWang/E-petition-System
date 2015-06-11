@@ -1,6 +1,5 @@
 package Test;
 
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -67,10 +66,10 @@ public class TestProposal {
 		ProposalDAO pdao = new ProposalDAO();
 		pdao.setDAO(dao);
 		
-		
+		int preCount = pdao.getProposals().size();
 		pdao.create(p);
 		
-		assertTrue(pdao.getProposals().size()>0);
+		assertTrue(preCount+1==pdao.getProposals().size());
 	}
 	
 
