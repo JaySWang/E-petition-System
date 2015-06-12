@@ -5,10 +5,22 @@ import java.util.List;
 
 import model.Proposal;
 
-public class ProposalDAO {
+public class ProposalDAO{
 
 	IDAO dao;
 	
+	
+	
+	
+	
+	public IDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(IDAO dao) {
+		this.dao = dao;
+	}
+
 	public List<Proposal> getProposals(){
 	   List<Proposal> l = new ArrayList();
 		 String hql=" select p from Proposal p";
@@ -32,8 +44,9 @@ public class ProposalDAO {
 	
 	}
 
-	public Proposal getProposalById(int id) {
-		
+
+
+	public Proposal find(int id) {
 		Proposal p = (Proposal) dao.find(Proposal.class, id);
 		return p;
 	}

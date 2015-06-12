@@ -11,15 +11,22 @@ import model.BaseEntityBean;
 import model.Proposal;
 
 
-public class ProposalServiceImpl  extends ServiceImpl implements IProposalService {
+public class ProposalServiceImpl   implements IProposalService {
 
-	public void create(Proposal baseBean) {
-		this.getDao().create(baseBean);
-		
+	ProposalDAO pdao;
+	
+	
+	public ProposalDAO getPdao() {
+		return pdao;
 	}
 
+	public void setPdao(ProposalDAO pdao) {
+		this.pdao = pdao;
+	}
+
+
 	public void save(Proposal baseBean) {
-		// TODO Auto-generated method stub
+		pdao.create(baseBean);		
 		
 	}
 
@@ -30,8 +37,7 @@ public class ProposalServiceImpl  extends ServiceImpl implements IProposalServic
 
 	public List<Proposal> getProposals() {
 
-		ProposalDAO pdao = new ProposalDAO();
-		pdao.setDAO(this.getDao());
+	
 		 
 			List proposals = new ArrayList();
 			proposals =	pdao.getProposals();
@@ -39,16 +45,14 @@ public class ProposalServiceImpl  extends ServiceImpl implements IProposalServic
 		return proposals;
 	}
 
+
 	@Override
-	public void create(BaseEntityBean baseBean) {
-		(this.getDao()).create(baseBean);		
+	public Proposal getProposalById(int id) {
+		return (Proposal) pdao.find(id);
 	}
 
-	
-	public Proposal find(int id) {
-		
-		return (Proposal) this.getDao().find(Proposal.class, id);
-	}
+
+
 
 
 

@@ -73,9 +73,7 @@ public class TestProposal {
 	    
 		
 		BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
-		DAOImpl dao = (DAOImpl) bf.getBean("dao");
-		ProposalDAO pdao = new ProposalDAO();
-		pdao.setDAO(dao);
+		ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 		
 		int preCount = pdao.getProposals().size();
 		pdao.create(p);
@@ -102,16 +100,14 @@ public class TestProposal {
 	    
 		
 		BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
-		DAOImpl dao = (DAOImpl) bf.getBean("dao");
-		ProposalDAO pdao = new ProposalDAO();
-		pdao.setDAO(dao);
+ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 		
 		int preCount = pdao.getProposals().size();
 		pdao.create(p);
 		
 		int id = p.getId();
 		
-		assertEquals((pdao.getProposalById(id)).getTopic(),topic);
+		assertEquals((pdao.find(id)).getTopic(),topic);
 	   
    }
    
@@ -137,10 +133,17 @@ public class TestProposal {
 			BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
 		
 				IProposalService ps =  (IProposalService) bf.getBean("proposalService");
-			ps.create(p);
+			try{
+				
+				ps.save(p);
+				}
+			catch(Throwable t){
+				t.printStackTrace();
+			}
+			
 			int id = p.getId();
 
-			assertEquals(((Proposal) ps.find(id)).getTopic(),topic);
+			assertEquals((ps.getProposalById(id)).getTopic(),topic);
 
 		
 			assertTrue(ps.getProposals().size()>0);

@@ -63,6 +63,10 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="proposalDAO" class="dao.ProposalDAO">
+		<property name="dao" ref="dao"></property>
+	</bean>
+	
 	
 <!-- configure service Bean -->
 	
@@ -72,7 +76,7 @@
 		</property>
 		<property name="target">
 			<bean class="service.ProposalServiceImpl">
-				<property name="dao" ref="dao"></property>
+				<property name="pdao" ref="proposalDAO"></property>
 			</bean>
 		</property>
 		<property name="transactionAttributeSource" ref="hibernateTransactionAttributeSource">
