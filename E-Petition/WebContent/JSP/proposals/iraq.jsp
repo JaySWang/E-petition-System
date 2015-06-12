@@ -9,14 +9,13 @@
 <title>KCL-Epetition</title>
 </head>
 <body>
- <s:action name="showProposal" namespace="/User" executeResult="true"/>
 
 
 <div class="content">
 
 		<h1>Irap</h1>
 	
-
+<p>adadadad</p>
 			
 		</div>
 

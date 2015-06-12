@@ -41,7 +41,6 @@ public class ShowAction extends BaseAction {
 
 	@SuppressWarnings("unchecked")
 	public String showProposals()  {
-	      System.out.println("sho1w");
 
 		List<Proposal> proposals;
 		try{
@@ -53,12 +52,11 @@ public class ShowAction extends BaseAction {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			
+			return ERROR;
 			
 		}
-	      System.out.println("show");
 		
-		return null;
+		return SUCCESS;
 	}
 	
 	

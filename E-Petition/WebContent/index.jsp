@@ -5,13 +5,14 @@
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <s:action name="showProposal" namespace="/User" executeResult="true"/>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>KCL-Epetition</title>
 </head>
 
- <s:action name="showProposal" namespace="/User" executeResult="true"/>
 
 <body>
 <div class="pageLayout">
@@ -56,6 +57,45 @@
 		</div>
 
 </div>
+       
+       <table border="1" width="350">
+		<tr>
+		<th>id</th>
+		<th>topic</th>
+		<th>situation</th>
+		<th>action</th>
+		<th>goal</th>
+		<th>value</th>
+
+	</tr>
+	
+	<s:iterator value="#request.proposals"
+	var="p" status="st">
+
+		<tr <s:if test="#st.odd">
+		style="background-color:#bbbbbb"</s:if>>
+	
+		<td><s:property value="#p.id"/></td>
+	
+	<td><s:property value="#p.topic"/></td>
+	
+	<td><s:property value="#p.situation"/></td>
+	
+	<td><s:property value="#p.action"/></td>
+	
+		<td><s:property value="#p.goal"/></td>
+		
+		<td><s:property value="#p.value"/></td>
+		
+	
+		
+	</tr>
+	
+	
+	
+	</s:iterator>
+		</table>
+       
        
 </div>
 </body>

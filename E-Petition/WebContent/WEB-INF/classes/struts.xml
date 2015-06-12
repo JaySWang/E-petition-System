@@ -5,10 +5,10 @@
 <struts>
 	<package name="struts2" namespace="/User" extends="struts-default">
 
-		<action name="showProposal" class="showAction" method="showProposals">
+		<action name="showProposal" class="showAction" method="showProposals" >
 		
-			<result name="success">/JSP/proposals/irap.jsp</result>
-			<result name="error">/JSP/proposals/error.jsp</result>
+			<result name="success"  >/JSP/proposals/iraq.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 
 	
