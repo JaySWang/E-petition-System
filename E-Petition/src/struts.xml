@@ -3,7 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
     "http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-	<package name="struts2" namespace="/User" extends="struts-default">
+	<package name="struts2" extends="struts-default">
 
 		<action name="showProposal" class="showAction" method="showProposals" >
 		
@@ -12,6 +12,11 @@
 		</action>
 
 	
+		<action name="addProposal" class="addProposalAction" >
+		
+			<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
 	
 
 

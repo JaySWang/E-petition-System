@@ -5,7 +5,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
- <s:action name="showProposal" namespace="/User" executeResult="true"/>
+ <s:action name="showProposal" executeResult="true"/>
 
 <html>
 <head>
@@ -41,7 +41,7 @@
 		
 			
 
-		<li><a href="/E-Petition/JSP/proposals/iraq.jsp" target="_blank">Should we <strong>invade Iraq?</strong></a></li>
+		<li><a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp" target="_blank">add proposal</a></li>
 						
 <li><a href="foxhunting" target="_blank">Should the <strong>fox-hunting</strong> ban be repealed?</a></li>
 

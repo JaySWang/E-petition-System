@@ -93,5 +93,12 @@
 		</property>
 	</bean>
 
+	<bean id="addProposalAction" class="action.AddProposalAction"
+		scope="prototype">
+		<!-- 依赖注入业务逻辑组件 -->
+		<property name="ps" ref="proposalService">
+		</property>
+	</bean>
+
 
 </beans>
