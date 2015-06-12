@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IService<T> {
 
-	public T find(Class<T> clazz, int id);
+	public T find(int id);
 
 	public void create(T baseBean);
 

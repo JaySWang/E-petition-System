@@ -7,7 +7,7 @@ import model.Proposal;
 
 public class ProposalDAO {
 
-	DAOImpl dao;
+	IDAO dao;
 	
 	public List<Proposal> getProposals(){
 	   List<Proposal> l = new ArrayList();
@@ -18,8 +18,8 @@ public class ProposalDAO {
 		return l;
 	}
 
-	public void setDAO(DAOImpl dao) {
-		this.dao = dao;
+	public void setDAO(IDAO idao) {
+		this.dao = idao;
 	}
 
 	public void create(Proposal p) {

@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import service.IProposalService;
+import service.ProposalServiceImpl;
+
 import dao.DAOImpl;
 import dao.ProposalDAO;
 
@@ -111,5 +114,39 @@ public class TestProposal {
 		assertEquals((pdao.getProposalById(id)).getTopic(),topic);
 	   
    }
+   
+  //test ProposalService
+@Test
+   public void proposalService(){
+	   
+	  String topic = "I";
+			String situation = "Saddam is running an oppressive regime, Saddam has WMD";
+			String action = "send troop to invade Irap";
+			String goal = "Restore democracy to Iraq, Remove the WMD";
+			String value = "Remove the WMD promotes World security, Restore democracy to Iraq promotes Human rights";
+			
+			Proposal p = new Proposal();
 
+		   
+		   p.setTopic(topic);
+			p.setSituation(situation);
+			p.setAction(action);
+			p.setGoal(goal);
+			p.setValue(value);
+
+			BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
+		
+				IProposalService ps =  (IProposalService) bf.getBean("proposalService");
+			ps.create(p);
+			int id = p.getId();
+
+			assertEquals(((Proposal) ps.find(id)).getTopic(),topic);
+
+		
+			assertTrue(ps.getProposals().size()>0);
+			
+			
+			
+   }
+   
 }

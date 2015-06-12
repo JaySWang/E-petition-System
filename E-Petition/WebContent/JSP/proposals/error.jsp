@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
     pageEncoding="GB18030"%>
-    <%@taglib prefix="s" uri="/struts-tags"%>    
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +7,11 @@
 <title>KCL-Epetition</title>
 </head>
 <body>
- <s:action name="showProposal" namespace="/User" executeResult="true"/>
 
 
 <div class="content">
 
-		<h1>Irap</h1>
+		<h1>Error</h1>
 	
 
 			

@@ -1,7 +1,10 @@
 package service;
 
 
+import java.util.ArrayList;
 import java.util.List;
+
+import dao.ProposalDAO;
 
 
 import model.BaseEntityBean;
@@ -10,36 +13,44 @@ import model.Proposal;
 
 public class ProposalServiceImpl  extends ServiceImpl implements IProposalService {
 
-	public void create(Object baseBean) {
+	public void create(Proposal baseBean) {
 		this.getDao().create(baseBean);
 		
 	}
 
-	public void save(BaseEntityBean baseBean) {
+	public void save(Proposal baseBean) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void delete(BaseEntityBean baseBean) {
+	public void delete(Proposal baseBean) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public List getProposals() {
-		 String hql=" select p from Proposal p";
-			List<Proposal> proposals=(List<Proposal>) (this.getDao()).createQuery(hql).list();
-			
+	public List<Proposal> getProposals() {
+
+		ProposalDAO pdao = new ProposalDAO();
+		pdao.setDAO(this.getDao());
+		 
+			List proposals = new ArrayList();
+			proposals =	pdao.getProposals();
+
 		return proposals;
 	}
 
 	@Override
 	public void create(BaseEntityBean baseBean) {
-		// TODO Auto-generated method stub
-		
+		(this.getDao()).create(baseBean);		
 	}
 
 	
+	public Proposal find(int id) {
+		
+		return (Proposal) this.getDao().find(Proposal.class, id);
+	}
+
+
 
 
 	
