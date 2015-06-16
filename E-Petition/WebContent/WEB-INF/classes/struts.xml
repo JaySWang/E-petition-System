@@ -7,10 +7,16 @@
 
 		<action name="showProposal" class="showAction" method="showProposals" >
 		
-			<result name="success"  >/JSP/proposals/iraq.jsp</result>
+			<result name="success"  >/JSP/proposals/success.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 
+
+<action name="showProposalDetail" class="showProposalDetailAction" method="showProposalDetail" >
+		
+			<result name="success"  >/JSP/proposals/success.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
 	
 		<action name="addProposal" class="addProposalAction" >
 		

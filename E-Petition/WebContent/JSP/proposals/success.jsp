@@ -11,13 +11,8 @@
 <body>
 
 
-<div class="content">
+<%=request.getAttribute("message")%> 
 
-		<h1>Irap</h1>
-	
-<p>adadadad</p>
-			
-		</div>
 
        
 </body>

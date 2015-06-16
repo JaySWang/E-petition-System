@@ -157,7 +157,8 @@ public class AddProposalAction extends BaseAction {
     	   (this.request()).setAttribute("message", "failed£º" + e.getMessage());
     	   return ERROR;
        }
-       (this.request()).setAttribute("message", "succeed" );
+       this.request().setAttribute("message", "succeed" );
+
 
 		return SUCCESS;
 	}

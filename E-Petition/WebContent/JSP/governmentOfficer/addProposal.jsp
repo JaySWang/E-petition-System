@@ -19,6 +19,20 @@
 	}
   </script> 
 
+<!-- 	  <script>   {
+	var a='<%=request.getParameter("id")%> ';
+       
+       
+       alert(a);
+		  
+		   
+	}
+  </script> 
+  
+<%=request.getParameter("id")%> 
+ -->
+ 
+ 
   <br>
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 	  <tr>

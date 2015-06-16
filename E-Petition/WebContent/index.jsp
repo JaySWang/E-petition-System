@@ -5,6 +5,9 @@
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ 
+ 
+ 
  <s:action name="showProposal" executeResult="true"/>
 
 <html>
@@ -12,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>KCL-Epetition</title>
 </head>
+
 
 
 <body>
@@ -29,24 +33,19 @@
 			<p>Welcome to the KCL-Epetition system that allows the government to present 
 			policy proposals to the public and lets the public submit their opinion on the policy .</p>
 
+<ul>
+		<li><a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp" target="_self">add new proposal</a></li>
+						</ul>
+			
 			
 
 			<div id="boxcontainer">
 
 				<div class="itembox" id="inlinebox">
 					<div class="boxheading">Current debates</div>
-					<p>please click the link below to give your opinion:</p>
+					<p>please click the topic below to see in detail</p>
 					
-					<ul>
-		
-			
 
-		<li><a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp" target="_blank">add proposal</a></li>
-						
-<li><a href="foxhunting" target="_blank">Should the <strong>fox-hunting</strong> ban be repealed?</a></li>
-
-
-	</ul>
 
 				</div>
 
@@ -62,10 +61,7 @@
 		<tr>
 		<th>id</th>
 		<th>topic</th>
-		<th>situation</th>
-		<th>action</th>
-		<th>goal</th>
-		<th>value</th>
+
 
 	</tr>
 	
@@ -77,15 +73,16 @@
 	
 		<td><s:property value="#p.id"/></td>
 	
-	<td><s:property value="#p.topic"/></td>
+	<td>
 	
-	<td><s:property value="#p.situation"/></td>
-	
-	<td><s:property value="#p.action"/></td>
-	
-		<td><s:property value="#p.goal"/></td>
+				
+					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#p.id"/>" target="_self" >   
 		
-		<td><s:property value="#p.value"/></td>
+		<s:property value="#p.topic"/>
+   </a>
+	
+	</td>
+
 		
 	
 		
