@@ -9,7 +9,6 @@
 
 
 
- <s:action name="showProposalDetail" executeResult="true"/>
 
 <html>
 <head>
@@ -17,6 +16,7 @@
 <title>Proposal</title>
 </head>
 
+<%=request.getAttribute("message")%> 
 
 <body>
 
@@ -32,7 +32,8 @@
 		<th>goal</th>
 		<th>value</th>
 
-		
+		<th>agree</th>
+		<th>disagree</th>
 
 	</tr>
 	
@@ -55,27 +56,17 @@
 		<td><s:property value="#p.goal"/></td>
 		
 		<td><s:property value="#p.value"/></td>
-
-	
+		
+	<td><s:property value="#p.agree"/></td>
+		
+		<td><s:property value="#p.disagree"/></td>
 		
 	</tr>
 	
 	
 	
 		</table>
-      <p align="center" >What do you think of this proposal?  </p> 
-     <s:form action="voteProposal">
-	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
-
-	  
-	  <tr align="center"  height="40">
-	    <td colspan="2">
-		  <input name="agreeOrNot" type="submit"  value="agree"/>
-	<input name="agreeOrNot" type="submit"  value="disagree"/>
-		</td>
-	  </tr>
-     </table>
-	</s:form>
+     
      
      
      

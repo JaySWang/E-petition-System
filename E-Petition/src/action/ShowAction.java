@@ -39,7 +39,6 @@ public class ShowAction extends BaseAction {
 
 
 
-	@SuppressWarnings("unchecked")
 	public String showProposals()  {
 
 		List<Proposal> proposals;

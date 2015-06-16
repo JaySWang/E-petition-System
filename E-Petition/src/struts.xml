@@ -24,6 +24,13 @@
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
+	
+<action name="voteProposal" class="voteProposalAction" method="voteProposal" >
+		
+			<result name="success"  >/JSP/proposals/votesOfProposal.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
+	
 
 
 	</package>

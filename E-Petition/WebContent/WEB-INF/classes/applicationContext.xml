@@ -99,6 +99,14 @@
 		</property>
 	</bean>
 
+<bean id="voteProposalAction" class="action.VoteProposalAction"
+		scope="prototype">
+		<property name="ps" ref="proposalService">
+		</property>
+	</bean>
+
+
+
 	<bean id="addProposalAction" class="action.AddProposalAction"
 		scope="prototype">
 		<property name="ps" ref="proposalService">

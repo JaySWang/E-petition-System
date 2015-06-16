@@ -50,4 +50,8 @@ public class ProposalDAO{
 		Proposal p = (Proposal) dao.find(Proposal.class, id);
 		return p;
 	}
+
+	public void update(Proposal p) {
+     dao.updata(p);		
+	}
 }

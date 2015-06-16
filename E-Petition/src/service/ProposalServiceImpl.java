@@ -51,6 +51,18 @@ public class ProposalServiceImpl   implements IProposalService {
 		return (Proposal) pdao.find(id);
 	}
 
+	@Override
+	public void voteAgree(Proposal p, boolean agree) {
+		if(agree){
+			p.agree();
+		}else{
+			p.disagree();
+		}
+		
+		pdao.update(p);
+		
+	}
+
 
 
 

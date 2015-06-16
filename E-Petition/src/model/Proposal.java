@@ -18,6 +18,9 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	private String action;
 	private String goal;
 	private String value;
+	private int agree;
+	private int disagree;
+	
 	
 	public Proposal(){
 		
@@ -25,6 +28,36 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	
 	
+	public int getAgree() {
+		return agree;
+	}
+
+
+
+	public void setAgree(int agree) {
+		this.agree = agree;
+	}
+
+    public void agree(){
+    	this.agree++;
+    }
+    
+  public void disagree(){
+	  this.disagree++;
+    }
+
+	public int getDisagree() {
+		return disagree;
+	}
+
+
+
+	public void setDisagree(int disagree) {
+		this.disagree = disagree;
+	}
+
+
+
 	public String getTopic() {
 		return topic;
 	}

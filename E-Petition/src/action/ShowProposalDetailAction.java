@@ -31,7 +31,6 @@ public class ShowProposalDetailAction extends BaseAction {
 	
 	@Override
 	public String execute() throws Exception {
-		System.out.println("lala");
 
 
 		return SUCCESS;
@@ -41,14 +40,13 @@ public class ShowProposalDetailAction extends BaseAction {
 
 	@SuppressWarnings("unchecked")
 	public String showProposalDetail()  {
-		System.out.println("lolll");
 	try{
 		
 		String idS =  this.request().getParameter("id");
 
 		int id = Integer.parseInt(idS);
 		Proposal proposal=ps.getProposalById(id);
-		this.request().setAttribute("proposal", proposal);
+		this.session().setAttribute("proposal", proposal);
 		this.request().setAttribute("message", "here is the details");
 
 

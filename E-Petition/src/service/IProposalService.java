@@ -16,4 +16,6 @@ public interface IProposalService {
 	
 	public void delete(Proposal baseBean);
 
+	public void voteAgree(Proposal p, boolean agree);
+
 }
