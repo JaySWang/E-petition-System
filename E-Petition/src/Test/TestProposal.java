@@ -5,11 +5,10 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import service.IProposalService;
-import service.ProposalServiceImpl;
 
-import dao.DAOImpl;
 import dao.ProposalDAO;
 
+import model.Aspect;
 import model.Proposal;
 import static org.junit.Assert.*;
 public class TestProposal {
@@ -18,12 +17,7 @@ public class TestProposal {
 	
 	
 	//SAGV argument schema
-	
-	
-	
 
-
-	
 	
 	@Test
 	public void values() throws Exception{
@@ -35,18 +29,43 @@ public class TestProposal {
 		
 		Proposal p = new Proposal();
 
+		Aspect aTopic = new Aspect();
+		aTopic.setType("topic");
+		aTopic.setValue(topic);
 		
-		p.setTopic(topic);
-		p.setSituation(situation);
-		p.setAction(action);
-		p.setGoal(goal);
-		p.setValue(value);
+		Aspect aSituation = new Aspect();
+		aSituation.setType("situation");
+		aSituation.setValue(situation);
+		
+		Aspect aAction = new Aspect();
+		aAction.setType("action");
+		aAction.setValue(action);
+		
+		Aspect aGoal = new Aspect();
+		aGoal.setType("goal");
+		aGoal.setValue(goal);
+		
+		Aspect aValue = new Aspect();
+		aValue.setType("value");
+		aValue.setValue(value);
+		
+		
+		
+		p.setTopic(aTopic);
+		p.setSituation(aSituation);
+		
+		p.setAction(aAction);
+		p.setGoal(aGoal);
+		p.setValue(aValue);
 	    
-		assertEquals(p.getTopic(),topic);
-		assertEquals(p.getSituation(),situation);
-		assertEquals(p.getAction(),action);
-		assertEquals(p.getGoal(),goal);
-		assertEquals(p.getValue(),value);
+		
+		
+		
+		assertEquals(p.getTopic(),aTopic);
+		assertEquals(p.getSituation(),aSituation);
+		assertEquals(p.getAction(),aAction);
+		assertEquals(p.getGoal(),aGoal);
+		assertEquals(p.getValue(),aValue);
 		
 
 	}
@@ -65,13 +84,36 @@ public class TestProposal {
 
 		
 
-		p.setTopic(topic);
-		p.setSituation(situation);
-		p.setAction(action);
-		p.setGoal(goal);
-		p.setValue(value);
-	    
+		Aspect aTopic = new Aspect();
+		aTopic.setType("topic");
+		aTopic.setValue(topic);
 		
+		Aspect aSituation = new Aspect();
+		aSituation.setType("situation");
+		aSituation.setValue(situation);
+		
+		Aspect aAction = new Aspect();
+		aAction.setType("action");
+		aAction.setValue(action);
+		
+		Aspect aGoal = new Aspect();
+		aGoal.setType("goal");
+		aGoal.setValue(goal);
+		
+		Aspect aValue = new Aspect();
+		aValue.setType("value");
+		aValue.setValue(value);
+		
+		
+		
+		p.setTopic(aTopic);
+		p.setSituation(aSituation);
+		
+		p.setAction(aAction);
+		p.setGoal(aGoal);
+		p.setValue(aValue);
+	    
+	
 		BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
 		ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 		
@@ -79,7 +121,8 @@ public class TestProposal {
 		pdao.create(p);
 		
 		assertTrue(preCount+1==pdao.getProposals().size());
-	}
+	
+		}
 	
    @Test
    public void getProposalById() throws Exception{
@@ -91,23 +134,44 @@ public class TestProposal {
 		
 		Proposal p = new Proposal();
 
-	   
-	   p.setTopic(topic);
-		p.setSituation(situation);
-		p.setAction(action);
-		p.setGoal(goal);
-		p.setValue(value);
+		Aspect aTopic = new Aspect();
+		aTopic.setType("topic");
+		aTopic.setValue(topic);
+		
+		Aspect aSituation = new Aspect();
+		aSituation.setType("situation");
+		aSituation.setValue(situation);
+		
+		Aspect aAction = new Aspect();
+		aAction.setType("action");
+		aAction.setValue(action);
+		
+		Aspect aGoal = new Aspect();
+		aGoal.setType("goal");
+		aGoal.setValue(goal);
+		
+		Aspect aValue = new Aspect();
+		aValue.setType("value");
+		aValue.setValue(value);
+		
+		
+		
+		p.setTopic(aTopic);
+		p.setSituation(aSituation);
+		
+		p.setAction(aAction);
+		p.setGoal(aGoal);
+		p.setValue(aValue);
 	    
 		
 		BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
 ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 		
-		int preCount = pdao.getProposals().size();
 		pdao.create(p);
 		
 		int id = p.getId();
 		
-		assertEquals((pdao.find(id)).getTopic(),topic);
+		assertEquals((pdao.find(id)).getTopic().getValue(),aTopic.getValue());
 	   
    }
    
@@ -123,12 +187,34 @@ ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 			
 			Proposal p = new Proposal();
 
-		   
-		   p.setTopic(topic);
-			p.setSituation(situation);
-			p.setAction(action);
-			p.setGoal(goal);
-			p.setValue(value);
+			Aspect aTopic = new Aspect();
+			aTopic.setType("topic");
+			aTopic.setValue(topic);
+			
+			Aspect aSituation = new Aspect();
+			aSituation.setType("situation");
+			aSituation.setValue(situation);
+			
+			Aspect aAction = new Aspect();
+			aAction.setType("action");
+			aAction.setValue(action);
+			
+			Aspect aGoal = new Aspect();
+			aGoal.setType("goal");
+			aGoal.setValue(goal);
+			
+			Aspect aValue = new Aspect();
+			aValue.setType("value");
+			aValue.setValue(value);
+			
+			
+			
+			p.setTopic(aTopic);
+			p.setSituation(aSituation);
+			
+			p.setAction(aAction);
+			p.setGoal(aGoal);
+			p.setValue(aValue);
 
 			BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
 		
@@ -143,7 +229,7 @@ ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 			
 			int id = p.getId();
 
-			assertEquals((ps.getProposalById(id)).getTopic(),topic);
+			assertEquals((ps.getProposalById(id)).getTopic().getValue(),aTopic.getValue());
 
 		
 			assertTrue(ps.getProposals().size()>0);
@@ -151,5 +237,6 @@ ProposalDAO pdao = (ProposalDAO) bf.getBean("proposalDAO");
 			
 			
    }
-   
+
+
 }

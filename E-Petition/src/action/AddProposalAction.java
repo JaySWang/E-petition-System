@@ -1,6 +1,7 @@
 package action;
 
 
+import model.Aspect;
 import model.Proposal;
 
 import service.IProposalService;
@@ -144,11 +145,38 @@ public class AddProposalAction extends BaseAction {
 
 		
        Proposal p=new Proposal();
-       p.setTopic(topic);
-       p.setSituation(situation);
-       p.setAction(action);
-       p.setGoal(goal);
-       p.setValue(value);
+       
+   	Aspect aTopic = new Aspect();
+	aTopic.setType("topic");
+	aTopic.setValue(topic);
+	
+	Aspect aSituation = new Aspect();
+	aSituation.setType("situation");
+	aSituation.setValue(situation);
+	
+	Aspect aAction = new Aspect();
+	aAction.setType("action");
+	aAction.setValue(action);
+	
+	Aspect aGoal = new Aspect();
+	aGoal.setType("goal");
+	aGoal.setValue(goal);
+	
+	Aspect aValue = new Aspect();
+	aValue.setType("value");
+	aValue.setValue(value);
+	
+	
+	
+	p.setTopic(aTopic);
+	p.setSituation(aSituation);
+	
+	p.setAction(aAction);
+	p.setGoal(aGoal);
+	p.setValue(aValue);
+       
+       
+       
        
        try{   
  ps.save(p);

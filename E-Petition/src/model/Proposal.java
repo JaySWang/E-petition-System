@@ -2,7 +2,12 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -11,13 +16,26 @@ import javax.persistence.Table;
 @Table
 public class Proposal extends BaseEntityBean  implements Serializable {
 
+	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="tid",referencedColumnName="id")
+	private Aspect topic;
 	
+	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="sid",referencedColumnName="id")
+	private Aspect situation ;
 	
-	private String topic;
-	private String situation ;
-	private String action;
-	private String goal;
-	private String value;
+	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="aid",referencedColumnName="id")
+	private Aspect action;
+	
+	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="gid",referencedColumnName="id")
+	private Aspect goal;
+	
+	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="vid",referencedColumnName="id")
+	private Aspect value;
+	
 	private int agree;
 	private int disagree;
 	
@@ -28,6 +46,66 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	
 	
+	
+	
+	
+	
+	
+	public void setTopic(Aspect topic) {
+		this.topic = topic;
+	}
+
+
+
+
+
+
+
+
+	public void setSituation(Aspect situation) {
+		this.situation = situation;
+	}
+
+
+
+
+
+
+
+
+	public void setAction(Aspect action) {
+		this.action = action;
+	}
+
+
+
+
+
+
+
+
+	public void setGoal(Aspect goal) {
+		this.goal = goal;
+	}
+
+
+
+
+
+
+
+
+	public void setValue(Aspect value) {
+		this.value = value;
+	}
+
+
+
+
+
+
+
+
 	public int getAgree() {
 		return agree;
 	}
@@ -58,36 +136,61 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 
 
 
-	public String getTopic() {
+
+
+
+
+
+	public Aspect getTopic() {
 		return topic;
 	}
-	public void setTopic(String topic) {
-		this.topic = topic;
-	}
-	public String getSituation() {
+
+
+
+
+
+
+
+
+	public Aspect getSituation() {
 		return situation;
 	}
-	public void setSituation(String situation) {
-		this.situation = situation;
-	}
-	public String getAction() {
+
+
+
+
+
+
+
+
+	public Aspect getAction() {
 		return action;
 	}
-	public void setAction(String action) {
-		this.action = action;
-	}
-	public String getGoal() {
+
+
+
+
+
+
+
+
+	public Aspect getGoal() {
 		return goal;
 	}
-	public void setGoal(String goal) {
-		this.goal = goal;
-	}
-	public String getValue() {
+
+
+
+
+
+
+
+
+	public Aspect getValue() {
 		return value;
 	}
-	public void setValue(String value) {
-		this.value = value;
-	}
+
+
+
 	
 	
 	
