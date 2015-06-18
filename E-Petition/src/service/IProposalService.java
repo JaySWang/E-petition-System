@@ -18,4 +18,6 @@ public interface IProposalService {
 
 	public void voteAgree(Proposal p, boolean agree);
 
+	public void update(Proposal p);
+
 }

@@ -1,6 +1,6 @@
 package value;
 
-public  class constValue {
+public  class ConstValue {
 
 	// aspect types
 	

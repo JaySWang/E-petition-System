@@ -25,7 +25,6 @@
        
        <table border="1" width="350" align="center" >
 		<tr>
-		<th>id</th>
 		<th>topic</th>
 		<th>situation</th>
 		<th>action</th>
@@ -40,21 +39,20 @@
 
 		<tr>
 	
-		<td><s:property value="#p.id"/></td>
 	
 
 		
-		<td><s:property value="#p.topic"/></td>
+		<td><s:property value="#p.topic.value"/></td>
 	
 
 	
-	<td><s:property value="#p.situation"/></td>
+	<td><s:property value="#p.situation.value"/></td>
 	
-	<td><s:property value="#p.action"/></td>
+	<td><s:property value="#p.action.value"/></td>
 	
-		<td><s:property value="#p.goal"/></td>
+		<td><s:property value="#p.goal.value"/></td>
 		
-		<td><s:property value="#p.value"/></td>
+		<td><s:property value="#p.value.value"/></td>
 
 	
 		
@@ -63,7 +61,12 @@
 	
 	
 		</table>
+		
+		    			<a href="/E-Petition/JSP/administer/addCriticalQuestion.jsp?id=<s:property value="#p.id"/>" target="_self" > add critical question  </a> 
+		
+		
       <p align="center" >What do you think of this proposal?  </p> 
+      
      <s:form action="voteProposal">
 	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 

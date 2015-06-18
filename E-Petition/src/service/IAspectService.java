@@ -8,4 +8,6 @@ public interface IAspectService {
 
 	public Aspect getAspectById(int id);
 
+	public void update(Aspect a);
+
 }

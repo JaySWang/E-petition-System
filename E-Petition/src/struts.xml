@@ -29,8 +29,23 @@
 		
 			<result name="success"  >/JSP/proposals/votesOfProposal.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
+			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
+			
 		</action>
 	
+	
+	<action name="answerCriticalQuestion" class="answerCriticalQuestionAction" method="answerCriticalQuestion" >
+		
+			<result name="success"  >/JSP/proposals/criticalQuestion/statisticOfcriticalQuestion.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+			
+		</action>
+	<action name="addCriticalQuestion" class="addCriticalQuestionAction" >
+		
+			<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
+
 
 
 	</package>

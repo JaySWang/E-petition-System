@@ -31,6 +31,11 @@ public class AspectServiceImpl implements IAspectService {
 			return adao.find(id);
 	}
 
+	@Override
+	public void update(Aspect a) {
+		adao.update(a);		
+	}
+
 
 
 }

@@ -26,6 +26,7 @@
 			<list>
 				<value>model.Proposal</value>
 				<value>model.Aspect</value>
+				<value>model.CriticalQuestion</value>
 				
 			
 
@@ -71,6 +72,9 @@
 		<bean id="aspectDAO" class="dao.AspectDAO">
 		<property name="dao" ref="dao"></property>
 	</bean>
+	<bean id="criticalQuestionDAO" class="dao.CriticalQuestionDAO">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	
 	
@@ -103,6 +107,21 @@
 		</property>
 	</bean>
 	
+		<bean id="criticalQuestionService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="hibernateTransactionManager">
+		</property>
+		<property name="target">
+			<bean class="service.CriticalQuestionServiceImpl">
+				<property name="cdao" ref="criticalQuestionDAO"></property>
+			</bean>
+		</property>
+		<property name="transactionAttributeSource" ref="hibernateTransactionAttributeSource">
+		</property>
+	</bean>
+	
+	
+	
 <!-- configure Action -->	
 
 
@@ -132,6 +151,21 @@
 		<property name="ps" ref="proposalService">
 		</property>
 	</bean>
+
+
+	<bean id="answerCriticalQuestionAction" class="action.AnswerCriticalQuestionAction"
+		scope="prototype">
+		<property name="cqs" ref="criticalQuestionService">
+		</property>
+	</bean>
+
+
+<bean id="addCriticalQuestionAction" class="action.AddCriticalQuestionAction"
+		scope="prototype">
+		<property name="ps" ref="proposalService">
+		</property>
+	</bean>
+
 
 
 </beans>

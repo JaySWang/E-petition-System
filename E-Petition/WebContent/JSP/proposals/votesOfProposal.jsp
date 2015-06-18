@@ -16,7 +16,6 @@
 <title>Proposal</title>
 </head>
 
-<%=request.getAttribute("message")%> 
 
 <body>
 
@@ -45,17 +44,17 @@
 	
 
 		
-		<td><s:property value="#p.topic"/></td>
+		<td><s:property value="#p.topic.value"/></td>
 	
 
 	
-	<td><s:property value="#p.situation"/></td>
+	<td><s:property value="#p.situation.value"/></td>
 	
-	<td><s:property value="#p.action"/></td>
+	<td><s:property value="#p.action.value"/></td>
 	
-		<td><s:property value="#p.goal"/></td>
+		<td><s:property value="#p.goal.value"/></td>
 		
-		<td><s:property value="#p.value"/></td>
+		<td><s:property value="#p.value.value"/></td>
 		
 	<td><s:property value="#p.agree"/></td>
 		

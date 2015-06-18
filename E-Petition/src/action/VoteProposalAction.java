@@ -78,6 +78,12 @@ public class VoteProposalAction extends BaseAction {
 	  
 	  }else if(agreeOrNot.equalsIgnoreCase("disagree")){
 		  ps.voteAgree(p,false);
+		  
+		  Proposal proposal=ps.getProposalById(p.getId());
+		  
+			this.session().setAttribute("aspects", proposal.getAspects());
+			
+		  return "cq";
 
 	  }else{
 		  return ERROR;
@@ -87,7 +93,8 @@ public class VoteProposalAction extends BaseAction {
 		this.session().setAttribute("proposal", proposal);
 		
 		this.request().setAttribute("message", "thank you for voting");
-
+        
+		
 	  
 	return SUCCESS;
 }

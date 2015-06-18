@@ -37,7 +37,7 @@
 		<li><a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp" target="_self">add new proposal</a></li>
 						</ul>
 			
-			
+	
 
 			<div id="boxcontainer">
 
@@ -59,7 +59,6 @@
        
        <table border="1" width="350">
 		<tr>
-		<th>id</th>
 		<th>topic</th>
 
 
@@ -71,14 +70,13 @@
 		<tr <s:if test="#st.odd">
 		style="background-color:#bbbbbb"</s:if>>
 	
-		<td><s:property value="#p.id"/></td>
 	
 	<td>
 	
 				
 					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#p.id"/>" target="_self" >   
 		
-		<s:property value="#p.topic"/>
+		<s:property value="#p.topic.value"/>
    </a>
 	
 	</td>

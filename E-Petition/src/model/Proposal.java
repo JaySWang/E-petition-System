@@ -1,6 +1,11 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -47,7 +52,19 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	
 	
-	
+	public List<Aspect> getAspects(){
+		List<Aspect> aspects = new ArrayList();
+		aspects.add(topic);
+		aspects.add(situation);
+		aspects.add(action);
+		aspects.add(goal);
+		aspects.add(value);
+
+		
+		
+		return aspects;
+		
+	}
 	
 	
 	

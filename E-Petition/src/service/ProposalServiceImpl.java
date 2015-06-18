@@ -63,6 +63,12 @@ public class ProposalServiceImpl   implements IProposalService {
 		
 	}
 
+	@Override
+	public void update(Proposal p) {
+		pdao.update(p);
+		
+	}
+
 
 
 
