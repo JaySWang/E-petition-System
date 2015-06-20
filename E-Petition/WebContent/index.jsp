@@ -33,6 +33,8 @@
 			<p>Welcome to the KCL-Epetition system that allows the government to present 
 			policy proposals to the public and lets the public submit their opinion on the policy .</p>
 
+
+
 <ul>
 		<li><a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp" target="_self">add new proposal</a></li>
 						</ul>

@@ -41,7 +41,7 @@ public class TestProposal {
 	       
 	       
       	
-          for(AspectType s : getScheme().getAspectType()){
+          for(AspectType s : getScheme().getAspectTypes()){
         	 
        	   if(s.getName().equalsIgnoreCase("topic")){
        		 Aspect a = new Aspect();
@@ -107,7 +107,7 @@ public class TestProposal {
 		ats.add(atGoal);
 		ats.add(atValue);
 		
-		as.setAspectType(ats);
+		as.setAspectTypes(ats);
 		
 		
 		

@@ -8,7 +8,9 @@
 
 <title>Add proposal</title>
 
-
+<ul>
+		<li><a href="/E-Petition/JSP/administer/addArgumentScheme.jsp" target="_self">add new argument Scheme</a></li>
+						</ul>
 <body>
 
 		  <script>   

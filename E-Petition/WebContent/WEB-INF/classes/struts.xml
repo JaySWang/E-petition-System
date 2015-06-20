@@ -23,6 +23,12 @@
 			<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
+	              
+	<action name="addArgumentScheme" class="addArgumentSchemeAction" >
+		
+			<result name="success"  >/JSP/administer/addArgumentScheme.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
 	
 	
 <action name="voteProposal" class="voteProposalAction" method="voteProposal" >

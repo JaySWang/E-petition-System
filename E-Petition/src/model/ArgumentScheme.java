@@ -18,11 +18,11 @@ import javax.persistence.Table;
 public class ArgumentScheme  extends BaseEntityBean  implements Serializable {
 	
    String name;
-   String discription;
+   String description;
 	 
 	 @OneToMany(fetch=FetchType.EAGER,targetEntity=AspectType.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="sid",referencedColumnName="id")})
-		private List<AspectType> aspectType=new ArrayList();
+		private List<AspectType> aspectTypes=new ArrayList();
 
 	 
 	 
@@ -35,20 +35,20 @@ public class ArgumentScheme  extends BaseEntityBean  implements Serializable {
 		this.name = name;
 	}
 
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public List<AspectType> getAspectType() {
-		return aspectType;
+	public List<AspectType> getAspectTypes() {
+		return aspectTypes;
 	}
 
-	public void setAspectType(List<AspectType> aspectType) {
-		this.aspectType = aspectType;
+	public void setAspectTypes(List<AspectType> aspectTypes) {
+		this.aspectTypes = aspectTypes;
 	}
 	
 	

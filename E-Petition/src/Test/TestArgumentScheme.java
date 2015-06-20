@@ -41,11 +41,11 @@ public class TestArgumentScheme {
 	
 		ArgumentScheme as = new ArgumentScheme();
 
-		as.setAspectType(ats);
-		String discription = "some specialist knowlege is required that is not within our grasp.but maybe within someone else's";
+		as.setAspectTypes(ats);
+		String description = "some specialist knowlege is required that is not within our grasp.but maybe within someone else's";
 		String name = "Expert Opinion";
-		
-		as.setDiscription(discription);
+	
+		as.setDescription(description);
 		as.setName(name);
 
 try{		
@@ -57,7 +57,7 @@ BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xm
 		int id = as.getId();
 		ArgumentScheme as2 = ass.getArgumentSchemeById(id);
 		
-		assertEquals(as.getDiscription(),as2.getDiscription());
+		assertEquals(as.getDescription(),as2.getDescription());
 		assertEquals(as.getName(),as2.getName());
 }	catch (Throwable t){
 	t.printStackTrace();

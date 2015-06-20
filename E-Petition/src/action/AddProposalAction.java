@@ -60,7 +60,7 @@ public class AddProposalAction extends BaseAction {
        
        
    	Aspect a = new Aspect();
-       for(AspectType s : as.getAspectType()){
+       for(AspectType s : as.getAspectTypes()){
     	   a.setType(s.getName());
     	   a.setValue(request().getParameter(s.getName()));
     	   aspects.put(s.getName(), a);
