@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,30 +23,43 @@ import javax.persistence.Table;
 @Table
 public class Proposal extends BaseEntityBean  implements Serializable {
 
-	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="tid",referencedColumnName="id")
-	private Aspect topic;
 	
-	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="sid",referencedColumnName="id")
-	private Aspect situation ;
+	 
+	 
+	 
+	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Aspect.class,cascade={CascadeType.ALL})
+		@JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="id")})
+		private Map<String,Aspect> aspects=new HashMap();
+	 
+	 
+		@ManyToOne(fetch=FetchType.LAZY, cascade ={CascadeType.ALL}  )
+	    @JoinColumn(name="asid")
+	  private ArgumentScheme argumentScheme;
 	
-	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="aid",referencedColumnName="id")
-	private Aspect action;
-	
-	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="gid",referencedColumnName="id")
-	private Aspect goal;
-	
-	 @ManyToOne(fetch=FetchType.EAGER, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="vid",referencedColumnName="id")
-	private Aspect value;
-	
+	 
 	private int agree;
 	private int disagree;
 	
 	
+	
+
+
+
+
+	public ArgumentScheme getArgumentScheme() {
+		return argumentScheme;
+	}
+
+
+
+
+	public void setArgumentScheme(ArgumentScheme argumentScheme) {
+		this.argumentScheme = argumentScheme;
+	}
+
+
+
+
 	public Proposal(){
 		
 	}
@@ -52,72 +67,13 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	
 	
-	public List<Aspect> getAspects(){
-		List<Aspect> aspects = new ArrayList();
-		aspects.add(topic);
-		aspects.add(situation);
-		aspects.add(action);
-		aspects.add(goal);
-		aspects.add(value);
-
-		
+	public Map<String,Aspect> getAspects(){
 		
 		return aspects;
 		
 	}
 	
 	
-	
-	public void setTopic(Aspect topic) {
-		this.topic = topic;
-	}
-
-
-
-
-
-
-
-
-	public void setSituation(Aspect situation) {
-		this.situation = situation;
-	}
-
-
-
-
-
-
-
-
-	public void setAction(Aspect action) {
-		this.action = action;
-	}
-
-
-
-
-
-
-
-
-	public void setGoal(Aspect goal) {
-		this.goal = goal;
-	}
-
-
-
-
-
-
-
-
-	public void setValue(Aspect value) {
-		this.value = value;
-	}
-
-
-
 
 
 
@@ -154,12 +110,8 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 
 
 
-
-
-
-
-	public Aspect getTopic() {
-		return topic;
+	public void setAspects(Map<String,Aspect> aspects) {
+		this.aspects = aspects;
 	}
 
 
@@ -168,43 +120,6 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 
 
 
-
-	public Aspect getSituation() {
-		return situation;
-	}
-
-
-
-
-
-
-
-
-	public Aspect getAction() {
-		return action;
-	}
-
-
-
-
-
-
-
-
-	public Aspect getGoal() {
-		return goal;
-	}
-
-
-
-
-
-
-
-
-	public Aspect getValue() {
-		return value;
-	}
 
 
 

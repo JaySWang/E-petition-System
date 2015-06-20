@@ -27,6 +27,10 @@
 				<value>model.Proposal</value>
 				<value>model.Aspect</value>
 				<value>model.CriticalQuestion</value>
+				<value>model.ArgumentScheme</value>
+				<value>model.AspectType</value>
+				
+				
 				
 			
 
@@ -75,6 +79,9 @@
 	<bean id="criticalQuestionDAO" class="dao.CriticalQuestionDAO">
 		<property name="dao" ref="dao"></property>
 	</bean>
+	<bean id="argumentSchemeDAO" class="dao.ArgumentSchemeDAO">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	
 	
 	
@@ -92,6 +99,21 @@
 		<property name="transactionAttributeSource" ref="hibernateTransactionAttributeSource">
 		</property>
 	</bean>
+	
+	
+		<bean id="argumentSchemeService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="hibernateTransactionManager">
+		</property>
+		<property name="target">
+			<bean class="service.ArgumentSchemeServiceImpl">
+				<property name="asdao" ref="argumentSchemeDAO"></property>
+			</bean>
+		</property>
+		<property name="transactionAttributeSource" ref="hibernateTransactionAttributeSource">
+		</property>
+	</bean>
+	
 	
 	
 		<bean id="aspectService"

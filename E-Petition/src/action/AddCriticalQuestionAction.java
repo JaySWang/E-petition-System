@@ -2,7 +2,9 @@ package action;
 
 
 
+import model.ArgumentScheme;
 import model.Aspect;
+import model.AspectType;
 import model.CriticalQuestion;
 import model.Proposal;
 
@@ -151,26 +153,17 @@ public class AddCriticalQuestionAction extends BaseAction {
 
 		
 	      Proposal p = (Proposal)this.session().getAttribute("proposal");
-       
-   	Aspect aTopic = p.getTopic();
-   	addCqs(aTopic,topicCQ);
-   	
-   	
-	Aspect aSituation = p.getSituation();
-   	addCqs(aSituation,situationCQ);
+          ArgumentScheme as = p.getArgumentScheme();
+          
+	      for(AspectType at:as.getAspectType()){
+	    	  
+	    	  String cq = this.request().getParameter(at.getName());
+	    	  
+	    	  Aspect a = p.getAspects().get(at.getName());
+	    	   	addCqs(a,topicCQ);
 
-	
-	Aspect aAction = p.getAction();
-   	addCqs(aAction,actionCQ);
-
-	Aspect aGoal = p.getGoal();
-   	addCqs(aGoal,goalCQ);
-
-	
-	Aspect aValue = p.getValue();
-   	addCqs(aValue,valueCQ);
-
-	
+	      }
+  
        
        
        

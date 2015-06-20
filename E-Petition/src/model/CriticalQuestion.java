@@ -16,6 +16,7 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 	int disagree;
 	int na ;
 	String value;
+	
 	public int getAgree() {
 		return agree;
 	}

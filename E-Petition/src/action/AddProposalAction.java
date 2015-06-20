@@ -1,7 +1,12 @@
 package action;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import model.ArgumentScheme;
 import model.Aspect;
+import model.AspectType;
 import model.Proposal;
 
 import service.IProposalService;
@@ -15,106 +20,7 @@ public class AddProposalAction extends BaseAction {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	private String topic;
-	
-	private String situation;
-		
-	private String action;
-	
-	private String goal;
-	
-	private String value;
-		
-	
-	
-	
-
 	private IProposalService ps;
-	
-
-	
-	
-
-	public String getTopic() {
-		return topic;
-	}
-
-
-
-
-
-	public void setTopic(String topic) {
-		this.topic = topic;
-	}
-
-
-
-
-
-	public String getSituation() {
-		return situation;
-	}
-
-
-
-
-
-	public void setSituation(String situation) {
-		this.situation = situation;
-	}
-
-
-
-
-
-	public String getAction() {
-		return action;
-	}
-
-
-
-
-
-	public void setAction(String action) {
-		this.action = action;
-	}
-
-
-
-
-
-	public String getGoal() {
-		return goal;
-	}
-
-
-
-
-
-	public void setGoal(String goal) {
-		this.goal = goal;
-	}
-
-
-
-
-
-	public String getValue() {
-		return value;
-	}
-
-
-
-
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-
-
-
 
 	public IProposalService getPs() {
 		return ps;
@@ -145,38 +51,26 @@ public class AddProposalAction extends BaseAction {
 
 		
        Proposal p=new Proposal();
+       ArgumentScheme as = (ArgumentScheme) this.session().getAttribute("argumentScheme");
+       as = new ArgumentScheme();
        
-   	Aspect aTopic = new Aspect();
-	aTopic.setType("topic");
-	aTopic.setValue(topic);
-	
-	Aspect aSituation = new Aspect();
-	aSituation.setType("situation");
-	aSituation.setValue(situation);
-	
-	Aspect aAction = new Aspect();
-	aAction.setType("action");
-	aAction.setValue(action);
-	
-	Aspect aGoal = new Aspect();
-	aGoal.setType("goal");
-	aGoal.setValue(goal);
-	
-	Aspect aValue = new Aspect();
-	aValue.setType("value");
-	aValue.setValue(value);
-	
-	
-	
-	p.setTopic(aTopic);
-	p.setSituation(aSituation);
-	
-	p.setAction(aAction);
-	p.setGoal(aGoal);
-	p.setValue(aValue);
+       
+       Map<String,Aspect> aspects=new HashMap();
        
        
        
+   	Aspect a = new Aspect();
+       for(AspectType s : as.getAspectType()){
+    	   a.setType(s.getName());
+    	   a.setValue(request().getParameter(s.getName()));
+    	   aspects.put(s.getName(), a);
+    	   
+       }
+       
+       
+       p.setAspects(aspects);
+   
+      
        
        try{   
  ps.save(p);
