@@ -27,39 +27,17 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	 
 	 
 	 
-	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Aspect.class,cascade={CascadeType.ALL})
+	 @OneToMany(fetch = FetchType.EAGER,targetEntity=Aspect.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="id")})
-		private Map<String,Aspect> aspects=new HashMap();
+		private List<Aspect> aspects=new ArrayList();
 	 
 	 
-		@ManyToOne(fetch=FetchType.LAZY, cascade ={CascadeType.ALL}  )
-	    @JoinColumn(name="asid")
-	  private ArgumentScheme argumentScheme;
+		
 	
 	 
 	private int agree;
 	private int disagree;
 	
-	
-	
-
-
-
-
-	public ArgumentScheme getArgumentScheme() {
-		return argumentScheme;
-	}
-
-
-
-
-	public void setArgumentScheme(ArgumentScheme argumentScheme) {
-		this.argumentScheme = argumentScheme;
-	}
-
-
-
-
 	public Proposal(){
 		
 	}
@@ -67,7 +45,7 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	
 	
-	public Map<String,Aspect> getAspects(){
+	public List<Aspect> getAspects(){
 		
 		return aspects;
 		
@@ -110,7 +88,7 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 
 
 
-	public void setAspects(Map<String,Aspect> aspects) {
+	public void setAspects(List<Aspect> aspects) {
 		this.aspects = aspects;
 	}
 

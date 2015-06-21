@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,9 +22,9 @@ public class ArgumentScheme  extends BaseEntityBean  implements Serializable {
    String name;
    String description;
 	 
-	 @OneToMany(fetch=FetchType.EAGER,targetEntity=AspectType.class,cascade={CascadeType.ALL})
+	 @OneToMany(fetch = FetchType.EAGER,targetEntity=AspectType.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="sid",referencedColumnName="id")})
-		private List<AspectType> aspectTypes=new ArrayList();
+		private List<AspectType> aspectTypes = new ArrayList<AspectType>();
 
 	 
 	 
@@ -47,9 +49,14 @@ public class ArgumentScheme  extends BaseEntityBean  implements Serializable {
 		return aspectTypes;
 	}
 
+
+
 	public void setAspectTypes(List<AspectType> aspectTypes) {
 		this.aspectTypes = aspectTypes;
+		
 	}
+
+
 	
 	
 

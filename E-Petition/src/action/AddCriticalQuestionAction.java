@@ -153,13 +153,11 @@ public class AddCriticalQuestionAction extends BaseAction {
 
 		
 	      Proposal p = (Proposal)this.session().getAttribute("proposal");
-          ArgumentScheme as = p.getArgumentScheme();
-          
-	      for(AspectType at:as.getAspectTypes()){
+                    
+	      for(Aspect a:p.getAspects()){
 	    	  
-	    	  String cq = this.request().getParameter(at.getName());
+	    	  String cq = this.request().getParameter(a.getType());
 	    	  
-	    	  Aspect a = p.getAspects().get(at.getName());
 	    	   	addCqs(a,topicCQ);
 
 	      }

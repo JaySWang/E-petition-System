@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 	 
 	 @OneToMany(fetch=FetchType.EAGER,targetEntity=CriticalQuestion.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="aid",referencedColumnName="id")})
-		private List<CriticalQuestion> criticalQuestions=new ArrayList();
+		private Set<CriticalQuestion> criticalQuestions=new HashSet();
 	 
 	 
 	 
@@ -33,10 +35,10 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 		 criticalQuestions.add(cq);
 	 }
 	 
-	public List<CriticalQuestion> getCriticalQuestions() {
+	public Set<CriticalQuestion> getCriticalQuestions() {
 		return criticalQuestions;
 	}
-	public void setCriticalQuestions(List<CriticalQuestion> criticalQuestions) {
+	public void setCriticalQuestions(Set<CriticalQuestion> criticalQuestions) {
 		this.criticalQuestions = criticalQuestions;
 	}
 	public String getValue() {

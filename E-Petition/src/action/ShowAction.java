@@ -2,8 +2,10 @@ package action;
 
 import java.util.List;
 
+import model.ArgumentScheme;
 import model.Proposal;
 
+import service.IArgumentSchemeService;
 import service.IProposalService;
 
 
@@ -13,9 +15,23 @@ public class ShowAction extends BaseAction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	
 	private IProposalService ps;
+	private IArgumentSchemeService ass;
+
+	
+
+	public IArgumentSchemeService getAss() {
+		return ass;
+	}
+
+
+
+	public void setAss(IArgumentSchemeService ass) {
+		this.ass = ass;
+	}
+
+
 
 	public IProposalService getPs() {
 		return ps;
@@ -42,11 +58,18 @@ public class ShowAction extends BaseAction {
 	public String showProposals()  {
 
 		List<Proposal> proposals;
+		
+		List<ArgumentScheme> argumentSchemes;			
+		
+		
 		try{
 			
+		argumentSchemes=ass.getArgumentSchemes();
+		this.session().setAttribute("argumentSchemes", argumentSchemes);
 		
 		proposals=ps.getProposals();
 		this.request().setAttribute("proposals", proposals);
+		
 		this.request().setAttribute("message", " ");
 
 		}

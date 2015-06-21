@@ -150,6 +150,10 @@
 	<bean id="showAction" class="action.ShowAction"
 		scope="prototype">
 		<property name="ps" ref="proposalService">
+				</property>
+		
+		<property name="ass" ref="argumentSchemeService">
+		
 		</property>
 	</bean>
 	
@@ -174,8 +178,8 @@
 		</property>
 	</bean>
 
-	<bean id="addArgumentSchemeAction" class="action.AddArgumentSchemeAction"
-		scope="prototype">
+	<bean id="argumentSchemeAction" class="action.ArgumentSchemeAction"
+		scope="prototype" >
 		<property name="ass" ref="argumentSchemeService">
 		</property>
 	</bean>

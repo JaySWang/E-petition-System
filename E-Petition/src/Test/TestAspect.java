@@ -94,10 +94,9 @@ BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xm
         a.addCriticalQuestion(cq2);
         as.update(a);
 		assertEquals(as.getAspectById(id).getCriticalQuestions().size(),size+2);
-		assertEquals(as.getAspectById(id).getCriticalQuestions().get(size).getValue(),cq1.getValue());
 
-		assertEquals(as.getAspectById(id).getCriticalQuestions().get(size+1).getValue(),cq2.getValue());
-	
+		
+		
 	
 	}
 	

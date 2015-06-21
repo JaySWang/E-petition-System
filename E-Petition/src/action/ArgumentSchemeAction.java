@@ -2,7 +2,9 @@ package action;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import model.ArgumentScheme;
 import model.AspectType;
@@ -11,7 +13,7 @@ import service.IArgumentSchemeService;
 
 
 
-public class AddArgumentSchemeAction extends BaseAction {
+public class ArgumentSchemeAction extends BaseAction {
 	
 	/**
 	 * 
@@ -77,18 +79,14 @@ public class AddArgumentSchemeAction extends BaseAction {
 	}
 
 
-
-
-
-	@Override
-	public String execute() throws Exception {
+	public String addArgumentScheme() throws Exception {
 
 		
        ArgumentScheme as = new ArgumentScheme();
       as.setName(name); 
        as.setDescription(description);
        
-   	List<AspectType> ats = new ArrayList();
+   List<AspectType> ats = new ArrayList();
 
        
        
@@ -99,7 +97,6 @@ public class AddArgumentSchemeAction extends BaseAction {
     
     for(int i =0;i<numOfAspectType;i++){
     	String typeName = request().getParameter("type"+i);
-    	System.out.println(typeName);
     	
        	AspectType at = new AspectType();
        	at.setName(typeName);
@@ -124,7 +121,57 @@ public class AddArgumentSchemeAction extends BaseAction {
 		return SUCCESS;
 	}
 
+	
+	
+	
+	
+	
+	public String showArgumentSchemes()  throws Exception  {
 
+		List<ArgumentScheme> argumentSchemes;
+		try{
+			
+		
+			argumentSchemes=ass.getArgumentSchemes();
+		this.request().setAttribute("argumentSchemes", argumentSchemes);
+		this.request().setAttribute("message", " ");
 
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ERROR;
+			
+		}
+		
+		return SUCCESS;
+	}
+	
+	
+	public String getArgumentScheme()  throws Exception  {
+
+		ArgumentScheme argumentScheme;
+		try{
+			String idS =  this.request().getParameter("sid");
+
+			if(idS==null){
+				idS = ((ArgumentScheme)this.session().getAttribute("argumentScheme")).getId()+"";
+			}
+			int id = Integer.parseInt(idS);
+		
+			argumentScheme=ass.getArgumentSchemeById(id);
+
+			this.session().setAttribute("argumentScheme", argumentScheme);
+		this.request().setAttribute("message", " ");
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ERROR;
+			
+		}
+		
+		return SUCCESS;
+	}
+	
 	
 }

@@ -4,7 +4,9 @@ package Test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import model.ArgumentScheme;
 import model.AspectType;
@@ -23,7 +25,7 @@ public class TestArgumentScheme {
 	@Test
 	public void testSaveAndGet() throws Exception{
 		
-		List<AspectType> ats = new ArrayList();
+		   List<AspectType> ats = new ArrayList();
 	
 		AspectType atExpertise = new AspectType();
 		atExpertise.setName("expertise");

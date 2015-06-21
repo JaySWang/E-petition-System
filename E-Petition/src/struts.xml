@@ -24,11 +24,21 @@
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	              
-	<action name="addArgumentScheme" class="addArgumentSchemeAction" >
+	<action name="addArgumentScheme" class="argumentSchemeAction" method="addArgumentScheme">
 		
-			<result name="success"  >/JSP/administer/addArgumentScheme.jsp</result>
+			<result name="success"  >/JSP/administer/argumentSchemes.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
+		
+		<action name="showArgumentSchemes" class="argumentSchemeAction" method="showArgumentSchemes">
+		
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
+		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
+		
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
+	
 	
 	
 <action name="voteProposal" class="voteProposalAction" method="voteProposal" >

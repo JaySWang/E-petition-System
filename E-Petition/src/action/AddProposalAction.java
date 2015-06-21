@@ -1,7 +1,9 @@
 package action;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import model.ArgumentScheme;
@@ -52,25 +54,27 @@ public class AddProposalAction extends BaseAction {
 		
        Proposal p=new Proposal();
        ArgumentScheme as = (ArgumentScheme) this.session().getAttribute("argumentScheme");
-       as = new ArgumentScheme();
+   
        
        
-       Map<String,Aspect> aspects=new HashMap();
+       List<Aspect> aspects=new ArrayList();
        
        
        
-   	Aspect a = new Aspect();
+   	
        for(AspectType s : as.getAspectTypes()){
+    	   Aspect a = new Aspect();
     	   a.setType(s.getName());
-    	   a.setValue(request().getParameter(s.getName()));
-    	   aspects.put(s.getName(), a);
+String value = request().getParameter(s.getName());
+
+    	   a.setValue(value);
+    	   aspects.add(a);
     	   
        }
        
        
        p.setAspects(aspects);
-   
-      
+     
        
        try{   
  ps.save(p);

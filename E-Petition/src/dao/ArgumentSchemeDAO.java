@@ -24,7 +24,7 @@ public class ArgumentSchemeDAO{
 
 	public List<ArgumentScheme> geArgumentSchemes(){
 	   List<ArgumentScheme> l = new ArrayList();
-		 String hql=" select as from ArgumentScheme as";
+		 String hql=" select s from ArgumentScheme s";
 
 		l = dao.list(hql);
 	   

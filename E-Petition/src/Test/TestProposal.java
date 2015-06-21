@@ -2,13 +2,16 @@ package Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+import service.IArgumentSchemeService;
 import service.IProposalService;
 
 import dao.ProposalDAO;
@@ -34,9 +37,9 @@ public class TestProposal {
 	
 	
 	
-	private Map<String,Aspect> getAspects(){
+	private List<Aspect> getAspects(){
 		
-	    Map<String,Aspect> aspects=new HashMap();
+		List<Aspect> aspects=new ArrayList();
 	       
 	       
 	       
@@ -47,27 +50,27 @@ public class TestProposal {
        		 Aspect a = new Aspect();
        	  a.setType(s.getName());
        		   a.setValue(topic);
-       	  	   aspects.put(s.getName(), a);
+       	  	   aspects.add(a);
        	   }else if (s.getName().equalsIgnoreCase("situation")){
        		 Aspect a = new Aspect();
        	  a.setType(s.getName());
        		   a.setValue(situation);
-       	  	   aspects.put(s.getName(), a);
+       	  	   aspects.add(a);
        	   }else if (s.getName().equalsIgnoreCase("action")){
        		 Aspect a = new Aspect();
        	  a.setType(s.getName());
        		   a.setValue(action);
-       	  	   aspects.put(s.getName(), a);
+       	  	   aspects.add(a);
        	   }else if (s.getName().equalsIgnoreCase("goal")){
        		 Aspect a = new Aspect();
        	  a.setType(s.getName());
        		   a.setValue(goal);
-       	  	   aspects.put(s.getName(), a);
+       	  	   aspects.add(a);
        	   }else if (s.getName().equalsIgnoreCase("value")){
        		 Aspect a = new Aspect();
        	  a.setType(s.getName());
        		   a.setValue(value);
-       	  	   aspects.put(s.getName(), a);
+       	  	   aspects.add(a);
        	   }
        	   
        	   
@@ -100,7 +103,7 @@ public class TestProposal {
 		atValue.setName("value");
 		
 		ArgumentScheme as = new ArgumentScheme();
-		List<AspectType> ats = new ArrayList();
+		   List<AspectType> ats = new ArrayList();
 		ats.add(atTopic);
 		ats.add(atSituation);
 		ats.add(atAction);
@@ -109,7 +112,11 @@ public class TestProposal {
 		
 		as.setAspectTypes(ats);
 		
+		BeanFactory bf = new FileSystemXmlApplicationContext("/src/applicationContext.xml");
+
+		IArgumentSchemeService ass =  (IArgumentSchemeService) bf.getBean("argumentSchemeService");
 		
+		ass.save(as);
 		
 		return as;
 		
@@ -124,7 +131,6 @@ public class TestProposal {
 		
 		Proposal p = new Proposal();
 
-		   p.setArgumentScheme(getScheme());
 		
 	
 		
@@ -144,15 +150,13 @@ public class TestProposal {
 		
 		
 	
-		       Map<String,Aspect> aspects2=getProposal().getAspects();
+		List<Aspect> aspects2=getProposal().getAspects();
 
 		
 		
-		assertEquals(aspects2.get("topic").getValue(),getAspects().get("topic").getValue());
-		assertEquals(aspects2.get("situation").getValue(),getAspects().get("situation").getValue());
-		assertEquals(aspects2.get("action").getValue(),getAspects().get("action").getValue());
-		assertEquals(aspects2.get("goal").getValue(),getAspects().get("goal").getValue());
-		assertEquals(aspects2.get("value").getValue(),getAspects().get("value").getValue());
+		assertEquals(aspects2.get(0).getValue(),getAspects().get(0).getValue());
+		
+		assertEquals(aspects2.size(),getAspects().size());
 		
 
 	}
@@ -206,7 +210,7 @@ public class TestProposal {
 			
 			int id = p.getId();
 
-			assertEquals((ps.getProposalById(id)).getAspects().get("topic").getValue(),topic);
+			assertEquals((ps.getProposalById(id)).getAspects().get(0).getValue(),topic);
 
 		
 			assertTrue(ps.getProposals().size()>0);
