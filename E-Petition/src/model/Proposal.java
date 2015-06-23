@@ -27,7 +27,7 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	 
 	 
 	 
-	 @OneToMany(fetch = FetchType.EAGER,targetEntity=Aspect.class,cascade={CascadeType.ALL})
+	 @OneToMany(fetch = FetchType.EAGER,targetEntity=Aspect.class,cascade={  CascadeType.REMOVE})
 		@JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="id")})
 		private List<Aspect> aspects=new ArrayList();
 	 

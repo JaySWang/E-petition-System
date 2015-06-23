@@ -38,61 +38,26 @@
 	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 	 
 	 	 	<s:set var="p" value="#session.proposal"/>
+	 	 	
+	 	 	
+	 		 	 	 <s:iterator value="#p.aspects" var="a">
 	 <tr>
-	 	 <td><s:property value="#p.topic.type"/></td>
 	 
-	 <td><s:property value="#p.topic.value"/></td>
-	</tr>
-
-
-	  <tr  height="40">
-	    <td>Questions:</td>
-	    <td><input name="topicCQ" type="text" /></td>
-	  </tr>
-	
-	 <tr>
-	 	 <td><s:property value="#p.situation.type"/></td>
+	 	 <td bgcolor="gray" ><s:property value="#a.type"/></td>
 	 
-	 <td><s:property value="#p.situation.value"/></td>
+	 <td><s:property value="#a.value"/></td>
 	</tr>
-	  <tr  height="40">
-	    <td>Questions:</td>
-	    <td><input name="situationCQ" type="text" /></td>
-	  </tr>
-
-<tr>
-	 <td><s:property value="#p.action.type"/></td>
-
-	 <td><s:property value="#p.action.value"/></td>
-	</tr>
-  <tr  height="40">
-	    <td>Questions:</td>
-	    <td><input name="actionCQ" type="text" /></td>
-	  </tr>
 	
-	
-	<tr>
-		 <td><s:property value="#p.goal.type"/></td>
-	
-	 <td><s:property value="#p.goal.value"/></td>
-	</tr> 
-	  <tr  height="40">
+	 <tr  height="40">
 	    <td>Questions:</td>
-	    <td><input name="goalCQ" type="text" /></td>
+	    <td><input name=<s:property value="#a.type"/> type="text" /></td>
 	  </tr>
 	  
-	  
-	  <tr>
-	  <td><s:property value="#p.value.type"/></td>
-	 <td><s:property value="#p.value.value"/></td>
-	</tr> 
-	    <tr  height="40">
-	    <td>Questions:</td>
-	    <td><input name="valueCQ" type="text" /></td>
-	  </tr>
+</s:iterator>
 
-	  
-
+	 
+	
+	
 	
 
 	  

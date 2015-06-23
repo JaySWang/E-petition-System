@@ -22,7 +22,9 @@
    <p align="center" >What do you think of the flowing aspects of the proposal?  </p> 
      <s:form action="answerCriticalQuestion">
      
-<s:iterator value="#session.aspects" var = "a">
+ <s:set value="#session.proposal" var = "p"/>    
+     
+<s:iterator value="#p.aspects" var = "a">
 
 	<s:property value="#a.type" />:
 	

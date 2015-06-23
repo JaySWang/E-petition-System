@@ -20,41 +20,29 @@
 
 <body>
 
-
+	<s:set var="p" value="#session.proposal"/>
 
        
        <table border="1" width="350" align="center" >
 		<tr>
-		<th>topic</th>
-		<th>situation</th>
-		<th>action</th>
-		<th>goal</th>
-		<th>value</th>
-
+  <s:iterator value="#p.aspects" var="a">
 		
-
-	</tr>
+		<th><s:property value="#a.type"/></th>
+		
 	
-	<s:set var="p" value="#session.proposal"/>
-
+</s:iterator>
+</tr>
 		<tr>
 	
 	
-
+  <s:iterator value="#p.aspects" var="a">
 		
-		<td><s:property value="#p.topic.value"/></td>
-	
-
-	
-	<td><s:property value="#p.situation.value"/></td>
-	
-	<td><s:property value="#p.action.value"/></td>
-	
-		<td><s:property value="#p.goal.value"/></td>
+		<td><s:property value="#a.value"/></td>
 		
-		<td><s:property value="#p.value.value"/></td>
-
 	
+</s:iterator>
+		
+		
 		
 	</tr>
 	

@@ -42,8 +42,16 @@ public class ShowProposalDetailAction extends BaseAction {
 	public String showProposalDetail()  {
 	try{
 		
+		
 		String idS =  this.request().getParameter("id");
+		if(idS==null){
+			idS = (String) this.session().getAttribute("pid");
+		}else {
+	         this.session().setAttribute("pid", idS);
 
+		}
+         
+         
 		int id = Integer.parseInt(idS);
 		Proposal proposal=ps.getProposalById(id);
 		this.session().setAttribute("proposal", proposal);

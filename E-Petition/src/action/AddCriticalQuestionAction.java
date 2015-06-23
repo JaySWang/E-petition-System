@@ -8,6 +8,7 @@ import model.AspectType;
 import model.CriticalQuestion;
 import model.Proposal;
 
+import service.IAspectService;
 import service.IProposalService;
 
 
@@ -20,120 +21,32 @@ public class AddCriticalQuestionAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 
 
-	private String topicCQ;
-	
-	private String situationCQ;
-		
-	private String actionCQ;
-	
-	private String goalCQ;
-	
-	private String valueCQ;
 		
 	
 	
 	
 
-	private IProposalService ps;
+	
+    private IAspectService as;
+	
 	
 
 	
+
+
+
+
 	
-
-	
-
-
-
-	public String getTopicCQ() {
-		return topicCQ;
+	public IAspectService getAs() {
+		return as;
 	}
 
 
 
 
 
-	public void setTopicCQ(String topicCQ) {
-		this.topicCQ = topicCQ;
-	}
-
-
-
-
-
-	public String getSituationCQ() {
-		return situationCQ;
-	}
-
-
-
-
-
-	public void setSituationCQ(String situationCQ) {
-		this.situationCQ = situationCQ;
-	}
-
-
-
-
-
-	public String getActionCQ() {
-		return actionCQ;
-	}
-
-
-
-
-
-	public void setActionCQ(String actionCQ) {
-		this.actionCQ = actionCQ;
-	}
-
-
-
-
-
-	public String getGoalCQ() {
-		return goalCQ;
-	}
-
-
-
-
-
-	public void setGoalCQ(String goalCQ) {
-		this.goalCQ = goalCQ;
-	}
-
-
-
-
-
-	public String getValueCQ() {
-		return valueCQ;
-	}
-
-
-
-
-
-	public void setValueCQ(String valueCQ) {
-		this.valueCQ = valueCQ;
-	}
-
-
-
-
-
-	public IProposalService getPs() {
-		return ps;
-	}
-
-
-
-
-
-	public void setPs(IProposalService ps) {
-		this.ps = ps;
+	public void setAs(IAspectService as) {
+		this.as = as;
 	}
 
 
@@ -151,14 +64,14 @@ public class AddCriticalQuestionAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 
-		
+		 try{   
 	      Proposal p = (Proposal)this.session().getAttribute("proposal");
                     
 	      for(Aspect a:p.getAspects()){
 	    	  
 	    	  String cq = this.request().getParameter(a.getType());
 	    	  
-	    	   	addCqs(a,topicCQ);
+	    	   	addCqs(a,cq);
 
 	      }
   
@@ -166,8 +79,7 @@ public class AddCriticalQuestionAction extends BaseAction {
        
        
        
-       try{   
- ps.update(p);
+
        }
        catch(Exception e){
     	   (this.request()).setAttribute("message", "failed£º" + e.getMessage());
@@ -193,7 +105,7 @@ public class AddCriticalQuestionAction extends BaseAction {
 		   cq.setValue(q);
 		   a.addCriticalQuestion(cq);
 	   }
-		
+		as.update(a);
 	}
 
 

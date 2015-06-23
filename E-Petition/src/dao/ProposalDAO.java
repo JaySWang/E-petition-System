@@ -3,6 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import model.Proposal;
 
 public class ProposalDAO{
@@ -47,8 +48,15 @@ public class ProposalDAO{
 
 
 	public Proposal find(int id) {
-		Proposal p = (Proposal) dao.find(Proposal.class, id);
-		return p;
+		String hql="select p from Proposal p where p.id=(:id)";
+
+		List<Proposal> proposals=this.getDao().createQuery(hql).setParameter("id", id).list();
+		
+		if(proposals.size()>0)
+			return proposals.get(0);
+		
+		return null;
+
 	}
 
 	public void update(Proposal p) {

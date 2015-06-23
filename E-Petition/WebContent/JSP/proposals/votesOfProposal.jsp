@@ -20,47 +20,39 @@
 <body>
 
 
+	<s:set var="p" value="#session.proposal"/>
 
        
        <table border="1" width="350" align="center" >
-		<tr>
-		<th>id</th>
-		<th>topic</th>
-		<th>situation</th>
-		<th>action</th>
-		<th>goal</th>
-		<th>value</th>
-
-		<th>agree</th>
+       	<tr>
+  <s:iterator value="#p.aspects" var="a">
+		
+		<th><s:property value="#a.type"/></th>
+		
+	
+</s:iterator>
+	<th>agree</th>
 		<th>disagree</th>
+</tr>
 
-	</tr>
+	<tr>
 	
-	<s:set var="p" value="#session.proposal"/>
-
-		<tr>
 	
-		<td><s:property value="#p.id"/></td>
-	
-
+  <s:iterator value="#p.aspects" var="a">
 		
-		<td><s:property value="#p.topic.value"/></td>
-	
-
-	
-	<td><s:property value="#p.situation.value"/></td>
-	
-	<td><s:property value="#p.action.value"/></td>
-	
-		<td><s:property value="#p.goal.value"/></td>
+		<td><s:property value="#a.value"/></td>
 		
-		<td><s:property value="#p.value.value"/></td>
-		
+	
+</s:iterator>
+			
 	<td><s:property value="#p.agree"/></td>
 		
 		<td><s:property value="#p.disagree"/></td>
 		
+		
 	</tr>
+
+	
 	
 	
 	
