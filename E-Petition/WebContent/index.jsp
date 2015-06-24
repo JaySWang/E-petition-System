@@ -6,11 +6,22 @@
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
  
+  
  
  
- <s:action name="showProposal" executeResult="true"/>
+
 
 <html>
+ <script>   
+		  var m="${requestScope.message}"; 
+	if(m!=""){	  
+  var   bln   = m;
+  alert(bln);   
+	}
+  </script> 
+  
+ <s:action name="showProposal" executeResult="true"/>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>KCL-Epetition</title>
@@ -21,8 +32,10 @@
 <body>
 <div class="pageLayout">
 
+	
 
 
+    
 <div class="content">
 
 		<h1>Welcome to KCL-Epetition</h1>
@@ -101,7 +114,15 @@
 	<br/>
 	<br/>
 	
+	
+	
+	
+	
+	
+	
 <div class="boxheading">Add proposal
+	
+	
 			
 			<table >
 	   <tr>
@@ -112,6 +133,7 @@
 	var="a">
 	
 	<tr>
+	<td></td>
 	<td>
 		<a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp?sid=<s:property value="#a.id"/>" target="_self" >  	
 		<s:property value="#a.name"/>
@@ -125,6 +147,11 @@
 </tr>
 
 	   </table> 
+	   
+	   <ul>
+		<li><a href="/E-Petition/JSP/administer/addArgumentScheme.jsp" target="_self">add new argument Scheme</a></li>
+						</ul>
+						
 	</div>
 	
 </div>

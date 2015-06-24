@@ -5,22 +5,31 @@
 <struts>
 	<package name="struts2" extends="struts-default">
 
-		<action name="showProposal" class="showAction" method="showProposals" >
+		<action name="showProposal" class="showAction" method="show" >
 		
 			<result name="success"  >/JSP/proposals/success.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 
 
-<action name="showProposalDetail" class="showProposalDetailAction" method="showProposalDetail" >
+<action name="showProposalDetail" class="proposalAction" method="showProposalDetail" >
 		
 			<result name="success"  >/JSP/proposals/success.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
-		<action name="addProposal" class="addProposalAction" >
+	<action name="voteProposal" class="proposalAction" method="voteProposal" >
 		
-			<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
+			<result name="success"  >/JSP/proposals/votesOfProposal.jsp</result>
+			<result name="error" >/JSP/proposals/error.jsp</result>
+			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
+			
+		</action>
+	
+	
+		<action name="addProposal" class="proposalAction" method="addProposal" >
+		
+			<result name="success"  >/index.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	              
@@ -41,24 +50,17 @@
 	
 	
 	
-<action name="voteProposal" class="voteProposalAction" method="voteProposal" >
-		
-			<result name="success"  >/JSP/proposals/votesOfProposal.jsp</result>
-			<result name="error" >/JSP/proposals/error.jsp</result>
-			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
-			
-		</action>
+
 	
-	
-	<action name="answerCriticalQuestion" class="answerCriticalQuestionAction" method="answerCriticalQuestion" >
+	<action name="answerCriticalQuestion" class="criticalQuestionAction" method="answerCriticalQuestion" >
 		
 			<result name="success"  >/JSP/proposals/criticalQuestion/statisticOfcriticalQuestion.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 			
 		</action>
-	<action name="addCriticalQuestion" class="addCriticalQuestionAction" >
+	<action name="addCriticalQuestion" class="criticalQuestionAction"  method="addCriticalQuestion">
 		
-			<result name="success"  >/JSP/proposals/proposal.jsp</result>
+			<result name="success"  >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 

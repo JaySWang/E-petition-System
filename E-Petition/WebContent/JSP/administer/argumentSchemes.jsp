@@ -11,6 +11,15 @@
  <s:action name="showArgumentSchemes" executeResult="true"/>
 
 <html>
+
+ <script>   
+		  var m="${requestScope.message}"; 
+	if(m!=""){	  
+  var   bln   = m;
+  alert(bln);   
+	}
+  </script> 
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>ArgumentScheme</title>
@@ -80,5 +89,7 @@
        
        
 </div>
+<br/>
+<a href="/E-Petition/index.jsp" target="_self" >back to proposal list</a>
 </body>
 </html>

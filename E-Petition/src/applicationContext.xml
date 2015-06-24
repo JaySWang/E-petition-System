@@ -158,25 +158,12 @@
 	</bean>
 	
 	
-	<bean id="showProposalDetailAction" class="action.ShowProposalDetailAction"
+	<bean id="proposalAction" class="action.ProposalAction"
 		scope="prototype">
 		<property name="ps" ref="proposalService">
 		</property>
 	</bean>
 
-<bean id="voteProposalAction" class="action.VoteProposalAction"
-		scope="prototype">
-		<property name="ps" ref="proposalService">
-		</property>
-	</bean>
-
-
-
-	<bean id="addProposalAction" class="action.AddProposalAction"
-		scope="prototype">
-		<property name="ps" ref="proposalService">
-		</property>
-	</bean>
 
 	<bean id="argumentSchemeAction" class="action.ArgumentSchemeAction"
 		scope="prototype" >
@@ -187,15 +174,10 @@
 
 
 
-	<bean id="answerCriticalQuestionAction" class="action.AnswerCriticalQuestionAction"
+	<bean id="criticalQuestionAction" class="action.CriticalQuestionAction"
 		scope="prototype">
 		<property name="cqs" ref="criticalQuestionService">
 		</property>
-	</bean>
-
-
-<bean id="addCriticalQuestionAction" class="action.AddCriticalQuestionAction"
-		scope="prototype">
 		<property name="as" ref="aspectService">
 		</property>
 	</bean>

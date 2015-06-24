@@ -72,6 +72,7 @@
 	</s:form>
      
      
+	<a href="/E-Petition/JSP/administer/addCriticalQuestion.jsp?id=<s:property value="#p.id"/>" target="_self" > add critical question  </a> 
      
        
 </body>

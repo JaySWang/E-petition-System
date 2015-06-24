@@ -59,6 +59,8 @@
 		</table>
      
      
+     <br/>
+     <a href="/E-Petition/index.jsp"  target="_self" > back to proposal list  </a>
      
      
        

@@ -10,7 +10,7 @@ public interface ICriticalQuestionService {
 	public CriticalQuestion getCriticalQuestionById(int id);
 
 
-	public void answer(int id,String agreeOrNot);
+	public void answer(CriticalQuestion cq,String agreeOrNot);
 
 	
 	public void update(CriticalQuestion cq);

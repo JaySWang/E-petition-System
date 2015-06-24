@@ -55,7 +55,7 @@ public class ShowAction extends BaseAction {
 
 
 
-	public String showProposals()  {
+	public String show()  {
 
 		List<Proposal> proposals;
 		

@@ -34,9 +34,7 @@ public class CriticalQuestionServiceImpl implements ICriticalQuestionService {
 	}
 
 	@Override
-	public void answer(int id,String agreeOrNot) {
-
-		CriticalQuestion cq = getCriticalQuestionById(id);
+	public void answer(CriticalQuestion cq,String agreeOrNot) {
 
 		if(agreeOrNot.equalsIgnoreCase("agree")){
 			cq.setAgree(cq.getAgree()+1);

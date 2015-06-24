@@ -62,7 +62,7 @@
 </s:iterator>
 
 
-<a href="/E-Petition/JSP/proposals/votesOfProposal.jsp"  target="_self" > back to the proposal  </a>
+<a href="/E-Petition/JSP/proposals/votesOfProposal.jsp"  target="_self" > back to the proposal statistic  </a>
 
 					 
 
