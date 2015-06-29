@@ -8,7 +8,6 @@
  
  
  
- <s:action name="showArgumentSchemes" executeResult="true"/>
 
 <html>
 
@@ -19,6 +18,7 @@
   alert(bln);   
 	}
   </script> 
+ <s:action name="showArgumentSchemes" executeResult="true"/>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">

@@ -58,7 +58,7 @@
 
 
 
- <table border="1" width="350">
+ <table border="2" width="350"  cellpadding="0" cellspacing="0">
 	
 	
 	
@@ -75,25 +75,38 @@
 				
 					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#p.id"/>" target="_self" >   
 		
-		<s:property value="#p.id"/>
+		P<s:property value="#p.id"/>
    </a>
 	
 	</td>
 
    
 	
-	<s:iterator value="#p.aspects" var ="a">
 	
 	<td>	
-	<table >
-	<tr><td bgcolor="gray" >			
-					<s:property value="#a.type"/>
-				</td></tr>
-				
-		<tr><td>			
-					<s:property value="#a.value"/>
-				</td></tr>
-		
+	<table border="1" width="500" align="center" cellpadding="10" cellspacing="0">
+	<tr>
+	
+			<s:iterator value="#p.aspects" var="a">
+						<th >	
+						<s:property value="#a.type"/>
+						</th>
+	</s:iterator>
+	
+	
+	</tr>
+	
+			<tr>
+	
+			<s:iterator value="#p.aspects"  var="a">
+						<td align="center">	
+						<s:property value="#a.value"/>
+						</td>
+	</s:iterator>
+	
+	
+	</tr>
+			
 	</table>
 	
 	</td>
@@ -101,7 +114,6 @@
 				
 	
 	
-		</s:iterator>
 	
 		
 	</tr>
