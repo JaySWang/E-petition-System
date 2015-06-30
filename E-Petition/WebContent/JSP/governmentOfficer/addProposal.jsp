@@ -9,7 +9,6 @@
 
 <!doctype html>
 
- <s:action name="getArgumentScheme" executeResult="true"/>
 
 
 <html>

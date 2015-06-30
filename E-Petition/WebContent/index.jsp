@@ -4,7 +4,7 @@
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
  
   
  
@@ -135,34 +135,42 @@
 <div class="boxheading">Add proposal
 	
 	
+
+	
 			
 			<table >
 	   <tr>
 	   <td>
 	   
+ 	
 
+<form action="getArgumentScheme">
+
+	
+Chose a scheme£º<input  list="scheme_list" name="sid" />
+<datalist id="scheme_list">
 <s:iterator value="#session.argumentSchemes"
 	var="a">
-	
-	<tr>
-	<td></td>
-	<td>
-		<a href="/E-Petition/JSP/governmentOfficer/addProposal.jsp?sid=<s:property value="#a.id"/>" target="_self" >  	
-		<s:property value="#a.name"/>
-   </a>
-   </td>
-	</tr>
- 
+	<option
+            value=	"<s:property value="#a.id"/>"
+            
+            > <s:property value="#a.name"/> </option>
+
  	</s:iterator>
 
+</datalist>
+
+<input type="submit" value="confirm">
+	
+ 
+ 	</form>
 </td>
 </tr>
 
 	   </table> 
 	   
-	   <ul>
-		<li><a href="/E-Petition/JSP/administer/addArgumentScheme.jsp" target="_self">add new argument Scheme</a></li>
-						</ul>
+	   <br/>
+<a href="/E-Petition/JSP/administer/addArgumentScheme.jsp" target="_self">add new argument Scheme</a>
 						
 	</div>
 	

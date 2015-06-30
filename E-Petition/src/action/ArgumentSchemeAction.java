@@ -26,6 +26,43 @@ public class ArgumentSchemeAction extends BaseAction {
 	private String description;
 
 
+	private String attackOrSupport;
+    private int aid;
+	
+	
+    
+	public String getAttackOrSupport() {
+		return attackOrSupport;
+	}
+
+
+
+
+
+	public void setAttackOrSupport(String attackOrSupport) {
+		this.attackOrSupport = attackOrSupport;
+	}
+
+
+
+
+
+	public int getAid() {
+		return aid;
+	}
+
+
+
+
+
+	public void setAid(int aid) {
+		this.aid = aid;
+	}
+
+
+
+
+
 	public String getName() {
 		return name;
 	}
@@ -161,7 +198,11 @@ public class ArgumentSchemeAction extends BaseAction {
 			argumentScheme=ass.getArgumentSchemeById(id);
 
 			this.session().setAttribute("argumentScheme", argumentScheme);
-		this.request().setAttribute("message", " ");
+		    this.session().setAttribute("aid", aid);
+		    this.session().setAttribute("attackOrSupport", attackOrSupport);
+			
+			
+			this.request().setAttribute("message", " ");
 
 		}
 		catch(Exception e){

@@ -9,6 +9,7 @@ import model.Aspect;
 import model.AspectType;
 import model.Proposal;
 
+import service.IAspectService;
 import service.IProposalService;
 
 
@@ -17,9 +18,33 @@ public class ProposalAction extends BaseAction {
 
 
 	private IProposalService ps;
+	private IAspectService as;
 	private String agreeOrNot;
-
 	
+    
+	
+	
+    
+	
+	
+	
+	
+	
+
+
+
+	public IAspectService getAs() {
+		return as;
+	}
+
+
+
+	public void setAs(IAspectService as) {
+		this.as = as;
+	}
+
+
+
 	public String getAgreeOrNot() {
 		return agreeOrNot;
 	}
@@ -118,16 +143,17 @@ public class ProposalAction extends BaseAction {
 
 		
 	       Proposal p=new Proposal();
-	       ArgumentScheme as = (ArgumentScheme) this.session().getAttribute("argumentScheme");
+	       ArgumentScheme argumentScheme = (ArgumentScheme) this.session().getAttribute("argumentScheme");
 	   
 	       
+	   
 	       
 	       List<Aspect> aspects=new ArrayList();
 	       
 	       
 	       
 	   	
-	       for(AspectType s : as.getAspectTypes()){
+	       for(AspectType s : argumentScheme.getAspectTypes()){
 	    	   Aspect a = new Aspect();
 	    	   a.setType(s.getName());
 	String value = request().getParameter(s.getName());
@@ -141,14 +167,42 @@ public class ProposalAction extends BaseAction {
 	       p.setAspects(aspects);
 	     
 	       
-	       try{   
-	 ps.save(p);
+	       try{ 
+	    		 ps.save(p);
+
+	    		 
+	    		 
+	    	    String attackOrSupport = (String)this.session().getAttribute("attackOrSupport");
+	 	       
+	 	       if(attackOrSupport!=null){
+	 	    	   int aid = (Integer) this.session().getAttribute("aid");
+	     		   Aspect a = as.getAspectById(aid);
+	     		   Proposal target = ps.getProposalById(p.getId());
+	 	    	   if(attackOrSupport.equalsIgnoreCase("attack")){
+	 					a.addAttacker(target);  
+	 	    		 
+	 	    		   			  }
+	 	    	   else if(attackOrSupport.equalsIgnoreCase("support")){
+               a.addSupporter(target);
+	 	    	   
+	 	    	   }
+	 	    	   as.update(a);
+	 	    	   
+	 	    	  this.session().removeAttribute("attackOrSupport");
+	 	    	 this.session().removeAttribute("aid");
+	 	       }
+	 	       
+	    	   
+	    	   
+	    	   
 	       }
 	       catch(Throwable e){
 	    	   e.printStackTrace();
 	    	   (this.request()).setAttribute("message", "failed£º" + e.getMessage());
 	    	   return ERROR;
 	       }
+	       
+	       
 	       
 	       
 	       (this.request()).setAttribute("message", "succeed");

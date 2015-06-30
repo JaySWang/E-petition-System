@@ -162,6 +162,8 @@
 		scope="prototype">
 		<property name="ps" ref="proposalService">
 		</property>
+		<property name="as" ref="aspectService">
+		</property>
 	</bean>
 
 

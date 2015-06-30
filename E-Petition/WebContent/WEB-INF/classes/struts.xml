@@ -45,6 +45,8 @@
 		</action>
 		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
 		
+					<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
+		
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
