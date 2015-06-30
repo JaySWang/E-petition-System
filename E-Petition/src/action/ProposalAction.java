@@ -3,6 +3,7 @@ package action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import model.ArgumentScheme;
 import model.Aspect;
@@ -210,6 +211,49 @@ public class ProposalAction extends BaseAction {
 
 			return SUCCESS;
 		}
+	
+	
+	
+	public String getASProposals()  {
+
+		Set<Proposal> attackers;
+		Set<Proposal> supporters;
+
+		
+		String idS =  this.request().getParameter("aid");
+		if(idS==null){
+			idS = (String) this.session().getAttribute("aid");
+		}else {
+	         this.session().setAttribute("aid", idS);
+
+		}
+         
+         
+		int aid = Integer.parseInt(idS);
+		
+		
+		
+		
+		
+		try{
+			Aspect a = as.getAspectById(aid);
+			
+			attackers=a.getAttackers();
+			supporters=a.getSupporters();
+			
+		this.session().setAttribute("attackers", attackers);
+		this.session().setAttribute("supporters", supporters);
+
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ERROR;
+			
+		}
+		
+		return SUCCESS;
+	}
 
 
 }

@@ -12,6 +12,11 @@
 		</action>
 
 
+		<action name="getASProposals" class="proposalAction" method="getASProposals" >
+		
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		</action>
+
 <action name="showProposalDetail" class="proposalAction" method="showProposalDetail" >
 		
 			<result name="success"  >/JSP/proposals/success.jsp</result>

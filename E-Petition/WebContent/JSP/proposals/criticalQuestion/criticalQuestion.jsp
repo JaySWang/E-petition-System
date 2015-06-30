@@ -21,16 +21,21 @@
 
 <body>
 
-   <p align="center" >What do you think of the flowing aspects of the proposal?  </p> 
      <s:form action="answerCriticalQuestion">
      
  <s:set value="#session.proposal" var = "p"/>    
+        <p align="center" >What do you think of the flowing aspects of the proposal:p<s:property value="#p.id"/> </p> 
      
 <s:iterator value="#p.aspects" var = "a">
 
 	<s:property value="#a.type" />:
 	
 	<s:property value="#a.value" /> 
+	<br/>
+				<a href="/E-Petition/JSP/proposals/a&sProposals.jsp?aid=<s:property value="#a.id"/>" target="_self" >   
+		
+		see attackers and supporters
+   </a>
 	
 	
 	<s:iterator value="#a.criticalQuestions" var = "c">
@@ -45,6 +50,8 @@
 	</th>
 	
 	 </tr> 
+
+	 
 </table>	 
 	 </s:iterator>
 	 
