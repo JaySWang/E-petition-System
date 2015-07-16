@@ -99,7 +99,7 @@ public class CriticalQuestionAction extends BaseAction {
 	    	  
 	    	  String cq = this.request().getParameter(a.getType());
 	    	  
-	    	  if(cq!=null){
+	    	  if(cq!=""){
 	    	   	addCqs(a,cq);
 	    	  }
 	      }

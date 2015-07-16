@@ -20,4 +20,6 @@ public interface IProposalService {
 
 	public void update(Proposal p);
 
+	public List<Proposal> getGeneralProposals();
+
 }

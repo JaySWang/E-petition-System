@@ -16,7 +16,8 @@
 		  var m="${requestScope.message}"; 
 	if(m!=""){	  
   var   bln   = m;
-  alert(bln);   
+  alert(bln);  
+   requestScope.message="";
 	}
   </script> 
   
@@ -147,14 +148,15 @@
 <form action="getArgumentScheme">
 
 	
-Chose a scheme£º<input  list="scheme_list" name="sid" />
+Chose a scheme£º<input  list="scheme_list" name="sName" />
 <datalist id="scheme_list">
 <s:iterator value="#session.argumentSchemes"
 	var="a">
-	<option
-            value=	"<s:property value="#a.id"/>"
-            
-            > <s:property value="#a.name"/> </option>
+	<option value=	"<s:property value="#a.name"/>" >
+	
+	
+	 
+	  </option>
 
  	</s:iterator>
 

@@ -62,4 +62,12 @@ public class ProposalDAO{
 	public void update(Proposal p) {
      dao.updata(p);		
 	}
+
+	public List getProposalsByType(String type) {
+		String hql="select p from Proposal p where p.type=(:type)";
+
+		List<Proposal> proposals=this.getDao().createQuery(hql).setParameter("type", type).list();
+
+		return proposals;
+	}
 }

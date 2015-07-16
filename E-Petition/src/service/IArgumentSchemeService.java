@@ -19,4 +19,6 @@ public interface IArgumentSchemeService {
 
 	public void update(ArgumentScheme p);
 
+	public ArgumentScheme getArgumentSchemeByName(String sName);
+
 }

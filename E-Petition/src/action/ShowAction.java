@@ -67,10 +67,10 @@ public class ShowAction extends BaseAction {
 		argumentSchemes=ass.getArgumentSchemes();
 		this.session().setAttribute("argumentSchemes", argumentSchemes);
 		
-		proposals=ps.getProposals();
+		proposals=ps.getGeneralProposals();
 		this.request().setAttribute("proposals", proposals);
 		
-		this.request().setAttribute("message", " ");
+		this.request().setAttribute("message", "");
 
 		}
 		catch(Exception e){

@@ -34,7 +34,7 @@
 
 
 <p> attackers </p>
- <table>
+ <table border="1">
 	
 	
 	
@@ -63,25 +63,22 @@
 	<table >
 	<tr>
 	
-			<s:iterator value="#attacker.aspects" var="a">
-						<th >	
-						<s:property value="#a.type"/>
+			<s:iterator value="#attacker.aspects" var="a" >
+						<font size='3'> </font>
+						<th>
+						<s:property value="#a.type"/>:
 						</th>
-	</s:iterator>
-	
-	
-	</tr>
-	
-			<tr>
-	
-			<s:iterator value="#attacker.aspects"  var="a">
-						<td align="center">	
+						
+						<td>
 						<s:property value="#a.value"/>
-						</td>
+						</td>			
+				</tr>
+						
 	</s:iterator>
 	
 	
-	</tr>
+	
+			
 			
 	</table>
 	
@@ -104,7 +101,7 @@
 	
 	<p>supporters</p>
 	
-	<table>
+	<table border="1">
 	
 	
 	
@@ -130,28 +127,25 @@
 	
 	
 	<td>	
-	<table >
+		<table >
 	<tr>
 	
-			<s:iterator value="#supporter.aspects" var="a">
-						<th >	
-						<s:property value="#a.type"/>
+			<s:iterator value="#supporter.aspects" var="a" >
+						<font size='3'> </font>
+						<th>
+						<s:property value="#a.type"/>:
 						</th>
-	</s:iterator>
-	
-	
-	</tr>
-	
-			<tr>
-	
-			<s:iterator value="#supporter.aspects"  var="a">
-						<td align="center">	
+						
+						<td>
 						<s:property value="#a.value"/>
-						</td>
+						</td>			
+				</tr>
+						
 	</s:iterator>
 	
 	
-	</tr>
+	
+			
 			
 	</table>
 	

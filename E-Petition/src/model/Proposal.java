@@ -29,15 +29,37 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	 
 	 @OneToMany(fetch = FetchType.EAGER,targetEntity=Aspect.class,cascade={  CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="id")})
-		private List<Aspect> aspects=new ArrayList();
+		
+	 private List<Aspect> aspects=new ArrayList();
 	 
 	 
 		
 	
-	 
+	private String type; 
 	private int agree;
 	private int disagree;
 	
+	
+	
+
+
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+
 	public Proposal(){
 		
 	}
@@ -47,7 +69,17 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	
 	public List<Aspect> getAspects(){
 		
-		return aspects;
+		// remove duplicate elements caused by the Hibernate;
+		List <Aspect> aspectsN = new ArrayList();
+		for(Aspect a:aspects){
+			if(!aspectsN.contains(a)){
+				aspectsN.add(a);
+			}
+			
+		}
+		
+	
+		return aspectsN;
 		
 	}
 	

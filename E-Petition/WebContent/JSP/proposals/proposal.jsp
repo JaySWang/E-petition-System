@@ -4,14 +4,34 @@
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 
 
 
+
+
+<html>
+
+
+
+<script>
+
+function more(id){
+
+ var o = document.getElementById(id);
+ 
+o.style.visibility="visible";
+ 
+}
+
+
+
+
+</script>
 
  <s:action name="showProposalDetail" executeResult="true"/>
 
-<html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>Proposal</title>
@@ -23,13 +43,13 @@
 	<s:set var="p" value="#session.proposal"/>
 
        
-       <table border="1" width="350" align="center" >
+       <table border="1" align="center" >
 		<tr>
   <s:iterator value="#p.aspects" var="a">
 		
 		<th><s:property value="#a.type"/></th>
 		
-	
+		
 </s:iterator>
 </tr>
 		<tr>
@@ -45,7 +65,77 @@
 		
 		
 	</tr>
+			<tr>
 	
+	
+  <s:iterator value="#p.aspects" var="a">
+		
+		<td>
+		
+		
+		
+		<table  id=<s:property value="#a.id"  />  width="350" style="visibility:hidden">
+<tr>
+<tr>
+<td>
+	
+		<a href="/E-Petition/JSP/proposals/a&sProposals.jsp?aid=<s:property value="#a.id"/>" target="_self" >   
+		
+		attackers&supporters
+   </a>
+   
+</td>
+</tr>
+
+<tr>
+<td>
+<form action="getArgumentScheme" >
+
+Chose a scheme：<input  list="scheme_list" name="sName" />
+<datalist id="scheme_list">
+<s:iterator value="#session.argumentSchemes"
+	var="as">
+	<option
+            value=	"<s:property value="#as.name"/>"
+            
+            > 
+ 	</s:iterator>
+
+</datalist>
+
+	  <input name="attackOrSupport" type="submit"  value="attack"/>
+	<input name="attackOrSupport" type="submit"  value="support"/>	
+ <input name="aid" value=<s:property value="#a.id" />  type="hidden" />
+ 
+ 	</form>
+ 	
+ 	</td>
+ 	</tr>
+ 	</table>
+<button type="button" onclick="more(<s:property value="#a.id" />)">more action</button>
+		
+	
+   
+   
+   
+   
+   </td>
+		
+		
+		
+		
+	
+	
+		
+	
+</s:iterator>
+		
+		
+		
+	</tr>
+	
+			
+   
 	
 	
 		</table>
@@ -63,6 +153,9 @@
 		  <input name="agreeOrNot" type="submit"  value="agree"/>
 	<input name="agreeOrNot" type="submit"  value="disagree"/>
 		</td>
+		
+		</tr>
+		
 	  </tr>
      </table>
 	</s:form>

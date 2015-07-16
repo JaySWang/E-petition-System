@@ -69,6 +69,16 @@ public class ProposalServiceImpl   implements IProposalService {
 		
 	}
 
+	@Override
+	public List<Proposal> getGeneralProposals() {
+		List proposals = new ArrayList();
+		proposals =	pdao.getProposalsByType("general proposal");
+		
+		
+		
+		return proposals;
+	}
+
 
 
 

@@ -32,10 +32,7 @@
 	
 	<s:property value="#a.value" /> 
 	<br/>
-				<a href="/E-Petition/JSP/proposals/a&sProposals.jsp?aid=<s:property value="#a.id"/>" target="_self" >   
-		
-		see attackers and supporters
-   </a>
+	
 	
 	
 	<s:iterator value="#a.criticalQuestions" var = "c">

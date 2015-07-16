@@ -188,14 +188,13 @@ public class ArgumentSchemeAction extends BaseAction {
 
 		ArgumentScheme argumentScheme;
 		try{
-			String idS =  this.request().getParameter("sid");
+			String sName =  this.request().getParameter("sName");
 
-			if(idS==null){
-				idS = ((ArgumentScheme)this.session().getAttribute("argumentScheme")).getId()+"";
+			if(sName==null){
+				sName = ((ArgumentScheme)this.session().getAttribute("argumentScheme")).getName()+"";
 			}
-			int id = Integer.parseInt(idS);
 		
-			argumentScheme=ass.getArgumentSchemeById(id);
+			argumentScheme=ass.getArgumentSchemeByName(sName);
 
 			this.session().setAttribute("argumentScheme", argumentScheme);
 		    this.session().setAttribute("aid", aid);

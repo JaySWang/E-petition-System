@@ -127,7 +127,10 @@ public class ProposalAction extends BaseAction {
 		int id = Integer.parseInt(idS);
 		Proposal proposal=ps.getProposalById(id);
 		this.session().setAttribute("proposal", proposal);
-		this.request().setAttribute("message", "here is the details");
+		
+	    	(this.request()).setAttribute("message", "");
+
+		
 
 
 		}
@@ -146,8 +149,7 @@ public class ProposalAction extends BaseAction {
 	       Proposal p=new Proposal();
 	       ArgumentScheme argumentScheme = (ArgumentScheme) this.session().getAttribute("argumentScheme");
 	   
-	       
-	   
+	       p.setType(argumentScheme.getName());	   
 	       
 	       List<Aspect> aspects=new ArrayList();
 	       
@@ -191,6 +193,12 @@ public class ProposalAction extends BaseAction {
 	 	    	   
 	 	    	  this.session().removeAttribute("attackOrSupport");
 	 	    	 this.session().removeAttribute("aid");
+	 	    	 
+	 	    	(this.request()).setAttribute("message", "succeed");
+
+
+				return "aOrS_success";
+	 	    	 
 	 	       }
 	 	       
 	    	   
@@ -238,11 +246,13 @@ public class ProposalAction extends BaseAction {
 		try{
 			Aspect a = as.getAspectById(aid);
 			
-			attackers=a.getAttackers();
 			supporters=a.getSupporters();
-			
-		this.session().setAttribute("attackers", attackers);
+			attackers=a.getAttackers();
+
 		this.session().setAttribute("supporters", supporters);
+		this.session().setAttribute("attackers", attackers);
+    	(this.request()).setAttribute("message", "");
+
 
 
 		}

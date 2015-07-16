@@ -29,15 +29,21 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 		@JoinColumns(value={@JoinColumn(name="aid",referencedColumnName="id")})
 		private Set<CriticalQuestion> criticalQuestions=new HashSet();
 	 
+
+	 
+	 
 	 
 	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
-		@JoinColumns(value={@JoinColumn(name="aid",referencedColumnName="id")})
-		private Set<Proposal> attackers=new HashSet();
-	 
-	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
-		@JoinColumns(value={@JoinColumn(name="sid",referencedColumnName="id")})
+		@JoinColumns(value={@JoinColumn(name="support",referencedColumnName="id")})
 		private Set<Proposal> supporters=new HashSet();
 	 
+	 
+	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
+		@JoinColumns(value={@JoinColumn(name="attack",referencedColumnName="id")})
+		private Set<Proposal> attackers=new HashSet();
+	 
+	 
+	
 	 
 	 
 	 

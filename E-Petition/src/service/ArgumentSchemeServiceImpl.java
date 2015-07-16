@@ -47,4 +47,12 @@ public class ArgumentSchemeServiceImpl implements IArgumentSchemeService {
 		asdao.update(as);
 	}
 
+	@Override
+	public ArgumentScheme getArgumentSchemeByName(String sName) {
+		
+
+		
+		return asdao.findByName(sName);
+	}
+
 }

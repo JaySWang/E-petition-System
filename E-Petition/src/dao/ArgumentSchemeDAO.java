@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ArgumentScheme;
+import model.Proposal;
 
 
 public class ArgumentSchemeDAO{
@@ -54,5 +55,18 @@ public class ArgumentSchemeDAO{
 
 	public void update(ArgumentScheme as) {
      dao.updata(as);		
+	}
+
+	public ArgumentScheme findByName(String sName) {
+		
+		String hql="select s from ArgumentScheme s where s.name=(:name)";
+
+		List<ArgumentScheme> argumentSchemes=this.getDao().createQuery(hql).setParameter("name", sName).list();
+		
+		if(argumentSchemes.size()>0)
+			return argumentSchemes.get(0);
+		
+		
+		return null;
 	}
 }

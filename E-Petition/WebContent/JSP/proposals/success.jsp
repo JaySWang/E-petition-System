@@ -11,7 +11,6 @@
 <body>
 
 
-<%=request.getAttribute("message")%> 
 
 
        

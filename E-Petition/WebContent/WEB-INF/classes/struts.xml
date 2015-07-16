@@ -19,7 +19,6 @@
 
 <action name="showProposalDetail" class="proposalAction" method="showProposalDetail" >
 		
-			<result name="success"  >/JSP/proposals/success.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
@@ -36,6 +35,9 @@
 		
 			<result name="success"  >/index.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
+			<result name="aOrS_success" >/JSP/proposals/proposal.jsp</result>
+			
+			
 		</action>
 	              
 	<action name="addArgumentScheme" class="argumentSchemeAction" method="addArgumentScheme">

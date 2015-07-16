@@ -18,6 +18,8 @@
 	if( m!=""){	  
   var   bln   = m;
   alert(bln);   
+  
+  requestScope.message="";
 	}
   </script> 
 
@@ -56,6 +58,11 @@ cal.appendChild(input);
 	</table>
 	
 	
+	<br/>
+<a href="http://philosophicaldisquisitions.blogspot.co.uk/2010/03/argumentation-schemes-part-1.html">
+	Types of Argument Schemes
+	</a>
+	
 	
 	<s:form action="addArgumentScheme">
 	  <table  width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
@@ -71,11 +78,11 @@ cal.appendChild(input);
 	  </tr>
 
   <tr  height="40">
-	    <td>types of aspect </td>
+	    <td>types of assumption </td>
 	    <td>
 	    <table id="table" >
 	   <tr>
-	   <td><input type="text"  placeholder="please enter the quantity" id="num" name="num">
+	   <td><input type="text"  placeholder="please enter a number" id="num" name="num">
 
 <input type="button" value="confirm " onclick="addRow();">
 </td>
