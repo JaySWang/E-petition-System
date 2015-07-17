@@ -2,6 +2,7 @@ package action;
 
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Set;
 
@@ -156,11 +157,18 @@ public class ProposalAction extends BaseAction {
 	       
 	       
 	   	
-	       for(AspectType s : argumentScheme.getAspectTypes()){
+	       for(AspectType at : argumentScheme.getAspectTypes()){
 	    	   Aspect a = new Aspect();
-	    	   a.setType(s.getName());
-	String value = request().getParameter(s.getName());
+	    	   a.setType(at.getName());
+	    	   
+	    	   
+	    	   
+	    	   // in JSP,names of the input just contain the first word before " "
+	    	   
+    String[] names = at.getName().split(" ");
+	String value = request().getParameter(names[0]);
 
+	
 	    	   a.setValue(value);
 	    	   aspects.add(a);
 	    	   

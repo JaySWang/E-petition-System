@@ -37,7 +37,7 @@
 		<tr>
 		<th>name</th>
 <th>description</th>
-<th>aspects</th>
+<th>assumptions</th>
 	</tr>
 	
 	<s:iterator value="#request.argumentSchemes"
