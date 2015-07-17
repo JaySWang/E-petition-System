@@ -31,15 +31,29 @@ for(var i = 0; i < num; i++){
 var row = document.getElementById("table").insertRow();
 var cal = row.insertCell();
 
-var input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("name", "type"+i);
-    input.setAttribute("placeholder", "type"+i);
+var input1 = document.createElement("input");
+    input1.setAttribute("type", "text");
+    input1.setAttribute("name", "type"+i);
+    input1.setAttribute("placeholder", "type"+i);
 
+var input2 = document.createElement("input");
+    input2.setAttribute("type", "text");
+    input2.setAttribute("name", "template"+i);
+    input2.setAttribute("placeholder", "template text");
+cal.appendChild(input1);
+cal.appendChild(input2);
 
-//给列里添加信息
-cal.appendChild(input);
 }
+
+var row = document.getElementById("table").insertRow();
+var cal = row.insertCell();
+var input3 = document.createElement("input");
+    input3.setAttribute("type", "text");
+    input3.setAttribute("name", "variables");
+    input3.setAttribute("placeholder", "variables in the templates(use '/' to separate)");
+    cal.appendChild(input3);
+    
+    
 }
 </script>
 

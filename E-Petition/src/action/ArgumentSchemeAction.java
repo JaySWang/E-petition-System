@@ -24,7 +24,8 @@ public class ArgumentSchemeAction extends BaseAction {
 
 	private String name;
 	private String description;
-
+    
+	
 
 	private String attackOrSupport;
     private int aid;
@@ -134,16 +135,21 @@ public class ArgumentSchemeAction extends BaseAction {
     
     for(int i =0;i<numOfAspectType;i++){
     	String typeName = request().getParameter("type"+i);
+    	String template = request().getParameter("template"+i);
     	
        	AspectType at = new AspectType();
        	at.setName(typeName);
+    	at.setTemplate(template);
     	
     	ats.add(at);
     }
    	
-       
+	
     as.setAspectTypes(ats);   
-      
+    String variables = request().getParameter("variables");
+    
+    as.setVariables(variables);
+    
        
        try{   
  ass.save(as);

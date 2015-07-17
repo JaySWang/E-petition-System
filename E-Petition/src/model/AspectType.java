@@ -18,7 +18,21 @@ import javax.persistence.Table;
 public class AspectType  extends BaseEntityBean  implements Serializable {
 	
 	String name;
+    String template;
+    
+	 
+    
+	 public String getTemplate() {
+		return template;
+	}
 
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+  
+	
+	
+	
 	public String getName() {
 		return name;
 	}

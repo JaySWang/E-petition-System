@@ -57,15 +57,26 @@
 	   <tr>
 	   <td>
 	
-  <s:property value="#at.name"/>
+  <s:property value="#at.name"/>:
+  <s:property value="#at.template"/>
   </td>
+
+</tr>
+</s:iterator>
+
+
   <td>
-   <input type="text" name=<s:property value="#at.name"/> />
+  <br/>
+  please assign values to these variables:
+  <br/>
+    <s:property value="#as.variables"/>:
+  
+   <input type="text" name="variables" placeholder="use '/' to separate" />
   
 
 </td>
-</tr>
-</s:iterator>
+
+
 	 </td>
 	 </tr>
 

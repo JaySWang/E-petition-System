@@ -22,10 +22,11 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 	String type;
 	 int agree;
 	 int disagree;
-
-
-	 
-	 @OneToMany(fetch=FetchType.EAGER,targetEntity=CriticalQuestion.class,cascade={CascadeType.ALL})
+   
+	
+	
+	
+	@OneToMany(fetch=FetchType.EAGER,targetEntity=CriticalQuestion.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="aid",referencedColumnName="id")})
 		private Set<CriticalQuestion> criticalQuestions=new HashSet();
 	 

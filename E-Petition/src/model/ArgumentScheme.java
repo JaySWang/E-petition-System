@@ -21,13 +21,25 @@ public class ArgumentScheme  extends BaseEntityBean  implements Serializable {
 	
    String name;
    String description;
+   
+   String variables;
+
+ 	
+ 	
 	 
 	 @OneToMany(fetch = FetchType.EAGER,targetEntity=AspectType.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="sid",referencedColumnName="id")})
 		private List<AspectType> aspectTypes = new ArrayList<AspectType>();
 
 	 
-	 
+
+	 	public String getVariables() {
+	 		return variables;
+	 	}
+
+	 	public void setVariables(String variables) {
+	 		this.variables = variables;
+	 	}
 	 
 	public String getName() {
 		return name;

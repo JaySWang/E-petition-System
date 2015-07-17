@@ -70,7 +70,8 @@
 	
 
 	
-			<s:property value="#at.name"/>
+			<s:property value="#at.name"/>:
+			<s:property value="#at.template"/>
 		<br></br>	
 
 	

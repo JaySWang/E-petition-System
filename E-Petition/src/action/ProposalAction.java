@@ -3,7 +3,9 @@ package action;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import model.ArgumentScheme;
@@ -23,6 +25,10 @@ public class ProposalAction extends BaseAction {
 	private IAspectService as;
 	private String agreeOrNot;
 	
+    private String variables;
+    
+    private Map<String,String> variablePairs ;
+
     
 	
 	
@@ -32,6 +38,18 @@ public class ProposalAction extends BaseAction {
 	
 	
 	
+
+
+
+	public String getVariables() {
+		return variables;
+	}
+
+
+
+	public void setVariables(String variables) {
+		this.variables = variables;
+	}
 
 
 
@@ -152,21 +170,36 @@ public class ProposalAction extends BaseAction {
 	   
 	       p.setType(argumentScheme.getName());	   
 	       
+	       
+	       
+	       
+	       String[] variableList = argumentScheme.getVariables().split("/");
+
+	       String[] variableValueList = this.getVariables().split("/");
+
+	       
+	       
+	       if(variableList.length!=variableValueList.length){
+	    	   return ERROR;
+	       }
+	       else{
+	    	    variablePairs = new HashMap();
+	    	   
+	    	    for(int i=0;i<variableList.length;i++){
+	    	    	variablePairs.put(variableList[i], variableValueList[i]);
+	    	    }
+	    	    
+	       }
+	       
 	       List<Aspect> aspects=new ArrayList();
-	       
-	       
-	       
-	   	
 	       for(AspectType at : argumentScheme.getAspectTypes()){
 	    	   Aspect a = new Aspect();
 	    	   a.setType(at.getName());
+	    	   String tempalate = at.getTemplate();
 	    	   
-	    	   
-	    	   
-	    	   // in JSP,names of the input just contain the first word before " "
-	    	   
-    String[] names = at.getName().split(" ");
-	String value = request().getParameter(names[0]);
+	    	   String value = replaceVariables(tempalate);
+	    	    	   
+	
 
 	
 	    	   a.setValue(value);
@@ -230,6 +263,22 @@ public class ProposalAction extends BaseAction {
 	
 	
 	
+	private String replaceVariables(String tempalateS) {
+		
+		for(String s:variablePairs.keySet()){
+			if(tempalateS.contains(s)){
+				
+				tempalateS=tempalateS.replace(s, variablePairs.get(s));
+			}
+			
+		}
+		
+		
+		return tempalateS;
+	}
+
+
+
 	public String getASProposals()  {
 
 		Set<Proposal> attackers;
