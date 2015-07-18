@@ -11,6 +11,7 @@ import java.util.Set;
 import model.ArgumentScheme;
 import model.Aspect;
 import model.AspectType;
+import model.CriticalQuestion;
 import model.Proposal;
 
 import service.IAspectService;
@@ -203,6 +204,15 @@ public class ProposalAction extends BaseAction {
 
 	
 	    	   a.setValue(value);
+	    	 
+	    	   for(CriticalQuestion cq:at.getCriticalQuestionTemplates()){
+	    		   String cqValue = replaceVariables(cq.getValue());
+		    	   CriticalQuestion newCq = new CriticalQuestion();
+		    	   newCq.setValue(cqValue);
+		    	   
+		    	   a.addCriticalQuestion(newCq);
+	    	   }
+	    	  
 	    	   aspects.add(a);
 	    	   
 	       }
