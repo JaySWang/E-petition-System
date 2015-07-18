@@ -52,7 +52,7 @@
 		</action>
 		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
 		
-					<result name="success"  >/JSP/governmentOfficer/addProposal.jsp</result>
+					<result name="addProposal"  >/JSP/governmentOfficer/addProposal.jsp</result>
 		
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
@@ -70,8 +70,21 @@
 	<action name="addCriticalQuestion" class="criticalQuestionAction"  method="addCriticalQuestion">
 		
 			<result name="success"  >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
+			
 			<result name="error" >/JSP/proposals/error.jsp</result>
+		
+		
 		</action>
+	<action name="addCriticalQuestionTemplate" class="criticalQuestionAction"  method="addCriticalQuestionTemplate">
+		
+			<result name="success"  >/JSP/administer/argumentSchemes.jsp</result>
+			
+			<result name="error" >/JSP/proposals/error.jsp</result>
+		
+		
+		</action>
+
+
 
 
 

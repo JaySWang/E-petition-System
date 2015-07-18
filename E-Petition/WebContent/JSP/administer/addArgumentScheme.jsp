@@ -77,6 +77,10 @@ var input3 = document.createElement("input");
 	Types of Argument Schemes
 	</a>
 	
+	<br/>
+	<br/>
+	<a href="/E-Petition/JSP/administer/argumentSchemes.jsp" target="_self">argument Scheme list</a>
+	
 	
 	<s:form action="addArgumentScheme">
 	  <table  width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">

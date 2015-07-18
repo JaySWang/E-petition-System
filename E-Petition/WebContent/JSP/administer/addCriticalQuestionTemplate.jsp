@@ -5,7 +5,7 @@
 
 
 
- <s:action name="showArgumentSchemeDetail" executeResult="true"/>
+ <s:action name="getArgumentScheme" executeResult="true"/>
 
 
 <html>
@@ -32,25 +32,25 @@
 		  <p>please use "/" to separate questions for one aspect</p>
 	
 	
-	<s:form action="addCriticalQuestion">
+	<s:form action="addCriticalQuestionTemplate">
 	 
 	 
 	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 	 
-	 	 	<s:set var="p" value="#session.proposal"/>
+	 	 	<s:set var="as" value="#session.argumentScheme"/>
 	 	 	
 	 	 	
-	 		 	 	 <s:iterator value="#p.aspects" var="a">
+	 		 	 	 <s:iterator value="#as.aspectTypes" var="at">
 	 <tr>
 	 
-	 	 <td bgcolor="gray" ><s:property value="#a.type"/></td>
+	 	 <td bgcolor="gray" ><s:property value="#at.name"/></td>
 	 
-	 <td><s:property value="#a.value"/></td>
+	 <td><s:property value="#at.template"/></td>
 	</tr>
 	
 	 <tr  height="40">
-	    <td>Questions:</td>
-	    <td><input name=<s:property value="#a.type"/> type="text" /></td>
+	    <td>Questions template:</td>
+	    <td><input name=<s:property value="#at.name"/> type="text" /></td>
 	  </tr>
 	  
 </s:iterator>

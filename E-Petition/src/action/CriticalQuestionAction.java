@@ -2,6 +2,7 @@ package action;
 
 
 
+import java.util.Enumeration;
 import java.util.List;
 
 import model.ArgumentScheme;
@@ -10,6 +11,7 @@ import model.AspectType;
 import model.CriticalQuestion;
 import model.Proposal;
 
+import service.IArgumentSchemeService;
 import service.IAspectService;
 import service.ICriticalQuestionService;
 import service.IProposalService;
@@ -33,13 +35,29 @@ public class CriticalQuestionAction extends BaseAction {
     private IAspectService as;
 	private ICriticalQuestionService cqs;
 	
-
+    private IArgumentSchemeService ass;
 	
 
 
 
 
 	
+	public IArgumentSchemeService getAss() {
+		return ass;
+	}
+
+
+
+
+
+	public void setAss(IArgumentSchemeService ass) {
+		this.ass = ass;
+	}
+
+
+
+
+
 	public ICriticalQuestionService getCqs() {
 		return cqs;
 	}
@@ -121,8 +139,65 @@ public class CriticalQuestionAction extends BaseAction {
 	}
 
 
+	
+	
+	
+	
+	public String addCriticalQuestionTemplate() throws Exception {
+
+		 try{   
+			 ArgumentScheme as = (ArgumentScheme)this.session().getAttribute("argumentScheme");
+         List<AspectType> aspectTypes = as.getAspectTypes();          
+	      for(AspectType at:aspectTypes){
+	    	  
+	    	  
+	    	   // in JSP,names of the input just contain the first word before " "
+	    	   
+	    	    String[] names = at.getName().split(" ");
+	    		String cq = request().getParameter(names[0]);
+	    	
+	    	
+	    	  
+	    	  if(cq!=""){
+	    	   	addCqts(at,cq);
+	    	  }
+	    	  
+	    	  
+	    	  
+	      }
+ 
+      as.setAspectTypes(aspectTypes);
+      ass.update(as);
+      
+      
+
+      }
+      catch(Throwable t){
+t.printStackTrace();
+
+return ERROR;
+      }
+      this.request().setAttribute("message", "succeed" );
 
 
+		return SUCCESS;
+	}
+
+	
+	
+	private void addCqts(AspectType at,String qustions) {
+
+
+		   String[] questions =	qustions.split("/");
+		   
+		   for(String q : questions){
+			   CriticalQuestion cq = new CriticalQuestion();
+			   cq.setValue(q);
+			   at.addCriticalQuestionTemplate(cq);
+		   }
+		}
+
+	
 
 	private void addCqs(Aspect a,String qustions) {
 

@@ -162,8 +162,9 @@ Chose a scheme£º<input  list="scheme_list" name="sName" />
 
 </datalist>
 
+
 <input type="submit" value="confirm">
-	
+<input type="hidden" name="returnMsg" value="addProposal">	
  
  	</form>
 </td>

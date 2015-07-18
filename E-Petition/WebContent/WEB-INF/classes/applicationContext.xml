@@ -182,6 +182,8 @@
 		</property>
 		<property name="as" ref="aspectService">
 		</property>
+		<property name="ass" ref="argumentSchemeService">
+		</property>
 	</bean>
 
 

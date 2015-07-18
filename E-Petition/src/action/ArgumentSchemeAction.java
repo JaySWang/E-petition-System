@@ -216,7 +216,13 @@ public class ArgumentSchemeAction extends BaseAction {
 			
 		}
 
-		return SUCCESS;
+		String returnMsg = this.request().getParameter("returnMsg");
+		
+		if(returnMsg==null){
+			returnMsg = SUCCESS;
+		}
+		
+		return returnMsg;
 	}
 	
 	

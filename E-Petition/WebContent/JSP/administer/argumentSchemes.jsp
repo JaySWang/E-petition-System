@@ -33,7 +33,7 @@
 
 
 
-       <table border="1" width="350">
+       <table border="1" >
 		<tr>
 		<th>name</th>
 <th>description</th>
@@ -54,7 +54,7 @@
 		<s:property value="#as.name"/>
 	
 	</td>
-<td>
+<td width="100">
 	
 				
 		
@@ -72,10 +72,25 @@
 	
 			<s:property value="#at.name"/>:
 			<s:property value="#at.template"/>
-		<br></br>	
+			
+			<br/>
+			critical Question Templates:
+			
+			<s:iterator value="#at.criticalQuestionTemplates"
+	var="atcq" status="qst">
+	<br/>
+		<s:property value="#qst.index"/>.
+	    <s:property value="#atcq.value"/>
+				
+	
+	</s:iterator>
+			
+<br/>
+<br/>	
 
 	
 	</s:iterator>
+<a href="/E-Petition/JSP/administer/addCriticalQuestionTemplate.jsp?sName=<s:property value="#as.name"/>" target="_self" > add critical question templates </a> 
 	
 	</td>
 			
