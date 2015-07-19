@@ -58,7 +58,6 @@
 		</div>
 
 
-
  <table border="2" width="350"  cellpadding="0" cellspacing="0">
 	
 	
@@ -179,8 +178,7 @@ Chose a scheme£º<input  list="scheme_list" name="sName" />
 	
 </div>
        
-      
-       
+   <a href="/E-Petition/applet/StartPageForhello.html" target="_self">applet</a>   
        
 </div>
 </body>
