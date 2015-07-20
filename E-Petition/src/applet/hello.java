@@ -8,9 +8,10 @@ import java.awt.Graphics;
 
 public class hello extends Applet {
 
-	
+String words;
+
 	 public void paint(Graphics g){
-		  g.drawString("HELLO WORLD",25,25);
+		  g.drawString(words,25,25);
 		 }
 	 
 	 
@@ -22,6 +23,9 @@ public class hello extends Applet {
 	 */
 	public hello() {
 		super();
+		MyDraw md = new MyDraw();
+		words=md.getWords();
+		
 	}
 
 	/**
