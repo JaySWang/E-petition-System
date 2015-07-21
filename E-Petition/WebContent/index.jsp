@@ -2,6 +2,8 @@
     pageEncoding="GB18030"%>
     
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
+
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE HTML>
@@ -40,6 +42,23 @@
 <div class="content">
 
 		<h1>Welcome to KCL-Epetition</h1>
+		   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
+    <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a> 
+     
+        <sec:authorize ifAnyGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">  <a href="/E-Petition/logout">logout</a></sec:authorize>
+     
+       <sec:authorize ifNotGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">   <a href="/E-Petition/login.jsp">login</a></sec:authorize>
+     
+      <br>    
+		hi, 
+    <sec:authentication property ="name"/> !  
+      
+     
+ 
+<!-- <sec:authorize ifAllGranted="ROLE_USER">user可以访问</sec:authorize>
+<sec:authorize ifAllGranted="ROLE_OFFICER">officer可以访问</sec:authorize>
+<sec:authorize ifAllGranted="ROLE_ADMIN">admin可以访问</sec:authorize> -->
+		
 		<div id="introPageTxt">
 			
 	
@@ -178,8 +197,12 @@ Chose a scheme：<input  list="scheme_list" name="sName" />
 	
 </div>
        
-   <a href="/E-Petition/applet/StartPageForhello.html" target="_self">applet</a>   
+   <a href="/E-Petition/applet/hello.html" target="_blank">applet</a>   
        
 </div>
+
+   
+
+
 </body>
 </html>
