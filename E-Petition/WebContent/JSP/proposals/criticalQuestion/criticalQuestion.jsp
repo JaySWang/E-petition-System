@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
     pageEncoding="GB18030"%>
+ <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
     
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="s" uri="/struts-tags"%>    
@@ -79,9 +80,9 @@
      </table>
 	</s:form>
      
-     
-	<a href="/E-Petition/JSP/administer/addCriticalQuestion.jsp?id=<s:property value="#p.id"/>" target="_self" > add critical question  </a> 
-     
+       <sec:authorize ifAllGranted="ROLE_ADMIN">
+	<a href="/E-Petition/JSP/admin/addCriticalQuestion.jsp?id=<s:property value="#p.id"/>" target="_self" > add critical question  </a> 
+     </sec:authorize>	
        
 </body>
 </html>

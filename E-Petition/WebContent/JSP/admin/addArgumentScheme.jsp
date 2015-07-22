@@ -79,7 +79,7 @@ var input3 = document.createElement("input");
 	
 	<br/>
 	<br/>
-	<a href="/E-Petition/JSP/administer/argumentSchemes.jsp" target="_self">argument Scheme list</a>
+	<a href="/E-Petition/JSP/admin/argumentSchemes.jsp" target="_self">argument Scheme list</a>
 	
 	
 	<s:form action="addArgumentScheme">

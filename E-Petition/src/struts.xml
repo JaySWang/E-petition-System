@@ -42,7 +42,7 @@
 	              
 	<action name="addArgumentScheme" class="argumentSchemeAction" method="addArgumentScheme">
 		
-			<result name="success"  >/JSP/administer/argumentSchemes.jsp</result>
+			<result name="success"  >/JSP/admin/argumentSchemes.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 		
@@ -52,7 +52,7 @@
 		</action>
 		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
 		
-					<result name="addProposal"  >/JSP/governmentOfficer/addProposal.jsp</result>
+					<result name="addProposal"  >/JSP/officer/addProposal.jsp</result>
 		
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
@@ -77,7 +77,7 @@
 		</action>
 	<action name="addCriticalQuestionTemplate" class="criticalQuestionAction"  method="addCriticalQuestionTemplate">
 		
-			<result name="success"  >/JSP/administer/argumentSchemes.jsp</result>
+			<result name="success"  >/JSP/admin/argumentSchemes.jsp</result>
 			
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		

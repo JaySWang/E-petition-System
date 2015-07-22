@@ -106,6 +106,7 @@ Chose a scheme£º<input  list="scheme_list" name="sName" />
 	  <input name="attackOrSupport" type="submit"  value="attack"/>
 	<input name="attackOrSupport" type="submit"  value="support"/>	
  <input name="aid" value=<s:property value="#a.id" />  type="hidden" />
+ <input type="hidden" name="returnMsg" value="addProposal">	
  
  	</form>
  	

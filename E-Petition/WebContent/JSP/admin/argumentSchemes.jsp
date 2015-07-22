@@ -90,7 +90,7 @@
 
 	
 	</s:iterator>
-<a href="/E-Petition/JSP/administer/addCriticalQuestionTemplate.jsp?sName=<s:property value="#as.name"/>" target="_self" > add critical question templates </a> 
+<a href="/E-Petition/JSP/admin/addCriticalQuestionTemplate.jsp?sName=<s:property value="#as.name"/>" target="_self" > add critical question templates </a> 
 	
 	</td>
 			

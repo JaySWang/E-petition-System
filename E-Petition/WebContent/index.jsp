@@ -43,7 +43,7 @@
 
 		<h1>Welcome to KCL-Epetition</h1>
 		   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
-    <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a> 
+       <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a> 
      
         <sec:authorize ifAnyGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">  <a href="/E-Petition/logout">logout</a></sec:authorize>
      
@@ -57,7 +57,7 @@
  
 <!-- <sec:authorize ifAllGranted="ROLE_USER">user可以访问</sec:authorize>
 <sec:authorize ifAllGranted="ROLE_OFFICER">officer可以访问</sec:authorize>
-<sec:authorize ifAllGranted="ROLE_ADMIN">admin可以访问</sec:authorize> -->
+ -->
 		
 		<div id="introPageTxt">
 			
@@ -150,12 +150,13 @@
 	
 	
 	
-	
+<sec:authorize ifAllGranted="ROLE_OFFICER">	
 <div class="boxheading">Add proposal
 	
 	
 
 	
+
 			
 			<table >
 	   <tr>
@@ -189,19 +190,26 @@ Chose a scheme：<input  list="scheme_list" name="sName" />
 </tr>
 
 	   </table> 
+
 	   
-	   <br/>
-<a href="/E-Petition/JSP/administer/addArgumentScheme.jsp" target="_self">add new argument Scheme</a>
-						
+	
 	</div>
+	</sec:authorize>
 	
 </div>
        
-   <a href="/E-Petition/applet/hello.html" target="_blank">applet</a>   
        
 </div>
 
-   
+      <br/>
+	   
+	   <sec:authorize ifAllGranted="ROLE_ADMIN">
+<a href="/E-Petition/JSP/admin/addArgumentScheme.jsp" target="_self">add new argument Scheme</a>
+			
+			</sec:authorize>		
+			
+			    <br/>
+   <a href="/E-Petition/applet/hello.html" target="_blank">evaluation</a>   
 
 
 </body>
