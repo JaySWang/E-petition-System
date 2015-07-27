@@ -10,8 +10,6 @@
  
   
  
- 
-
 
 <html>
  <script>   
@@ -26,22 +24,35 @@
  <s:action name="showProposal" executeResult="true"/>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>KCL-Epetition</title>
+
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+ 
+
+
+
+<title>KCL E-Petition</title>
 </head>
 
 
 
 <body>
-<div class="pageLayout">
+<div class="container">
 
 	
 
 
     
-<div class="content">
 
-		<h1>Welcome to KCL-Epetition</h1>
+		<h1>Welcome to KCL E-Petition</h1>
 		   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
        <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a> 
      
@@ -59,17 +70,16 @@
 <sec:authorize ifAllGranted="ROLE_OFFICER">officer可以访问</sec:authorize>
  -->
 		
-		<div id="introPageTxt">
-			
-	
+		 <div class="row">
+      <div class="one-half column" >
+		
 
 			<p>Welcome to the KCL-Epetition system that allows the government to present 
 			policy proposals to the public and lets the public submit their opinion on the policy .</p>
 
 
 
-				<div class="itembox" id="inlinebox">
-					<div class="boxheading">Current debates</div>
+					<h4>Current debates</h4>
 					<p>please click the topic below to see in detail</p>
 					
 
@@ -77,70 +87,42 @@
 		</div>
 
 
- <table border="2" width="350"  cellpadding="0" cellspacing="0">
-	
-	
-	
+<table class="u-full-width">
 	
 	
 	<s:iterator value="#request.proposals"
 	var="p" status="st">
-
-		<tr >
-	
-	
-	<td>
-	
-				
+ <tr>
+	<td rowspan="2">	
 					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#p.id"/>" target="_self" >   
 		
 		P<s:property value="#p.id"/>
-   </a>
-	
+   </a>	
 	</td>
 
-   
-	
-	
-	<td>	
-	<table border="1" width="500" align="center" cellpadding="10" cellspacing="0">
-	<tr>
-	
-			<s:iterator value="#p.aspects" var="a">
+  <s:iterator value="#p.aspects" var="a">
 						<th >	
 						<s:property value="#a.type"/>
 						</th>
-	</s:iterator>
-	
-	
-	</tr>
-	
-			<tr>
-	
+	</s:iterator> 
+</tr>
+
+<tr>
+
 			<s:iterator value="#p.aspects"  var="a">
 						<td align="center">	
 						<s:property value="#a.value"/>
 						</td>
 	</s:iterator>
+
+
+</tr>
+</s:iterator>
+
+
 	
-	
-	</tr>
-			
 	</table>
 	
-	</td>
-		
-				
-	
-	
-	
-		
-	</tr>
-	
-	
-	
-	</s:iterator>
-		</table>
 	
 	<br/>
 	<br/>
@@ -199,7 +181,6 @@ Chose a scheme：<input  list="scheme_list" name="sName" />
 </div>
        
        
-</div>
 
       <br/>
 	   

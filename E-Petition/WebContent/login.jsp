@@ -1,25 +1,38 @@
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>  
-<!DOCTYPEhtmlPUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN">  
+<!DOCTYPE html>  
 <html>  
-<head>  
-<title>登录</title>  
+<head lang="en">  
+<title>login</title> 
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/align.css">
+  
+ 
 </head>  
 <body>  
+<div class="container">
+
     <form action ="j_spring_security_check" method="POST">  
-    <table>  
-        <tr>  
-            <td>用户:</td>  
-            <td><input type ='text' name='j_username'></td>  
-        </tr>  
-        <tr>  
-            <td>密码:</td>  
-            <td><input type ='password' name='j_password'></td>  
-        </tr>  
-        <tr>  
-            <td><input name ="reset" type="reset"></td>  
-            <td><input name ="submit" type="submit"></td>  
-        </tr>  
-    </table>  
-    </form>  
+              <div class="row">
+          
+                <label for="username">username</label>
+
+          <input type ='text' name='j_username' id="username">
+                      
+                      <label for="password">password</label>
+           <input type ='password' name='j_password' id="password"> 
+       </div>
+              <div class="row">
+            <input name ="reset" type="reset" value="reset">  
+            <input name ="submit" type="submit" value="reset"> 
+            </div> 
+    </form> 
+    </div>
 </body>  
 </html>
