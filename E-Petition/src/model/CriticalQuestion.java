@@ -1,12 +1,16 @@
 package model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,37 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 	int disagree;
 	int na ;
 	String value;
+	
+	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
+		@JoinColumns(value={@JoinColumn(name="support",referencedColumnName="id")})
+		private Set<Proposal> supporters=new HashSet();
+	 
+	 
+	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
+		@JoinColumns(value={@JoinColumn(name="attack",referencedColumnName="id")})
+		private Set<Proposal> attackers=new HashSet();
+	 
+	 
+	 
+	 
+	 public Set<Proposal> getAttackers() {
+		return attackers;
+	}
+
+	public void setAttackers(Set<Proposal> attackers) {
+		this.attackers = attackers;
+	}
+
+	public Set<Proposal> getSupporters() {
+		return supporters;
+	}
+
+	public void setSupporters(Set<Proposal> supporters) {
+		this.supporters = supporters;
+	}
+	
+	
+	
 	
 	public int getAgree() {
 		return agree;
@@ -42,7 +77,14 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 		this.value = value;
 	}
 	 
-	 
+	public void addAttacker(Proposal p){
+		attackers.add(p);
+		
+	}
+	 public void addSupporter(Proposal p){
+		 supporters.add(p);
+	 }
+	  
 	
 	
 }

@@ -35,7 +35,7 @@
 		
 			<result name="success"  >/index.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
-			<result name="aOrS_success" >/JSP/proposals/proposal.jsp</result>
+			<result name="aOrS_success" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
 			
 			
 		</action>

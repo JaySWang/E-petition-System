@@ -21,4 +21,8 @@ public interface IArgumentSchemeService {
 
 	public ArgumentScheme getArgumentSchemeByName(String sName);
 
+	public List<ArgumentScheme> getNotGeneralProposalSchemes();
+
+	List<ArgumentScheme> getGeneralProposalSchemes();
+
 }

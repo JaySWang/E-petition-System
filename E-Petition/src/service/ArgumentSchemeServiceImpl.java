@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.ArgumentSchemeDAO;
@@ -55,4 +56,28 @@ public class ArgumentSchemeServiceImpl implements IArgumentSchemeService {
 		return asdao.findByName(sName);
 	}
 
+	@Override
+	public List<ArgumentScheme> getNotGeneralProposalSchemes(){
+		List<ArgumentScheme> asListTemp = asdao.geArgumentSchemes();
+		List<ArgumentScheme> asList = new ArrayList();
+		for(ArgumentScheme as:asListTemp){
+        	if(!(as.getName().equalsIgnoreCase("General Proposal"))){
+        		asList.add(as);
+		}
+	}
+		return asList;
+
+}
+	@Override
+	public List<ArgumentScheme> getGeneralProposalSchemes(){
+		List<ArgumentScheme> asListTemp = asdao.geArgumentSchemes();
+		List<ArgumentScheme> asList = new ArrayList();
+		for(ArgumentScheme as:asListTemp){
+        	if((as.getName().equalsIgnoreCase("General Proposal"))){
+        		asList.add(as);
+		}
+	}
+		return asList;
+
+}
 }

@@ -14,20 +14,6 @@
 
 
 
-<script>
-
-function more(id){
-
- var o = document.getElementById(id);
- 
-o.style.visibility="visible";
- 
-}
-
-
-
-
-</script>
 
  <s:action name="showProposalDetail" executeResult="true"/>
 
@@ -65,75 +51,7 @@ o.style.visibility="visible";
 		
 		
 	</tr>
-			<tr>
-	
-	
-  <s:iterator value="#p.aspects" var="a">
-		
-		<td>
-		
-		
-		
-		<table  id=<s:property value="#a.id"  />  width="350" style="visibility:hidden">
-<tr>
-<tr>
-<td>
-	
-		<a href="/E-Petition/JSP/proposals/a&sProposals.jsp?aid=<s:property value="#a.id"/>" target="_self" >   
-		
-		attackers&supporters
-   </a>
-   
-</td>
-</tr>
 
-<tr>
-<td>
-<form action="getArgumentScheme" >
-
-Chose a scheme£º<input  list="scheme_list" name="sName" />
-<datalist id="scheme_list">
-<s:iterator value="#session.argumentSchemes"
-	var="as">
-	<option
-            value=	"<s:property value="#as.name"/>"
-            
-            > 
- 	</s:iterator>
-
-</datalist>
-
-	  <input name="attackOrSupport" type="submit"  value="attack"/>
-	<input name="attackOrSupport" type="submit"  value="support"/>	
- <input name="aid" value=<s:property value="#a.id" />  type="hidden" />
- <input type="hidden" name="returnMsg" value="addProposal">	
- 
- 	</form>
- 	
- 	</td>
- 	</tr>
- 	</table>
-<button type="button" onclick="more(<s:property value="#a.id" />)">more action</button>
-		
-	
-   
-   
-   
-   
-   </td>
-		
-		
-		
-		
-	
-	
-		
-	
-</s:iterator>
-		
-		
-		
-	</tr>
 	
 			
    

@@ -53,8 +53,8 @@
     
 
 		<h1>Welcome to KCL E-Petition</h1>
-		   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
-       <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a> 
+	<!-- 	   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
+       <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a>  -->
      
         <sec:authorize ifAnyGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">  <a href="/E-Petition/logout">logout</a></sec:authorize>
      
@@ -149,19 +149,18 @@
 <form action="getArgumentScheme">
 
 	
-Chose a scheme£º<input  list="scheme_list" name="sName" />
-<datalist id="scheme_list">
-<s:iterator value="#session.argumentSchemes"
+Chose a scheme£º
+<Select name="sName">
+<s:iterator value="#session.generalProposalSchemes"
 	var="a">
-	<option value=	"<s:property value="#a.name"/>" >
-	
-	
+	<option> <s:property value="#a.name"/>
 	 
 	  </option>
 
  	</s:iterator>
 
-</datalist>
+</Select>
+
 
 
 <input type="submit" value="confirm">

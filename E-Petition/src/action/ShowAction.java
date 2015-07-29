@@ -59,14 +59,23 @@ public class ShowAction extends BaseAction {
 
 		List<Proposal> proposals;
 		
-		List<ArgumentScheme> argumentSchemes;			
+		List<ArgumentScheme> argumentSchemes;
+		List<ArgumentScheme> notGeneralProposalSchemes;	
+		List<ArgumentScheme> generalProposalSchemes;			
+
+
 		
 		
 		try{
 			
 		argumentSchemes=ass.getArgumentSchemes();
-		this.session().setAttribute("argumentSchemes", argumentSchemes);
+		notGeneralProposalSchemes=ass.getNotGeneralProposalSchemes();
+		generalProposalSchemes=ass.getGeneralProposalSchemes();
 		
+		this.session().setAttribute("argumentSchemes", argumentSchemes);
+		this.session().setAttribute("notGeneralProposalSchemes", notGeneralProposalSchemes);
+		this.session().setAttribute("generalProposalSchemes", generalProposalSchemes);
+
 		proposals=ps.getGeneralProposals();
 		this.request().setAttribute("proposals", proposals);
 		

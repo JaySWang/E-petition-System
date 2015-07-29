@@ -2,7 +2,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 
   
-<%@ page language="java" import="model.AspectType" import="model.ArgumentScheme" import="java.util.List" %>
+<%@ page language="java" import="model.AspectType" import="model.ArgumentScheme" import="model.CriticalQuestion" import="java.util.List" %>
 
 
 <%@ taglib uri="/struts-dojo-tags" prefix="sx"%>
@@ -39,9 +39,13 @@
 	
 	
 	
+		  <p align="center"><s:property value="#session.attackOrSupport"/><p>
 	
+		  <p align="center"><s:property value="#session.criticalQuestionValue"/><p>
+		  <br>
 	
 	<s:form action="addProposal">
+	
 	
 	  <table  width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 

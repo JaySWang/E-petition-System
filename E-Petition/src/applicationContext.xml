@@ -257,6 +257,8 @@
 	
 	<bean id="proposalAction" class="action.ProposalAction"
 		scope="prototype">
+		<property name="cqs" ref="criticalQuestionService">
+		</property>
 		<property name="ps" ref="proposalService">
 		</property>
 		<property name="as" ref="aspectService">
@@ -266,6 +268,8 @@
 
 	<bean id="argumentSchemeAction" class="action.ArgumentSchemeAction"
 		scope="prototype" >
+			<property name="cqs" ref="criticalQuestionService">
+		</property>
 		<property name="ass" ref="argumentSchemeService">
 		</property>
 	</bean>

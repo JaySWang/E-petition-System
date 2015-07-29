@@ -12,6 +12,37 @@
 
 <html>
 
+<script>
+
+function more(id){
+
+ var o = document.getElementById(id);
+ 
+o.style.visibility="visible";
+ 
+}
+
+function attack(cid,sName){
+
+document.getElementById("aOrsInput").value="attack";
+document.getElementById("cidInput").value=cid;
+document.getElementById("sInput").value=document.getElementById("scheme_list").value;
+
+document.getElementById("aOrSForm").submit();
+
+} 
+
+function support(cid){
+document.getElementById("aOrsInput").value="support";
+document.getElementById("cidInput").value=cid;
+document.getElementById("sInput").value=document.getElementById("scheme_list").value;
+
+document.getElementById("aOrSForm").submit();
+
+}
+
+
+</script>
 
 
 <head>
@@ -21,6 +52,17 @@
 
 
 <body>
+
+
+<form action="getArgumentScheme" id="aOrSForm">
+
+
+ <input id="aOrsInput" name="attackOrSupport"  type="hidden" />
+ <input id="cidInput" name="cid"   type="hidden" />
+ <input name="returnMsg" value="addProposal"  type="hidden">	
+ <input  id="sInput"  name="sName"   type="hidden"/>
+ </form>
+
 
      <s:form action="answerCriticalQuestion">
      
@@ -48,18 +90,58 @@
 	</th>
 	
 	 </tr> 
+<tr>
+<td>
+<button type="button" onclick="more(<s:property value="#c.id" />)">more action</button>
+		
+		
+		<table  id=<s:property value="#c.id"  />  width="350" style="visibility:hidden">
+<tr>
+<tr>
+<td>
+	
+		<a href="/E-Petition/JSP/proposals/a&sProposals.jsp?cid=<s:property value="#c.id"/>" target="_self" >   
+		
+		attackers&supporters
+   </a>
+   
+</td>
+</tr>
 
+<tr>
+<td>
+
+Chose a scheme£º
+<Select id="scheme_list">
+<s:iterator value="#session.notGeneralProposalSchemes"
+	var="as">
+	<option>
+           <s:property value="#as.name"/>
+          </option>  
+             
+ 	</s:iterator>
+
+</Select>
+<button type="button" onclick="attack(<s:property value="#c.id" />)">attack</button>
+<button type="button" onclick="support(<s:property value="#c.id" />)">support</button>
+
+ 
+ 	
+ 	</td>
+ 	</tr>
+ 	</table>
+</td>
+</tr>
 	 
 </table>	 
 	 </s:iterator>
 	 
 	 
+		
+	
+		
 
-
-
- 	
 <br>
-
 	</s:iterator>
 
 

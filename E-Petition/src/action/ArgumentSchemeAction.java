@@ -8,8 +8,10 @@ import java.util.Set;
 
 import model.ArgumentScheme;
 import model.AspectType;
+import model.CriticalQuestion;
 
 import service.IArgumentSchemeService;
+import service.ICriticalQuestionService;
 
 
 
@@ -18,9 +20,9 @@ public class ArgumentSchemeAction extends BaseAction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 
 	private IArgumentSchemeService ass;
+	private ICriticalQuestionService cqs;
 
 	private String name;
 	private String description;
@@ -28,10 +30,26 @@ public class ArgumentSchemeAction extends BaseAction {
 	
 
 	private String attackOrSupport;
-    private int aid;
+    private String cid;
 	
 	
     
+	public ICriticalQuestionService getCqs() {
+		return cqs;
+	}
+
+
+
+
+
+	public void setCqs(ICriticalQuestionService cqs) {
+		this.cqs = cqs;
+	}
+
+
+
+
+
 	public String getAttackOrSupport() {
 		return attackOrSupport;
 	}
@@ -48,16 +66,16 @@ public class ArgumentSchemeAction extends BaseAction {
 
 
 
-	public int getAid() {
-		return aid;
+	public String getCid() {
+		return cid;
 	}
 
 
 
 
 
-	public void setAid(int aid) {
-		this.aid = aid;
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 
 
@@ -112,9 +130,6 @@ public class ArgumentSchemeAction extends BaseAction {
 
 
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 
 	public String addArgumentScheme() throws Exception {
@@ -189,7 +204,25 @@ public class ArgumentSchemeAction extends BaseAction {
 		return SUCCESS;
 	}
 	
-	
+	public String getNotGeneralProposalSchemes()  throws Exception  {
+
+		List<ArgumentScheme> argumentSchemes;
+		try{
+			
+		
+			argumentSchemes=ass.getNotGeneralProposalSchemes();
+		this.request().setAttribute("argumentSchemes", argumentSchemes);
+		this.request().setAttribute("message", " ");
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return ERROR;
+			
+		}
+
+		return SUCCESS;
+	}
 	public String getArgumentScheme()  throws Exception  {
 
 		ArgumentScheme argumentScheme;
@@ -203,9 +236,13 @@ public class ArgumentSchemeAction extends BaseAction {
 			argumentScheme=ass.getArgumentSchemeByName(sName);
 
 			this.session().setAttribute("argumentScheme", argumentScheme);
-		    this.session().setAttribute("aid", aid);
-		    this.session().setAttribute("attackOrSupport", attackOrSupport);
 			
+			if(cid!=null){
+		    this.session().setAttribute("cid", cid);
+		    CriticalQuestion cq = cqs.getCriticalQuestionById(Integer.parseInt(cid));
+		    this.session().setAttribute("criticalQuestionValue", cq.getValue());
+		    this.session().setAttribute("attackOrSupport", attackOrSupport);
+			}
 			
 			this.request().setAttribute("message", " ");
 

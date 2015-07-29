@@ -9,7 +9,8 @@ public interface IProposalService {
 
 
 	public List<Proposal> getProposals();
-	
+	public List<Proposal> getNotGeneralProposals();
+
 	public Proposal getProposalById(int id);
 	
 	public void save(Proposal baseBean); 

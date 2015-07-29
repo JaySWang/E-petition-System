@@ -73,7 +73,7 @@ var input3 = document.createElement("input");
 	
 	
 	<br/>
-<a href="http://philosophicaldisquisitions.blogspot.co.uk/2010/03/argumentation-schemes-part-1.html">
+<a href="http://philosophicaldisquisitions.blogspot.co.uk/2010/03/argumentation-schemes-part-1.html" target="_blank">
 	Types of Argument Schemes
 	</a>
 	

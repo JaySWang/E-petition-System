@@ -15,6 +15,7 @@ import model.CriticalQuestion;
 import model.Proposal;
 
 import service.IAspectService;
+import service.ICriticalQuestionService;
 import service.IProposalService;
 
 
@@ -24,6 +25,8 @@ public class ProposalAction extends BaseAction {
 
 	private IProposalService ps;
 	private IAspectService as;
+	private ICriticalQuestionService cqs;
+
 	private String agreeOrNot;
 	
     private String variables;
@@ -39,6 +42,18 @@ public class ProposalAction extends BaseAction {
 	
 	
 	
+
+
+
+	public ICriticalQuestionService getCqs() {
+		return cqs;
+	}
+
+
+
+	public void setCqs(ICriticalQuestionService cqs) {
+		this.cqs = cqs;
+	}
 
 
 
@@ -229,21 +244,25 @@ public class ProposalAction extends BaseAction {
 	    	    String attackOrSupport = (String)this.session().getAttribute("attackOrSupport");
 	 	       
 	 	       if(attackOrSupport!=null){
-	 	    	   int aid = (Integer) this.session().getAttribute("aid");
-	     		   Aspect a = as.getAspectById(aid);
+	 	    	   
+	 	    	   String id = (String) this.session().getAttribute("cid");
+	 	    	  
+	 	    	   int cid =  Integer.parseInt(id);
+	     		   CriticalQuestion cq = cqs.getCriticalQuestionById(cid);
+	     		   
 	     		   Proposal target = ps.getProposalById(p.getId());
 	 	    	   if(attackOrSupport.equalsIgnoreCase("attack")){
-	 					a.addAttacker(target);  
+	 	    		  cq.addAttacker(target);  
 	 	    		 
 	 	    		   			  }
 	 	    	   else if(attackOrSupport.equalsIgnoreCase("support")){
-               a.addSupporter(target);
+	 	    		  cq.addSupporter(target);
 	 	    	   
 	 	    	   }
-	 	    	   as.update(a);
+	 	    	   cqs.update(cq);
 	 	    	   
 	 	    	  this.session().removeAttribute("attackOrSupport");
-	 	    	 this.session().removeAttribute("aid");
+	 	    	 this.session().removeAttribute("cid");
 	 	    	 
 	 	    	(this.request()).setAttribute("message", "succeed");
 
@@ -295,26 +314,26 @@ public class ProposalAction extends BaseAction {
 		Set<Proposal> supporters;
 
 		
-		String idS =  this.request().getParameter("aid");
+		String idS =  this.request().getParameter("cid");
 		if(idS==null){
-			idS = (String) this.session().getAttribute("aid");
+			idS = (String) this.session().getAttribute("cid");
 		}else {
-	         this.session().setAttribute("aid", idS);
+	         this.session().setAttribute("cid", idS);
 
 		}
          
          
-		int aid = Integer.parseInt(idS);
+		int cid = Integer.parseInt(idS);
 		
 		
 		
 		
 		
 		try{
-			Aspect a = as.getAspectById(aid);
+  		   CriticalQuestion cq = cqs.getCriticalQuestionById(cid);
 			
-			supporters=a.getSupporters();
-			attackers=a.getAttackers();
+			supporters=cq.getSupporters();
+			attackers=cq.getAttackers();
 
 		this.session().setAttribute("supporters", supporters);
 		this.session().setAttribute("attackers", attackers);

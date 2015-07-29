@@ -11,12 +11,12 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/align.css">
+    <link rel="stylesheet" href="css/custom.css">
   
  
 </head>  
 <body>  
-<div class="container">
+<div class="container section">
 
     <form action ="j_spring_security_check" method="POST">  
               <div class="row">
@@ -30,7 +30,7 @@
        </div>
               <div class="row">
             <input name ="reset" type="reset" value="reset">  
-            <input name ="submit" type="submit" value="reset"> 
+            <input name ="submit" type="submit" value="submit"> 
             </div> 
     </form> 
     </div>
