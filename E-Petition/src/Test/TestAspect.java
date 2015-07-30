@@ -18,7 +18,7 @@ public class TestAspect {
 	@Test
 	public void testSaveAndGet()  throws Exception{
 		String value = "Should we invade Iraq?";
-		String type = ConstValue.TOPIC;
+		String type = "Topic";
 		 int agree = 1;
 		 int disagree = 2;
 		int proposalId = 35;

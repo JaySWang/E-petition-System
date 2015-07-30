@@ -17,10 +17,27 @@
 </head>
 <body>
 
-<p>
-success
+<div>
 
-</p>
+based on the following evaluation strategies:
+<ol>
+<li> basic</li>
+<li> based on critical questions</li>
+<li> involves attackers and supporters    </li>
+
+
+</ol>
+    
+    <ol>
+  <s:iterator value="#request.results" var="r">
+		
+		<li><s:property value="#r"/></li>
+		
+		
+</s:iterator>
+</ol>
+
+</div>
 
 
        

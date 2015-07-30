@@ -7,11 +7,21 @@
 
 		<action name="showProposal" class="showAction" method="show" >
 		
-			<result name="success"  >/JSP/proposals/success.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 
 
+
+
+	<action name="evaluation" class="proposalAction" method="evaluation" >
+					<result name="success" >/JSP/proposals/evaluationResult.jsp</result>
+		
+			<result name="error" >/JSP/proposals/error.jsp</result>
+			
+		</action>
+		
+		
+		
 		<action name="getASProposals" class="proposalAction" method="getASProposals" >
 		
 			<result name="error" >/JSP/proposals/error.jsp</result>
@@ -33,9 +43,9 @@
 	
 		<action name="addProposal" class="proposalAction" method="addProposal" >
 		
-			<result name="success"  >/index.jsp</result>
+			<result name="success">/index.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
-			<result name="aOrS_success" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
+			<result name="aOrS_success" >/JSP/proposals/success.jsp</result>
 			
 			
 		</action>
@@ -52,7 +62,7 @@
 		</action>
 		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
 		
-					<result name="addProposal"  >/JSP/officer/addProposal.jsp</result>
+					<result name="addProposal">/JSP/officer/addProposal.jsp</result>
 		
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>

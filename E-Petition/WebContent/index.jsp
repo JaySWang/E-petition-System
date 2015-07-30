@@ -189,7 +189,7 @@ Chose a scheme£º
 			</sec:authorize>		
 			
 			    <br/>
-   <a href="/E-Petition/applet/hello.html" target="_blank">evaluation</a>   
+   <a href="/E-Petition/applet/hello.html" target="_blank">appletTest</a>   
 
 
 </body>

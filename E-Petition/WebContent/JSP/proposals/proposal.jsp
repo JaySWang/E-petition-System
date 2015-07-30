@@ -79,6 +79,23 @@
      </table>
 	</s:form>
      
+           <p align="center" >want to view the evaluation of this proposal?  </p> 
+     
+        <s:form action="evaluation">
+	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
+
+	  
+	  <tr align="center"  height="40">
+	    <td colspan="2">
+	<input  type="submit"  value="view"/>
+		</td>
+		
+		</tr>
+		
+	  </tr>
+     </table>
+	</s:form>
+     
      
      
        

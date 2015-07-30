@@ -22,11 +22,12 @@ o.style.visibility="visible";
  
 }
 
+
 function attack(cid,sName){
 
 document.getElementById("aOrsInput").value="attack";
 document.getElementById("cidInput").value=cid;
-document.getElementById("sInput").value=document.getElementById("scheme_list").value;
+document.getElementById("sInput").value=document.getElementsByClassName(cid).item(0).value;
 
 document.getElementById("aOrSForm").submit();
 
@@ -35,7 +36,7 @@ document.getElementById("aOrSForm").submit();
 function support(cid){
 document.getElementById("aOrsInput").value="support";
 document.getElementById("cidInput").value=cid;
-document.getElementById("sInput").value=document.getElementById("scheme_list").value;
+document.getElementById("sInput").value=document.getElementsByClassName(cid).item(0).value;
 
 document.getElementById("aOrSForm").submit();
 
@@ -54,7 +55,7 @@ document.getElementById("aOrSForm").submit();
 <body>
 
 
-<form action="getArgumentScheme" id="aOrSForm">
+<form action="getArgumentScheme" id="aOrSForm" target="_blank">
 
 
  <input id="aOrsInput" name="attackOrSupport"  type="hidden" />
@@ -84,9 +85,9 @@ document.getElementById("aOrSForm").submit();
  <th>
 	 <s:property value="#c.value" /> 
 
-  <input type="radio"   name= <s:property value="#c.id" />  value="agree" />agree
-<input type="radio"   name=<s:property value="#c.id" />  value="disagree" />disagree
-<input type="radio"   name=<s:property value="#c.id" />   value="na"  checked = "checked"/>N/A
+  <input type="radio"   name= <s:property value="#c.id"/>  value="agree" />agree
+<input type="radio"   name=<s:property value="#c.id"/>  value="disagree" />disagree
+<input type="radio"   name=<s:property value="#c.id"/>   value="na"  checked = "checked"/>N/A
 	</th>
 	
 	 </tr> 
@@ -95,7 +96,7 @@ document.getElementById("aOrSForm").submit();
 <button type="button" onclick="more(<s:property value="#c.id" />)">more action</button>
 		
 		
-		<table  id=<s:property value="#c.id"  />  width="350" style="visibility:hidden">
+		<table  id=<s:property value="#c.id"/>  width="350" style="visibility:hidden">
 <tr>
 <tr>
 <td>
@@ -112,7 +113,7 @@ document.getElementById("aOrSForm").submit();
 <td>
 
 Chose a scheme£º
-<Select id="scheme_list">
+<Select class=<s:property value="#c.id"/>  >
 <s:iterator value="#session.notGeneralProposalSchemes"
 	var="as">
 	<option>

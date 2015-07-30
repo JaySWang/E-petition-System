@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import evaluation.Evaluation;
+
 import model.ArgumentScheme;
 import model.Aspect;
 import model.AspectType;
@@ -352,4 +354,41 @@ public class ProposalAction extends BaseAction {
 	}
 
 
+	public String evaluation(){
+		
+		
+		List<String> results = new ArrayList();
+		
+		String idS =  this.request().getParameter("id");
+		if(idS==null){
+			idS = (String) this.session().getAttribute("pid");
+		}else {
+	         this.session().setAttribute("pid", idS);
+
+		}
+		
+		int id = Integer.parseInt(idS);
+		// get the newest proposal 
+		Proposal target=ps.getProposalById(id);
+		
+		Evaluation e = new Evaluation();
+		e.setTarget(target);
+		
+		String basicResult = "is "+e.basicEvaluation();
+		String cQResult = "is "+e.CQEvaluation();
+		String aSResult = "is "+e.ASEvaluation(target);
+		
+		results.add(basicResult);
+		results.add(cQResult);
+		results.add(aSResult);
+
+		
+		// pay attention to the order in JSP
+		this.request().setAttribute("results", results);
+		
+		return SUCCESS;
+
+	}
+	
+	
 }

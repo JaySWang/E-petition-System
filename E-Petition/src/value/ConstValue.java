@@ -2,9 +2,13 @@ package value;
 
 public  class ConstValue {
 
-	// aspect types
 	
-	public static String TOPIC = "topic"; 
+	
+	//proposal evaluation
+	
+	public static String Accpeted = "accpeted";
+	
+	public static String NotAccpeted = "not accpeted";
 	
 	
 	

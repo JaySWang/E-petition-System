@@ -40,10 +40,6 @@ public class TestProposal {
 	private List<Aspect> getAspects(){
 		
 		List<Aspect> aspects=new ArrayList();
-	       
-	       
-	       
-      	
           for(AspectType s : getScheme().getAspectTypes()){
         	 
        	   if(s.getName().equalsIgnoreCase("topic")){
