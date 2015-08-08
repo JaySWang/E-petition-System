@@ -65,6 +65,8 @@ public class DAOImpl<T> extends HibernateDaoSupport implements IDAO<T> {
 
 	@Override
 	public void updata(T baseBean) {
+		
+		
 		getHibernateTemplate().update(baseBean);
 		
 	}

@@ -4,6 +4,8 @@ package action;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate3.HibernateOptimisticLockingFailureException;
+
 import model.ArgumentScheme;
 import model.Aspect;
 import model.AspectType;
@@ -197,18 +199,27 @@ return ERROR;
 
 	
 
-	private void addCqs(Aspect a,String qustions) {
+	private void addCqs(Aspect a,String question) {
 
 
-	   String[] questions =	qustions.split("/");
+	   String[] questions =	question.split("/");
 	   
 	   for(String q : questions){
 		   CriticalQuestion cq = new CriticalQuestion();
 		   cq.setValue(q);
 		   a.addCriticalQuestion(cq);
 	   }
+	   try{
 		as.update(a);
-	}
+	   }catch(HibernateOptimisticLockingFailureException he){
+			System.out.println("Optimistic lock");
+			Aspect newA = as.getAspectById(a.getId());
+			addCqs(newA,question);
+		}catch(Throwable t){
+			t.printStackTrace();
+		}
+	   
+	   }
 
 
 
@@ -220,13 +231,9 @@ return ERROR;
 			  for(CriticalQuestion cq:a.getCriticalQuestions() ){
 				  String answerId = cq.getId()+"";
 				  String agreeOrNot = this.request().getParameter(answerId);
-
+				  answerCq(cq,agreeOrNot);
 				
-				  cqs.answer(cq,agreeOrNot);
 			  
-				  
-			     
-				  
 			  }
 
 		  }
@@ -245,6 +252,22 @@ return ERROR;
 			
 		  
 		return SUCCESS;
+	}
+
+
+
+
+
+	private void answerCq(CriticalQuestion cq, String agreeOrNot) {
+		  try{
+			  cqs.answer(cq,agreeOrNot);
+			  }catch(HibernateOptimisticLockingFailureException he){
+					System.out.println("Optimistic lock");
+					CriticalQuestion newCq = cqs.getCriticalQuestionById(cq.getId());
+					answerCq(newCq,agreeOrNot);
+				}catch(Throwable t){
+					t.printStackTrace();
+				}		
 	}
 
 }

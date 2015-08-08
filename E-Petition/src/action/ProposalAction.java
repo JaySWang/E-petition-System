@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.StaleObjectStateException;
+import org.springframework.orm.hibernate3.HibernateOptimisticLockingFailureException;
+
 import evaluation.Evaluation;
 
 import model.ArgumentScheme;
@@ -35,17 +38,7 @@ public class ProposalAction extends BaseAction {
     
     private Map<String,String> variablePairs ;
 
-    
-	
-	
-    
-	
-	
-	
-	
-	
-
-
+   
 
 	public ICriticalQuestionService getCqs() {
 		return cqs;
@@ -119,8 +112,10 @@ public class ProposalAction extends BaseAction {
 	
 	 public String voteProposal() throws Exception {
 	      Proposal p = (Proposal)this.session().getAttribute("proposal");
-		  if(agreeOrNot.equalsIgnoreCase("agree")){
-			  
+		 
+	      try{
+	      if(agreeOrNot.equalsIgnoreCase("agree")){
+
 			  ps.voteAgree(p,true);
 		  
 		  }else if(agreeOrNot.equalsIgnoreCase("disagree")){
@@ -135,8 +130,16 @@ public class ProposalAction extends BaseAction {
 		  }else{
 			  return ERROR;
 		  }
-		  
-		  Proposal proposal=ps.getProposalById(p.getId());
+	      }catch(HibernateOptimisticLockingFailureException he){
+				System.out.println("Optimistic lock");
+				Proposal newP = ps.getProposalById(p.getId());
+				this.session().setAttribute("proposal", newP);
+				voteProposal();
+			}catch(Throwable t){
+				t.printStackTrace();
+			}
+	      
+	     		  Proposal proposal=ps.getProposalById(p.getId());
 			this.session().setAttribute("aspects", proposal.getAspects());
 
 			this.session().setAttribute("proposal", proposal);
@@ -251,22 +254,23 @@ public class ProposalAction extends BaseAction {
 	 	       if(attackOrSupport!=null){
 	 	    	   
 	 	    	   String id = (String) this.session().getAttribute("cid");
-	 	    	  
+	 	    	
+	 	    	
+	 	    	   
 	 	    	   int cid =  Integer.parseInt(id);
 	     		   CriticalQuestion cq = cqs.getCriticalQuestionById(cid);
 	     		   
 	     		   Proposal target = ps.getProposalById(p.getId());
+	     		   
 	 	    	   if(attackOrSupport.equalsIgnoreCase("attack")){
-	 	    		  cq.addAttacker(target);  
-	 	    		 
+		     		   addAttackerToCq(cq,target);
 	 	    		   			  }
 	 	    	   else if(attackOrSupport.equalsIgnoreCase("support")){
-	 	    		  cq.addSupporter(target);
+		     		   addSupporterToCq(cq,target);
 	 	    	   
 	 	    	   }
-	 	    	   cqs.update(cq);
 	 	    	   
-	 	    	  this.session().removeAttribute("attackOrSupport");
+	 	    	 this.session().removeAttribute("attackOrSupport");
 	 	    	 this.session().removeAttribute("cid");
 	 	    	 
 	 	    	(this.request()).setAttribute("message", "succeed");
@@ -297,6 +301,37 @@ public class ProposalAction extends BaseAction {
 	
 	
 	
+	private void addSupporterToCq(CriticalQuestion cq, Proposal target) {
+		cq.addSupporter(target); 		
+  	  
+		try{
+			cqs.update(cq);
+		}catch(HibernateOptimisticLockingFailureException he){
+			System.out.println("Optimistic lock");
+			CriticalQuestion newCq = cqs.getCriticalQuestionById(cq.getId());
+			addSupporterToCq(newCq,target);
+		}catch(Throwable t){
+			t.printStackTrace();
+		}	
+		
+
+	}
+	private void addAttackerToCq(CriticalQuestion cq, Proposal target) {
+		  cq.addAttacker(target); 	
+		  try{
+	  	   cqs.update(cq);
+		  }catch(HibernateOptimisticLockingFailureException he){
+				System.out.println("Optimistic lock");
+				CriticalQuestion newCq = cqs.getCriticalQuestionById(cq.getId());
+				addAttackerToCq(newCq,target);
+			}catch(Throwable t){
+				t.printStackTrace();
+			}	
+		  
+	}
+
+
+
 	private String replaceVariables(String tempalateS) {
 		
 		for(String s:variablePairs.keySet()){

@@ -2,20 +2,18 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 
 
@@ -38,10 +36,21 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	private String type; 
 	private int agree;
 	private int disagree;
-	
-	
+
+	@Version
+	private int version;
 	
 
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 
 

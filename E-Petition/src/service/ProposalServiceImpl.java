@@ -4,6 +4,8 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.StaleObjectStateException;
+
 import dao.ProposalDAO;
 
 
@@ -58,9 +60,8 @@ public class ProposalServiceImpl   implements IProposalService {
 		}else{
 			p.disagree();
 		}
-		
 		pdao.update(p);
-		
+
 	}
 
 	@Override

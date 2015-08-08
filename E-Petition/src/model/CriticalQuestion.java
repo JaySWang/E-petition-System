@@ -12,6 +12,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table
@@ -20,6 +21,19 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 	int disagree;
 	int na ;
 	String value;
+	
+	@Version
+	private int version;
+	
+	
+	
+
+
+
+
+
+
+	
 	
 	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="support",referencedColumnName="id")})
@@ -51,7 +65,14 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 	
 	
 	
-	
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	public int getAgree() {
 		return agree;
 	}

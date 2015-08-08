@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 
 @Entity
@@ -23,6 +24,10 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 	 int agree;
 	 int disagree;
    
+	 @Version
+		private int version;
+		
+
 	
 	
 	
@@ -34,7 +39,13 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 	 
 	 
 	 
+	public int getVersion() {
+		return version;
+	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public void addCriticalQuestion(CriticalQuestion cq){
 		 criticalQuestions.add(cq);
