@@ -12,8 +12,17 @@
 
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>KCL-Epetition</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+  
+  <title>KCL-Epetition</title>
 </head>
 <body>
 

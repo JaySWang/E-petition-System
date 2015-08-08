@@ -13,48 +13,43 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
 <title>Add proposal</title>
 
 
 <body>
 
+<div class="container">
+	     <header class="sixteen columns offset-by-four">   
+      <h1>
+      ADD PROPOSAL
+    </h1>
+     </header>
 
 
-
-
- 
- 
-  
-	<table   width="100%" border="0" align="center" cellspacing="0" class="table">
-	  <tr>
-		<td width="80%" height="1" bgcolor="#ffffff"></td>
-	  </tr>
-	  <tr>
-		 <td height="25" colspan="2" align="center" bgcolor="#799ae1"><span class="title">ADD PROPOSAL</span></td>
-	  </tr>
-	</table>
-	
-	
-	
-	
 		  <p align="center"><s:property value="#session.attackOrSupport"/><p>
 	
 		  <p align="center"><s:property value="#session.criticalQuestionValue"/><p>
 		  <br>
 	
-	<s:form action="addProposal">
+	<form action="addProposal">
 	
-	
-	  <table  width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
-
-
+<div class="row">
+<div class="six columns offset-by-four">	
+ <table>
 <tr>
 <td>
 	
-	 	<s:set var="as" value="#session.argumentScheme"/>
-	
+<s:set var="as" value="#session.argumentScheme"/>	
 <s:iterator value="#as.aspectTypes"
 	var="at">
 	 
@@ -74,10 +69,8 @@
   please assign values to these variables:
   <br/>
     <s:property value="#as.variables"/>:
-  
-   <input type="text" name="variables" placeholder="use '/' to separate" />
-  
-
+    <textarea class="u-full-width" placeholder="use '/' to separate" name="variables" ></textarea>
+    
 </td>
 
 
@@ -92,7 +85,11 @@
 		</td>
 	  </tr>
      </table>
-	</s:form>
-	
+     
+     </div>
+     </div>
+	</form>
+
+</div>
 </body>
 </html>

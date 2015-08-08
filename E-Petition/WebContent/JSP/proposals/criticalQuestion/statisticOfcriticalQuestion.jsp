@@ -25,24 +25,39 @@
 
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>CriticalQuestion</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+    <link rel="stylesheet" href="/E-Petition/css/custom.css">
+  
+  
+  <title>CriticalQuestion</title>
 </head>
 
 
 <body>
+<div class="container">
+	     <header class="eleven columns offset-by-one">   
+      <h2>
+    VOTES OF THE ASPECTS OF THE PROPOSAL
+    </h2>
+     </header>
 
-   <p align="center" >Votes of the aspects of the proposal  </p> 
-     
+   	 	 <div class="row">
+<div class="nine columns offset-by-three">  
 <s:iterator value="#session.aspects" var = "a">
-
-	<s:property value="#a.type" />:
 	
-	<s:property value="#a.value" /> 
+	<h4><s:property value="#a.value" /></h4> 
 	
 
 	
-<table border="1" align="center">
+<table>
 <tr>
  <th>Question</th>  <th>agree</th>  <th>disagree</th>  <th>N/A</th>
  </tr> 
@@ -70,25 +85,18 @@
  
 </table>	 
 	
-	
-	
-	
-	
-	<br/>
-		<br/>
-	
+
 	
 </s:iterator>
 
-
-<a href="/E-Petition/JSP/proposals/votesOfProposal.jsp"  target="_self" > back to the proposal statistic  </a>
-
+<a href="/E-Petition/JSP/proposals/votesOfProposal.jsp"  target="_self" > to the proposal statistic  </a>
 					 
 
      
      
      
-     
-       
+     </div>
+     </div>
+  </div>     
 </body>
 </html>

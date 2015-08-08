@@ -52,9 +52,10 @@ public class Evaluation implements IEvaluation {
 	public String CQEvaluation() {
 	
 		//any cq in any aspect win,the proposal is not accepted ,Otherwise accepted
+		//When evaluation assume that those who votes agree on the proposal,disagree with all the critical questions
 		for(Aspect a: target.getAspects()){
 			for(CriticalQuestion cq:a.getCriticalQuestions()){
-				if(cq.getAgree()>=cq.getDisagree()){
+				if(cq.getAgree()>=cq.getDisagree()+target.getAgree()){
 					return ConstValue.NotAccpeted;
 				}
 					
@@ -93,7 +94,7 @@ public class Evaluation implements IEvaluation {
 								aggreeIncreation+=weight;
 								}		
 						}
-					if((cq.getAgree()+aggreeIncreation)>=(cq.getDisagree()+disagreeIncreation)){
+					if((cq.getAgree()+aggreeIncreation)>=(cq.getDisagree()+disagreeIncreation+p.getAgree())){
 							return ConstValue.NotAccpeted;
 
 						}			

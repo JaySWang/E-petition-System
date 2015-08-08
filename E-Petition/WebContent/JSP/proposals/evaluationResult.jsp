@@ -3,31 +3,43 @@
     <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE html>
-
-
-
 <html>
-
-
-
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>KCL-Epetition</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+  
+  <title>KCL-Epetition</title>
 </head>
 <body>
 
-<div>
+    <header class="eleven columns offset-by-three">   
+      <h2>
+    EVALUATION RESULT OF THE PROPOSAL
+    </h2>
+     </header>
 
-based on the following evaluation strategies:
+<div class="container">
+ <div class="row">
+<div class="six column offset-by-three"> 
+
+<em>based on the following evaluation strategies:</em>
 <ol>
-<li> basic</li>
-<li> based on critical questions</li>
-<li> involves attackers and supporters    </li>
+<li> based on general votes</li>
+<li> based on above and involves evaluating critical questions</li>
+<li> based on above and involves evaluating attackers and supporters    </li>
 
 
 </ol>
-    
+
+  <em>results:</em>
+  
     <ol>
   <s:iterator value="#request.results" var="r">
 		
@@ -36,10 +48,9 @@ based on the following evaluation strategies:
 		
 </s:iterator>
 </ol>
-
 </div>
 
-
-       
+</div>
+</div>    
 </body>
 </html>

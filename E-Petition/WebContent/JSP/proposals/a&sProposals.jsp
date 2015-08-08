@@ -17,24 +17,31 @@
  <s:action name="getASProposals" executeResult="true"/>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>KCL-Epetition</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+  
+  <title>KCL-Epetition</title>
 </head>
 
 
 
 <body>
-<div class="pageLayout">
+<div class="container">
 
-	
-
-
-    
-<div class="content">
+	 	 <div class="row">
+<div class="eight columns offset-by-two">	
 
 
-<p> attackers </p>
- <table border="1">
+
+<h2> attackers </h2>
+ <table>
 	
 	
 	
@@ -99,9 +106,9 @@
 	
 	<br/>
 	
-	<p>supporters</p>
+	<h2>supporters</h2>
 	
-	<table border="1">
+	<table>
 	
 	
 	
@@ -162,22 +169,9 @@
 	
 	</s:iterator>
 		</table>
-	
-	
-	<br/>
-	<br/>
-	
-	
-	
-	
-	
+</div>
+</div>	
+</div>
 
-	
-</div>
-       
-      
-       
-       
-</div>
 </body>
 </html>

@@ -6,30 +6,36 @@
     
 <!DOCTYPE html >
 
-
-
-
-
 <html>
-
-
-
-
  <s:action name="showProposalDetail" executeResult="true"/>
 
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Proposal</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+  
+  <title>Proposal</title>
 </head>
 
 
 <body>
+<div class="container">
+	     <header class="sixteen columns offset-by-three">   
+      <h1>
+PROPOSAL DETAIL    </h1>
+     </header>
+
 
 	<s:set var="p" value="#session.proposal"/>
 
-       
-       <table border="1" align="center" >
+       <table>
 		<tr>
   <s:iterator value="#p.aspects" var="a">
 		
@@ -46,58 +52,40 @@
 		<td><s:property value="#a.value"/></td>
 		
 	
-</s:iterator>
-		
-		
-		
+</s:iterator>	
 	</tr>
-
-	
-			
-   
-	
-	
 		</table>
 		
 		
-		
+
+	      <form action="voteProposal"> 
+   <div class="row">
+          <div class="four columns offset-by-four">		
       <p align="center" >What do you think of this proposal?  </p> 
       
-     <s:form action="voteProposal">
-	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
 
-	  
-	  <tr align="center"  height="40">
-	    <td colspan="2">
 		  <input name="agreeOrNot" type="submit"  value="agree"/>
 	<input name="agreeOrNot" type="submit"  value="disagree"/>
-		</td>
+		</div>
+		</div>
+	</form>
+     
+        <p align="center" >want to view the evaluation of this proposal?  </p> 
+     
+        <form action="evaluation">
+   <div class="row">
+          <div class="three columns offset-by-five">	
 		
-		</tr>
+		<input  type="submit"  value="view"/>
+</div>
+		</div>
 		
-	  </tr>
-     </table>
-	</s:form>
-     
-           <p align="center" >want to view the evaluation of this proposal?  </p> 
-     
-        <s:form action="evaluation">
-	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
-
-	  
-	  <tr align="center"  height="40">
-	    <td colspan="2">
-	<input  type="submit"  value="view"/>
-		</td>
 		
-		</tr>
 		
-	  </tr>
-     </table>
-	</s:form>
+	</form>
      
      
      
-       
+  </div>     
 </body>
 </html>

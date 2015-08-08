@@ -137,6 +137,8 @@ public class ProposalAction extends BaseAction {
 		  }
 		  
 		  Proposal proposal=ps.getProposalById(p.getId());
+			this.session().setAttribute("aspects", proposal.getAspects());
+
 			this.session().setAttribute("proposal", proposal);
 			
 			this.request().setAttribute("message", "thank you for voting");
@@ -189,7 +191,7 @@ public class ProposalAction extends BaseAction {
 	       p.setType(argumentScheme.getName());	   
 	       
 	       
-	       
+
 	       
 	       String[] variableList = argumentScheme.getVariables().split("/");
 
@@ -198,6 +200,7 @@ public class ProposalAction extends BaseAction {
 	       
 	       
 	       if(variableList.length!=variableValueList.length){
+	    	  this.request().setAttribute("message", "number of the variables is wrong");
 	    	   return ERROR;
 	       }
 	       else{
@@ -374,9 +377,9 @@ public class ProposalAction extends BaseAction {
 		Evaluation e = new Evaluation();
 		e.setTarget(target);
 		
-		String basicResult = "is "+e.basicEvaluation();
-		String cQResult = "is "+e.CQEvaluation();
-		String aSResult = "is "+e.ASEvaluation(target);
+		String basicResult = "it is "+e.basicEvaluation();
+		String cQResult = "it is "+e.CQEvaluation();
+		String aSResult = "it is "+e.ASEvaluation(target);
 		
 		results.add(basicResult);
 		results.add(cQResult);

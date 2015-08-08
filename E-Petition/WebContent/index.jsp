@@ -32,8 +32,8 @@
 
   <!-- CSS
   每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每每 -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/skeleton.css">
 
  
 
@@ -46,19 +46,21 @@
 
 <body>
 <div class="container">
+		<h1>Welcome to KCL E-Petition</h1>
 
 	
-
-
-    
-
-		<h1>Welcome to KCL E-Petition</h1>
-	<!-- 	   <a href="/E-Petition/JSP/admin/admin.jsp">admin page</a>   
-       <a href="/E-Petition/JSP/officer/officer.jsp">officer page</a>  -->
-     
+<div class="row">
+<div class="two columns offset-by-ten">
+ 
         <sec:authorize ifAnyGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">  <a href="/E-Petition/logout">logout</a></sec:authorize>
      
        <sec:authorize ifNotGranted="ROLE_USER,ROLE_OFFICER,ROLE_ADMIN">   <a href="/E-Petition/login.jsp">login</a></sec:authorize>
+</div>
+</div>
+    
+
+
+    
      
       <br>    
 		hi, 
@@ -177,20 +179,17 @@ Chose a schemeㄩ
 	</div>
 	</sec:authorize>
 	
+		   <sec:authorize ifAllGranted="ROLE_ADMIN">
+<a href="/E-Petition/JSP/admin/addArgumentScheme.jsp" target="_self">add new argument Scheme</a>
+			
+			</sec:authorize>
+			<br>
+			<br>
 </div>
        
        
-
-      <br/>
-	   
-	   <sec:authorize ifAllGranted="ROLE_ADMIN">
-<a href="/E-Petition/JSP/admin/addArgumentScheme.jsp" target="_self">add new argument Scheme</a>
-			
-			</sec:authorize>		
-			
-			    <br/>
-   <a href="/E-Petition/applet/hello.html" target="_blank">appletTest</a>   
-
+<!--    <a href="/E-Petition/applet/hello.html" target="_blank">appletTest</a>   
+ -->
 
 </body>
 </html>

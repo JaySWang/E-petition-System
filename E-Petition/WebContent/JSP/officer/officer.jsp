@@ -4,25 +4,23 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 %>  
   
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
+<!DOCTYPE HTML>  
 <html>  
-  <head>  
-    <base href="<%=basePath%>">  
-      
+  <head>        
     <title>My JSP 'officer.jsp' starting page</title>  
       
-    <meta http-equiv="pragma" content="no-cache">  
-    <meta http-equiv="cache-control" content="no-cache">  
-    <meta http-equiv="expires" content="0">      
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">  
-    <meta http-equiv="description" content="This is my page">  
-    <!-- 
-    <link rel="stylesheet" type="text/css" href="styles.css"> 
-    -->  
-  
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
   </head>  
     
   <body>  
-    <h3>这里是Officer页面</h3>  
+    <h3>This is Officer page</h3>  
   </body>  
 </html>  

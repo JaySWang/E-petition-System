@@ -34,7 +34,7 @@
 	
 	<action name="voteProposal" class="proposalAction" method="voteProposal" >
 		
-			<result name="success"  >/JSP/proposals/votesOfProposal.jsp</result>
+			<result name="success"  >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
 			

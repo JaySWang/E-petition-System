@@ -4,7 +4,7 @@
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
  
  
  
@@ -21,19 +21,27 @@
  <s:action name="showArgumentSchemes" executeResult="true"/>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>ArgumentScheme</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
+    <link rel="stylesheet" href="../../css/custom.css">
+  
+  <title>ArgumentScheme</title>
 </head>
 
 
 
 <body>
-<div class="pageLayout">
-
-
-
-
-       <table border="1" >
+<div class="container">
+<div class="row">
+<div class="ten column offset-by-one" >
+       <table class="u-full-width ">
 		<tr>
 		<th>name</th>
 <th>description</th>
@@ -44,7 +52,7 @@
 	var="as" status="st">
 
 		<tr <s:if test="#st.odd">
-		style="background-color:#bbbbbb"</s:if>>
+		style="background-color:#e0e0e0"</s:if>>
 	
 	
 	<td>
@@ -54,7 +62,7 @@
 		<s:property value="#as.name"/>
 	
 	</td>
-<td width="100">
+<td>
 	
 				
 		
@@ -103,9 +111,12 @@
 	</s:iterator>
 		</table>
        
-       
+ </div>
+ </div>
+ <nextbox>  
+         <a href="/E-Petition/index.jsp" target="_self" >back to proposal list</a> 
+</nextbox>
 </div>
-<br/>
-<a href="/E-Petition/index.jsp" target="_self" >back to proposal list</a>
+
 </body>
 </html>

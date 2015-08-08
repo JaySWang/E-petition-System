@@ -47,8 +47,17 @@ document.getElementById("aOrSForm").submit();
 
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>CriticalQuestion</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
+  
+  <title>CriticalQuestion</title>
 </head>
 
 
@@ -56,31 +65,35 @@ document.getElementById("aOrSForm").submit();
 
 
 <form action="getArgumentScheme" id="aOrSForm" target="_blank">
-
-
  <input id="aOrsInput" name="attackOrSupport"  type="hidden" />
  <input id="cidInput" name="cid"   type="hidden" />
  <input name="returnMsg" value="addProposal"  type="hidden">	
  <input  id="sInput"  name="sName"   type="hidden"/>
  </form>
+ 
+ <form action="answerCriticalQuestion">
+<div class="container">
+<div class="row">
+<div class="eleven column offset-by-one" >
+<s:set value="#session.proposal" var = "p"/>    
+        <p align="center" ><h4>What do you think of the flowing aspects of the proposal:p<s:property value="#p.id"/></h4> </p> 
+</div>
+</div>
 
 
-     <s:form action="answerCriticalQuestion">
-     
- <s:set value="#session.proposal" var = "p"/>    
-        <p align="center" >What do you think of the flowing aspects of the proposal:p<s:property value="#p.id"/> </p> 
-     
+<div class="row">
+      <div class="twelve columns " >
 <s:iterator value="#p.aspects" var = "a">
 
-	<s:property value="#a.type" />:
+<div class="row">
+      <div class="one-half column" >
+	<h5><s:property value="#a.value" /> </h5>
+		</div>
 	
-	<s:property value="#a.value" /> 
-	<br/>
-	
-	
-	
+<div class="one-half column" >
+	<ol>	
 	<s:iterator value="#a.criticalQuestions" var = "c">
-<table border="1">
+<li><table class="u-full-width ">
 <tr>
  <th>
 	 <s:property value="#c.value" /> 
@@ -88,15 +101,14 @@ document.getElementById("aOrSForm").submit();
   <input type="radio"   name= <s:property value="#c.id"/>  value="agree" />agree
 <input type="radio"   name=<s:property value="#c.id"/>  value="disagree" />disagree
 <input type="radio"   name=<s:property value="#c.id"/>   value="na"  checked = "checked"/>N/A
-	</th>
-	
+	</th>	
 	 </tr> 
 <tr>
 <td>
 <button type="button" onclick="more(<s:property value="#c.id" />)">more action</button>
 		
 		
-		<table  id=<s:property value="#c.id"/>  width="350" style="visibility:hidden">
+		<table  id=<s:property value="#c.id"/>  style="visibility:hidden">
 <tr>
 <tr>
 <td>
@@ -133,39 +145,34 @@ Chose a scheme：
  	</table>
 </td>
 </tr>
-	 
-</table>	 
-	 </s:iterator>
-	 
-	 
-		
-	
-		
-
-<br>
+</table></li>
+		 </s:iterator>
+		 		 </ol>
+	 		</div> 
+ </div> 
 	</s:iterator>
-
-
 
 
        
  
-   
-	  <table width="350" border="0" align="center" cellpadding="0" cellspacing="0" class="table">
+  <div class="row">  
+      <div class="two column offset-by-four" >
 
-	  
-	  <tr align="center"  height="40">
-	    <td colspan="2">
 		  <input name="submit" type="submit"  value="submit"/>
 	<input name="reset" type="reset"  value="reset"/>
-		</td>
-	  </tr>
-     </table>
-	</s:form>
+
+     </div>
+     </div>
      
        <sec:authorize ifAllGranted="ROLE_ADMIN">
 	<a href="/E-Petition/JSP/admin/addCriticalQuestion.jsp?id=<s:property value="#p.id"/>" target="_self" > add critical question  </a> 
      </sec:authorize>	
+      </div> 
+       </div>
        
+        
+ </div>  
+
+ </form>
 </body>
 </html>

@@ -12,18 +12,33 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Proposal</title>
+<meta  charset="utf-8">
+ <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+   <link rel="stylesheet" href="/E-Petition/css/normalize.css">
+  <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
+  
+  <title>Proposal</title>
 </head>
 
 
 <body>
-
-
+<div class="container">
+	     <header class="eleven columns offset-by-three">   
+      <h2>
+    VOTES OF THE PROPOSAL
+    </h2>
+     </header>
+ <div class="row">
+<div class="nine columns offset-by-three"> 
 	<s:set var="p" value="#session.proposal"/>
 
        
-       <table border="1" width="350" align="center" >
+       <table >
        	<tr>
   <s:iterator value="#p.aspects" var="a">
 		
@@ -62,7 +77,8 @@
      <br/>
      <a href="/E-Petition/index.jsp"  target="_self" > back to proposal list  </a>
      
-     
-       
+   </div>
+   </div>  
+ </div>      
 </body>
 </html>

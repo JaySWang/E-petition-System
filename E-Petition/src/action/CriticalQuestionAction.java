@@ -2,7 +2,6 @@ package action;
 
 
 
-import java.util.Enumeration;
 import java.util.List;
 
 import model.ArgumentScheme;
@@ -14,7 +13,6 @@ import model.Proposal;
 import service.IArgumentSchemeService;
 import service.IAspectService;
 import service.ICriticalQuestionService;
-import service.IProposalService;
 
 
 
@@ -232,6 +230,7 @@ return ERROR;
 			  }
 
 		  }
+		
 	      this.session().setAttribute("aspects", aspects);
 
 		  
