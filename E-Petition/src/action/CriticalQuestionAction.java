@@ -15,6 +15,7 @@ import model.Proposal;
 import service.IArgumentSchemeService;
 import service.IAspectService;
 import service.ICriticalQuestionService;
+import tools.HtmlEncode;
 
 
 
@@ -203,6 +204,13 @@ return ERROR;
 
 
 	   String[] questions =	question.split("/");
+	   
+	   //prevent xss attack
+       for(int i=0;i<questions.length;i++){
+    	   questions[i]=HtmlEncode.htmlEncode(questions[i]);
+   	}
+       
+	   
 	   
 	   for(String q : questions){
 		   CriticalQuestion cq = new CriticalQuestion();

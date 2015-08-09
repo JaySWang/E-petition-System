@@ -22,6 +22,7 @@ import model.Proposal;
 import service.IAspectService;
 import service.ICriticalQuestionService;
 import service.IProposalService;
+import tools.HtmlEncode;
 
 
 
@@ -200,8 +201,12 @@ public class ProposalAction extends BaseAction {
 
 	       String[] variableValueList = this.getVariables().split("/");
 
+	       //prevent xss attack
+	       for(int i=0;i<variableValueList.length;i++){
+	    	   variableValueList[i]=HtmlEncode.htmlEncode(variableValueList[i]);
+	   	}
 	       
-	       
+	    
 	       if(variableList.length!=variableValueList.length){
 	    	  this.request().setAttribute("message", "number of the variables is wrong");
 	    	   return ERROR;
@@ -301,6 +306,10 @@ public class ProposalAction extends BaseAction {
 	
 	
 	
+	
+
+
+
 	private void addSupporterToCq(CriticalQuestion cq, Proposal target) {
 		cq.addSupporter(target); 		
   	  
