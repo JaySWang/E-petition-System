@@ -5,15 +5,8 @@
 <%@taglib prefix="s" uri="/struts-tags"%>    
     
 <!DOCTYPE HTML>
- 
-  
- 
- 
-
 
 <html>
-
-  
  <s:action name="getASProposals" executeResult="true"/>
 
 <head>
@@ -29,33 +22,19 @@
   
   <title>KCL-Epetition</title>
 </head>
-
-
-
 <body>
 <div class="container">
 
 	 	 <div class="row">
 <div class="eight columns offset-by-two">	
-
-
-
 <h2> attackers </h2>
  <table>
-	
-	
-	
-	
 	
 	<s:iterator value="#session.attackers"
 	var="attacker" status="st">
 
 		<tr >
-	
-	
-	<td>
-	
-				
+	<td>				
 					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#attacker.id"/>" target="_self" >   
 		
 		P<s:property value="#attacker.id"/>
@@ -63,13 +42,9 @@
 	
 	</td>
 
-   
-	
-	
 	<td>	
 	<table >
 	<tr>
-	
 			<s:iterator value="#attacker.aspects" var="a" >
 						<font size='3'> </font>
 						<th>
@@ -77,25 +52,14 @@
 						</th>
 						
 						<td>
-						<s:property value="#a.value"/>
+						<s:property value="#a.value" escape="false" />
 						</td>			
 				</tr>
 						
-	</s:iterator>
-	
-	
-	
-			
-			
+	</s:iterator>		
 	</table>
 	
-	</td>
-		
-				
-	
-	
-	
-		
+	</td>	
 	</tr>
 	
 	
@@ -110,33 +74,21 @@
 	
 	<table>
 	
-	
-	
-	
-	
 	<s:iterator value="#session.supporters"
 	var="supporter">
 
 		<tr >
-	
-	
-	<td>
-	
-				
+
+	<td>			
 					<a href="/E-Petition/JSP/proposals/proposal.jsp?id=<s:property value="#supporter.id"/>" target="_self" >   
 		
 		P<s:property value="#supporter.id"/>
    </a>
 	
 	</td>
-
-   
-	
-	
 	<td>	
 		<table >
 	<tr>
-	
 			<s:iterator value="#supporter.aspects" var="a" >
 						<font size='3'> </font>
 						<th>
@@ -144,29 +96,15 @@
 						</th>
 						
 						<td>
-						<s:property value="#a.value"/>
+						<s:property value="#a.value" escape="false"/>
 						</td>			
 				</tr>
 						
-	</s:iterator>
-	
-	
-	
-			
-			
+	</s:iterator>		
 	</table>
-	
-	</td>
-		
-				
-	
-	
-	
-		
+	</td>	
 	</tr>
-	
-	
-	
+
 	</s:iterator>
 		</table>
 </div>

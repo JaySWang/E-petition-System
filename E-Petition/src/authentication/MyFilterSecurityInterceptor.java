@@ -16,17 +16,32 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 
 
 
-public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor  implements Filter {    
-    
-    //配置文件注入  
+public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor
+										implements Filter {    
     private FilterInvocationSecurityMetadataSource securityMetadataSource;  
-      
-    //登陆后，每次访问资源都通过这个拦截器拦截  
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {   
+    //intercept all the requests 
+    public void doFilter(ServletRequest request, ServletResponse response, 
+    			FilterChain chain) throws IOException, ServletException {   
         FilterInvocation fi = new FilterInvocation(request, response, chain);   
         invoke(fi);    
         }  
-      
+    public void invoke(FilterInvocation fi) throws IOException, ServletException {  
+        //fi contains the intercepted url  
+        //1 call getAttributes(Object object) in MyInvocationSecurityMetadataSource
+    	//  to get the authority needed for the requested url
+        //2 call decide() in MyAccessDecisionManager to check whether
+    	//  the user has the authority to access the url
+        InterceptorStatusToken token = super.beforeInvocation(fi);  
+        try {  
+            //invoke next Filter  
+            fi.getChain().doFilter(fi.getRequest(), fi.getResponse());     
+            } finally {   
+                super.afterInvocation(token, null);    
+            }     
+        }  
+    
+    
+    
     public FilterInvocationSecurityMetadataSource getSecurityMetadataSource() {    
         return this.securityMetadataSource;    
         }     
@@ -35,18 +50,7 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor  im
         return FilterInvocation.class;      
         }    
       
-    public void invoke(FilterInvocation fi) throws IOException, ServletException {  
-        //fi里面有一个被拦截的url  
-        //里面调用MyInvocationSecurityMetadataSource的getAttributes(Object object)这个方法获取fi对应的所有权限  
-        //再调用MyAccessDecisionManager的decide方法来校验用户的权限是否足够  
-        InterceptorStatusToken token = super.beforeInvocation(fi);  
-        try {  
-            //执行下一个拦截器  
-            fi.getChain().doFilter(fi.getRequest(), fi.getResponse());     
-            } finally {   
-                super.afterInvocation(token, null);    
-            }     
-        }    
+  
     
     
     public SecurityMetadataSource obtainSecurityMetadataSource() {   

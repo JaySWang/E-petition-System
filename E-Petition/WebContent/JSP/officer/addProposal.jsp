@@ -9,8 +9,6 @@
 
 <!doctype html>
 
-
-
 <html>
 <head>
 <meta  charset="utf-8">
@@ -24,60 +22,43 @@
    <link rel="stylesheet" href="/E-Petition/css/normalize.css">
   <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
 <title>Add proposal</title>
-
-
 <body>
-
 <div class="container">
 	     <header class="sixteen columns offset-by-four">   
       <h1>
       ADD PROPOSAL
     </h1>
      </header>
-
-
 		  <p align="center"><s:property value="#session.attackOrSupport"/><p>
-	
 		  <p align="center"><s:property value="#session.criticalQuestionValue"/><p>
-		  <br>
-	
+		  <br>	
 	<form action="addProposal">
 	
 <div class="row">
 <div class="six columns offset-by-four">	
  <table>
 <tr>
-<td>
-	
+<td>	
 <s:set var="as" value="#session.argumentScheme"/>	
 <s:iterator value="#as.aspectTypes"
-	var="at">
-	 
+	var="at">	 
 	   <tr>
-	   <td>
-	
+	   <td>	
   <s:property value="#at.name"/>:
   <s:property value="#at.template"/>
   </td>
-
 </tr>
 </s:iterator>
-
-
   <td>
   <br/>
   please assign values to these variables:
   <br/>
     <s:property value="#as.variables"/>:
-    <textarea class="u-full-width" placeholder="use '/' to separate" name="variables" ></textarea>
-    
+    <textarea class="u-full-width" placeholder="use '/' to separate" name="variables" ></textarea>    
 </td>
-
-
 	 </td>
 	 </tr>
-
-
+	 
 	  <tr align="center"  height="40">
 	    <td colspan="2">
 		  <input name="" type="submit"  value="add"/>

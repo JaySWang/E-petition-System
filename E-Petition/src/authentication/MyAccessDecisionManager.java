@@ -13,14 +13,12 @@ import org.springframework.security.core.GrantedAuthority;
 
 
 public class MyAccessDecisionManager  implements AccessDecisionManager{
-
-	//检查用户是否够权限访问资源  
-    //参数authentication是从spring的全局缓存SecurityContextHolder中拿到的，里面是用户的权限信息  
-    //参数object是url  
-    //参数configAttributes所需的权限  
+	//to check whether a user has the authority to access particular resource  
 	
-	
-    public void decide(Authentication authentication, Object object,      
+    //authentication comes from the SecurityContextHolder in Spring,which contains the user's authority  
+    //object contains the url that the user wants to access  
+    //configAttributes is authorities needed to access the url
+	public void decide(Authentication authentication, Object object,      
             Collection<ConfigAttribute> configAttributes)   
                     throws AccessDeniedException, InsufficientAuthenticationException {  
         if(configAttributes == null){   
@@ -31,19 +29,22 @@ public class MyAccessDecisionManager  implements AccessDecisionManager{
         while(ite.hasNext()){  
             ConfigAttribute ca=ite.next();    
             String needRole=((SecurityConfig)ca).getAttribute();  
-            for(GrantedAuthority ga : authentication.getAuthorities()){   
-            	if(needRole.equals("ROLE_NO")){
-            		return;
-            	}
+            if(needRole.equals("ROLE_NO")){
+        		return;
+        	}
+            for(GrantedAuthority ga : authentication.getAuthorities()){               	
                 if(needRole.equals(ga.getAuthority())){    
-                      
+                	//the user has the authority
                     return;                
         }              
     }        
-}   
-        //注意：执行这里，后台是会抛异常的，但是界面会跳转到所配的access-denied-page页面  
+}      
+        //the user does not have the authority to access the url  
         throw new AccessDeniedException("no right");     
 }     
+	
+	
+	
     public boolean supports(ConfigAttribute attribute) {   
         return true;  
     }    

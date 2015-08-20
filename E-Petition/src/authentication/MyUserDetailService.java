@@ -12,9 +12,23 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import service.IUserService;
 
 public class MyUserDetailService implements UserDetailsService {
-
-	 
 	IUserService us;
+	//1 get user's authority by username when the user try to login
+    //2 return and put the user information in the SecurityContextHolder of Spring
+	//  to let it be used by AccessDecisionManager
+    public UserDetails loadUserByUsername(String username) 
+            throws UsernameNotFoundException   {   
+        Collection<GrantedAuthority> auths=new ArrayList<GrantedAuthority>(); 
+        model.User u = us.getUserByName(username);    
+        String password=u.getPassword();     
+        GrantedAuthorityImpl auth=new GrantedAuthorityImpl(u.getRole());   
+        auths.add(auth);
+
+        User user = new User(username, password, true, true, true, true, auths); 
+        return user;  
+        } 
+	
+	
 	
 	
     public IUserService getUs() {
@@ -25,34 +39,6 @@ public class MyUserDetailService implements UserDetailsService {
 	public void setUs(IUserService us) {
 		this.us = us;
 	}
-
-	
-
-	//登陆验证时，通过username获取用户的所有权限信息，
-    //并返回User放到spring的全局缓存SecurityContextHolder中，以供授权器使用
-    public UserDetails loadUserByUsername(String username) 
-            throws UsernameNotFoundException   {   
-        Collection<GrantedAuthority> auths=new ArrayList<GrantedAuthority>(); 
-         
-   
-
-        
-        
-        model.User u = us.getUserByName(username);
-        
-        String password=u.getPassword();
-        
-        GrantedAuthorityImpl auth=new GrantedAuthorityImpl(u.getRole());   
-        auths.add(auth);
-        
-      
-         
-        User user = new User(username, password, true, true, true, true, auths); 
-        return user;  
-        } 
-	
-	
-	
 	
 
 }

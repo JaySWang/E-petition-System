@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html"%>
     
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="s" uri="/struts-tags"%>    
@@ -14,11 +13,11 @@
 <head>
 <meta  charset="utf-8">
  <!-- FONT
-  ¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C -->
+  â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
-  ¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C -->
+  â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ -->
    <link rel="stylesheet" href="/E-Petition/css/normalize.css">
   <link rel="stylesheet" href="/E-Petition/css/skeleton.css">
   
@@ -29,9 +28,9 @@
 <body>
 <div class="container">
 	     <header class="eleven columns offset-by-three">   
-      <h2>
+      <h4>
     VOTES OF THE PROPOSAL
-    </h2>
+    </h4>
      </header>
  <div class="row">
 <div class="nine columns offset-by-three"> 
@@ -55,7 +54,7 @@
 	
   <s:iterator value="#p.aspects" var="a">
 		
-		<td><s:property value="#a.value"/></td>
+		<td><s:property value="#a.value" escape="false" /></td>
 		
 	
 </s:iterator>

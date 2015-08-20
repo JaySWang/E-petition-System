@@ -49,14 +49,10 @@ public class ProposalDAO{
 
 	public Proposal find(int id) {
 		String hql="select p from Proposal p where p.id=(:id)";
-
-		List<Proposal> proposals=this.getDao().createQuery(hql).setParameter("id", id).list();
-		
+		List<Proposal> proposals=this.getDao().createQuery(hql).setParameter("id", id).list();	
 		if(proposals.size()>0)
-			return proposals.get(0);
-		
+			return proposals.get(0);		
 		return null;
-
 	}
 
 	public void update(Proposal p) {

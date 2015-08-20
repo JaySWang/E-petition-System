@@ -27,31 +27,20 @@ import tools.HtmlEncode;
 
 
 public class ProposalAction extends BaseAction {
-
-
 	private IProposalService ps;
 	private IAspectService as;
 	private ICriticalQuestionService cqs;
-
 	private String agreeOrNot;
-	
-    private String variables;
-    
+    private String variables;  
     private Map<String,String> variablePairs ;
-
-   
-
+    
 	public ICriticalQuestionService getCqs() {
 		return cqs;
 	}
 
-
-
 	public void setCqs(ICriticalQuestionService cqs) {
 		this.cqs = cqs;
 	}
-
-
 
 	public String getVariables() {
 		return variables;
@@ -109,32 +98,25 @@ public class ProposalAction extends BaseAction {
 		return SUCCESS;
 	}
 
-
-	
 	 public String voteProposal() throws Exception {
-	      Proposal p = (Proposal)this.session().getAttribute("proposal");
-		 
+	      Proposal p = (Proposal)this.session().getAttribute("proposal");		 
 	      try{
 	      if(agreeOrNot.equalsIgnoreCase("agree")){
-
-			  ps.voteAgree(p,true);
-		  
+			  ps.voteAgree(p,true);	  
 		  }else if(agreeOrNot.equalsIgnoreCase("disagree")){
 			  ps.voteAgree(p,false);
-			  
 			  Proposal proposal=ps.getProposalById(p.getId());
-			  
 				this.session().setAttribute("aspects", proposal.getAspects());
-				
 			  return "cq";
-
 		  }else{
 			  return ERROR;
 		  }
 	      }catch(HibernateOptimisticLockingFailureException he){
-				System.out.println("Optimistic lock");
+				//there is a conflict
+	    	    //get the newest data 
 				Proposal newP = ps.getProposalById(p.getId());
 				this.session().setAttribute("proposal", newP);
+				// try to vote again 
 				voteProposal();
 			}catch(Throwable t){
 				t.printStackTrace();
@@ -146,122 +128,84 @@ public class ProposalAction extends BaseAction {
 			this.session().setAttribute("proposal", proposal);
 			
 			this.request().setAttribute("message", "thank you for voting");
-	        
-			
-		  
 		return SUCCESS;
 	}
 
 
 	@SuppressWarnings("unchecked")
 	public String showProposalDetail()  {
-	try{
-		
-		
+	try{			
 		String idS =  this.request().getParameter("id");
 		if(idS==null){
 			idS = (String) this.session().getAttribute("pid");
 		}else {
 	         this.session().setAttribute("pid", idS);
-
 		}
-         
-         
 		int id = Integer.parseInt(idS);
 		Proposal proposal=ps.getProposalById(id);
-		this.session().setAttribute("proposal", proposal);
-		
+		this.session().setAttribute("proposal", proposal);	
 	    	(this.request()).setAttribute("message", "");
-
-		
-
-
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			return ERROR;
-			
-		}
-		
+			return ERROR;			
+		}		
 		return SUCCESS;
 	}
 	
-	public String addProposal() throws Exception {
-
-		
+	public String addProposal() throws Exception {	
 	       Proposal p=new Proposal();
-	       ArgumentScheme argumentScheme = (ArgumentScheme) this.session().getAttribute("argumentScheme");
-	   
-	       p.setType(argumentScheme.getName());	   
-	       
-	       
-
-	       
+	       ArgumentScheme argumentScheme = (ArgumentScheme) this.session().getAttribute("argumentScheme");   
+	       p.setType(argumentScheme.getName());	
+	       //separate  variables defined in argument scheme and values inputed by the user. 
 	       String[] variableList = argumentScheme.getVariables().split("/");
-
 	       String[] variableValueList = this.getVariables().split("/");
 
 	       //prevent xss attack
 	       for(int i=0;i<variableValueList.length;i++){
 	    	   variableValueList[i]=HtmlEncode.htmlEncode(variableValueList[i]);
 	   	}
-	       
 	    
+	       // check whether the number of input values is correct
 	       if(variableList.length!=variableValueList.length){
 	    	  this.request().setAttribute("message", "number of the variables is wrong");
-	    	   return ERROR;
-	       }
+	    	   return ERROR; }
 	       else{
-	    	    variablePairs = new HashMap();
-	    	   
+	    	    variablePairs = new HashMap();    	   
 	    	    for(int i=0;i<variableList.length;i++){
-	    	    	variablePairs.put(variableList[i], variableValueList[i]);
-	    	    }
-	    	    
+	    	    	variablePairs.put(variableList[i], variableValueList[i]);  }    	    
 	       }
 	       
+	       //create aspects for the proposal
 	       List<Aspect> aspects=new ArrayList();
 	       for(AspectType at : argumentScheme.getAspectTypes()){
 	    	   Aspect a = new Aspect();
 	    	   a.setType(at.getName());
-	    	   String tempalate = at.getTemplate();
-	    	   
+	    	   String tempalate = at.getTemplate();	
+	    	   //replace variables defined in the template of the specific aspect type 
 	    	   String value = replaceVariables(tempalate);
-	    	    	   
-	
-
-	
-	    	   a.setValue(value);
-	    	 
+	    	   a.setValue(value);	
+	    	   //automatically generate critical questions for the aspect 
+	    	   //1¡¢get critical question templates of the specific aspect type
 	    	   for(CriticalQuestion cq:at.getCriticalQuestionTemplates()){
+		    	   //2¡¢replace variables in the templates with the input values
 	    		   String cqValue = replaceVariables(cq.getValue());
 		    	   CriticalQuestion newCq = new CriticalQuestion();
-		    	   newCq.setValue(cqValue);
-		    	   
+		    	   newCq.setValue(cqValue);	
+		    	   //3¡¢add critical questions to the aspect
 		    	   a.addCriticalQuestion(newCq);
-	    	   }
-	    	  
-	    	   aspects.add(a);
-	    	   
-	       }
+	    	   }	    	  
+	    	   aspects.add(a);	    	   
+	       }	      	       
+	       p.setAspects(aspects);  
 	       
-	       
-	       p.setAspects(aspects);
-	     
 	       
 	       try{ 
-	    		 ps.save(p);
-
-	    		 
-	    		 
+	    		 ps.save(p); 
 	    	    String attackOrSupport = (String)this.session().getAttribute("attackOrSupport");
 	 	       
-	 	       if(attackOrSupport!=null){
-	 	    	   
-	 	    	   String id = (String) this.session().getAttribute("cid");
-	 	    	
-	 	    	
-	 	    	   
+	 	       if(attackOrSupport!=null){	 	    	   
+	 	    	   String id = (String) this.session().getAttribute("cid");	   
 	 	    	   int cid =  Integer.parseInt(id);
 	     		   CriticalQuestion cq = cqs.getCriticalQuestionById(cid);
 	     		   
@@ -279,36 +223,21 @@ public class ProposalAction extends BaseAction {
 	 	    	 this.session().removeAttribute("cid");
 	 	    	 
 	 	    	(this.request()).setAttribute("message", "succeed");
-
-
 				return "aOrS_success";
 	 	    	 
-	 	       }
-	 	       
-	    	   
-	    	   
-	    	   
+	 	       }   
 	       }
 	       catch(Throwable e){
 	    	   e.printStackTrace();
 	    	   (this.request()).setAttribute("message", "failed£º" + e.getMessage());
 	    	   return ERROR;
-	       }
-	       
-	       
-	       
-	       
+	       }	          
 	       (this.request()).setAttribute("message", "succeed");
 
 
 			return SUCCESS;
 		}
 	
-	
-	
-	
-
-
 
 	private void addSupporterToCq(CriticalQuestion cq, Proposal target) {
 		cq.addSupporter(target); 		
@@ -321,9 +250,7 @@ public class ProposalAction extends BaseAction {
 			addSupporterToCq(newCq,target);
 		}catch(Throwable t){
 			t.printStackTrace();
-		}	
-		
-
+		}			
 	}
 	private void addAttackerToCq(CriticalQuestion cq, Proposal target) {
 		  cq.addAttacker(target); 	
@@ -336,11 +263,7 @@ public class ProposalAction extends BaseAction {
 			}catch(Throwable t){
 				t.printStackTrace();
 			}	
-		  
 	}
-
-
-
 	private String replaceVariables(String tempalateS) {
 		
 		for(String s:variablePairs.keySet()){
@@ -350,19 +273,12 @@ public class ProposalAction extends BaseAction {
 			}
 			
 		}
-		
-		
 		return tempalateS;
 	}
-
-
-
 	public String getASProposals()  {
 
 		Set<Proposal> attackers;
 		Set<Proposal> supporters;
-
-		
 		String idS =  this.request().getParameter("cid");
 		if(idS==null){
 			idS = (String) this.session().getAttribute("cid");
@@ -370,14 +286,8 @@ public class ProposalAction extends BaseAction {
 	         this.session().setAttribute("cid", idS);
 
 		}
-         
-         
+           
 		int cid = Integer.parseInt(idS);
-		
-		
-		
-		
-		
 		try{
   		   CriticalQuestion cq = cqs.getCriticalQuestionById(cid);
 			
@@ -403,7 +313,6 @@ public class ProposalAction extends BaseAction {
 
 	public String evaluation(){
 		
-		
 		List<String> results = new ArrayList();
 		
 		String idS =  this.request().getParameter("id");
@@ -422,13 +331,12 @@ public class ProposalAction extends BaseAction {
 		e.setTarget(target);
 		
 		String basicResult = "it is "+e.basicEvaluation();
-		String cQResult = "it is "+e.CQEvaluation();
-		String aSResult = "it is "+e.ASEvaluation(target);
+		String cQResult = "it is "+e.ordinaryEvaluation();
+		String aSResult = "it is "+e.advancedEvaluation(target);
 		
 		results.add(basicResult);
 		results.add(cQResult);
 		results.add(aSResult);
-
 		
 		// pay attention to the order in JSP
 		this.request().setAttribute("results", results);

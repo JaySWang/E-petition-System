@@ -20,19 +20,10 @@ import javax.persistence.Version;
 @Entity
 @Table
 public class Proposal extends BaseEntityBean  implements Serializable {
-
-	
-	 
-	 
-	 
 	 @OneToMany(fetch = FetchType.EAGER,targetEntity=Aspect.class,cascade={  CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="pid",referencedColumnName="id")})
-		
-	 private List<Aspect> aspects=new ArrayList();
 	 
-	 
-		
-	
+    private List<Aspect> aspects=new ArrayList();
 	private String type; 
 	private int agree;
 	private int disagree;
@@ -44,10 +35,6 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 	public int getVersion() {
 		return version;
 	}
-
-
-
-
 	public void setVersion(int version) {
 		this.version = version;
 	}
@@ -91,12 +78,6 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 		return aspectsN;
 		
 	}
-	
-	
-
-
-
-
 
 	public int getAgree() {
 		return agree;
@@ -133,16 +114,4 @@ public class Proposal extends BaseEntityBean  implements Serializable {
 		this.aspects = aspects;
 	}
 
-
-
-
-
-
-
-
-
-
-	
-	
-	
 }

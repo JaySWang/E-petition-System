@@ -39,6 +39,14 @@
 
 <body>
 <div class="container">
+
+	     <header class="sixteen columns offset-by-three">   
+      <h1>
+    ARGUMENT SCHEME LIST
+    </h1>
+     </header>
+
+
 <div class="row">
 <div class="ten column offset-by-one" >
        <table class="u-full-width ">
@@ -87,7 +95,7 @@
 			<s:iterator value="#at.criticalQuestionTemplates"
 	var="atcq" status="qst">
 	<br/>
-		<s:property value="#qst.index"/>.
+		<s:property value="#qst.index+1"/>.
 	    <s:property value="#atcq.value"/>
 				
 	

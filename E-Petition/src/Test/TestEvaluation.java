@@ -33,59 +33,45 @@ public class TestEvaluation {
 
 
 	
-	//evaluation just base on the general votes
-	
+	// test the evaluation base on the proposal' votes
 	@Test
-	public void BasicEvaluation() throws Exception{
-	
+	public void basicEvaluation() throws Exception{
 	  int agree;
 	  int disagree;	
 	  IEvaluation e =new Evaluation(); 
       Proposal p = new Proposal();
-     
       
-      // notAccept
+      //1 not accept case     
+      //when the numbers of votes less than that of negative votes 
       agree=10;
       disagree=20;
-      
       p.setAgree(agree);
-      p.setDisagree(disagree);
-      
+      p.setDisagree(disagree);      
       e.setTarget(p);
       assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.basicEvaluation()));
-      
-      
+         
+      //when the numbers of votes and negative votes equal
       agree=0;
-      disagree=0;
-      
+      disagree=0;     
       p.setAgree(agree);
-      p.setDisagree(disagree);
-      
+      p.setDisagree(disagree);     
       e.setTarget(p);
-      assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.basicEvaluation()));
+      assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.basicEvaluation())); 
       
-      
-      //accept
+      //2  accept case
       agree=21;
       disagree=20;
-      
       p.setAgree(agree);
-      p.setDisagree(disagree);
-      
+      p.setDisagree(disagree);     
       e.setTarget(p);
       assertTrue(ConstValue.Accpeted.equalsIgnoreCase(e.basicEvaluation()));
-    
-      
-
-		
-		
 
 	}
 	
 	
 	
 	@Test
-	public void CQEvaluation() throws Exception{
+	public void ordinaryEvaluation() throws Exception{
 		  IEvaluation e =new Evaluation(); 
 
 		
@@ -123,7 +109,7 @@ public class TestEvaluation {
 		aspects.add(action);
 		p.setAspects(aspects);
 		e.setTarget(p);
-		assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.CQEvaluation()));
+		assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.ordinaryEvaluation()));
 		
 		
 		
@@ -166,14 +152,14 @@ public class TestEvaluation {
 		
 		// accept
 		e.setTarget(p);
-	    assertTrue(ConstValue.Accpeted.equalsIgnoreCase(e.CQEvaluation())); 
+	    assertTrue(ConstValue.Accpeted.equalsIgnoreCase(e.ordinaryEvaluation())); 
 		
 		
 		}
 
   
 	@Test
-   public void ASEvaluation(){
+   public void advancedEvaluation(){
 	
 			
 		
@@ -181,8 +167,7 @@ public class TestEvaluation {
 		 IEvaluation e =new Evaluation(); 
 
 
-		 
-		 //accepted
+		 // teaccepted
 		 
 			Proposal p = new Proposal();
 			Aspect situation = new Aspect();
@@ -236,7 +221,7 @@ public class TestEvaluation {
 			aspects.add(action);
 			p.setAspects(aspects);
 			e.setTarget(p);
-			assertTrue(ConstValue.Accpeted.equalsIgnoreCase(e.ASEvaluation(p)));
+			assertTrue(ConstValue.Accpeted.equalsIgnoreCase(e.advancedEvaluation(p)));
 			
 			
 			
@@ -292,7 +277,7 @@ public class TestEvaluation {
 			
 			// accept
 			e.setTarget(p);
-		    assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.ASEvaluation(p)));
+		    assertTrue(ConstValue.NotAccpeted.equalsIgnoreCase(e.advancedEvaluation(p)));
 		
 		
 		

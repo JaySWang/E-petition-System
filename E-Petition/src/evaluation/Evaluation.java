@@ -25,88 +25,72 @@ public class Evaluation implements IEvaluation {
 
 	
 	
-	
+	@Override
+	public void setTarget(Proposal p) {
+		target = p;		
+	}
+
 	
 	@Override
 	public String basicEvaluation() {
-
-		String result;
-		
+		//just consider the 
+		String result;	
 		if(target.getAgree()>target.getDisagree()){
 			result=ConstValue.Accpeted;
 		}else{
 			result=ConstValue.NotAccpeted;
 		}
 		
-		
-		
 		return result;
 	}
 
 	@Override
-	public void setTarget(Proposal p) {
-		target = p;		
-	}
-
-	@Override
-	public String CQEvaluation() {
-	
-		//any cq in any aspect win,the proposal is not accepted ,Otherwise accepted
-		//When evaluation assume that those who votes agree on the proposal,disagree with all the critical questions
+	public String ordinaryEvaluation() {
+		//1 if any critical question of any aspect win,the proposal is not accepted
+		//  Otherwise  it is accepted
+		//2 When evaluating, assuming that those who votes agree on the proposal,
+		//  disagree with all the critical questions
 		for(Aspect a: target.getAspects()){
 			for(CriticalQuestion cq:a.getCriticalQuestions()){
 				if(cq.getAgree()>=cq.getDisagree()+target.getAgree()){
 					return ConstValue.NotAccpeted;
 				}
-					
-				
-				
 			}
-			
-			
 		}
-		
-		
 		return ConstValue.Accpeted;
 	}
 
 	@Override
-	public String ASEvaluation(Proposal p) {
-
-		//any cq in any aspect win,the proposal is not accepted ,Otherwise accepted
-		//when evaluating cq,also consider its attackers and supporters.for each won one,add votes to the cq
-		//totoal adding votes = number of won ones*weight
-		
-		
+	public String advancedEvaluation(Proposal p) {
+		//1 if any critical question of any aspect win,the proposal is not accepted,
+		//  Otherwise it is accepted.
+		//2 when evaluating a critical question,also consider its attackers and supporters.
+		//  for each won one,add votes or negative votes to the critical question
+		//3 total votes to add = number of won ones*weight
+		//4 default weight is 2		
 				for(Aspect a: p.getAspects()){
 					for(CriticalQuestion cq:a.getCriticalQuestions()){
-						int disagreeIncreation=0;
-						int aggreeIncreation=0;
+						int voteIncreation=0;
+						int negativeVotesIncreation=0;
 						
 						for(Proposal attacker:cq.getAttackers()){
-							
-							if(this.ASEvaluation(attacker)==ConstValue.Accpeted){
-								disagreeIncreation+=weight;
+							//recursively evaluate attacker 
+							if(this.advancedEvaluation(attacker)==ConstValue.Accpeted){
+								negativeVotesIncreation+=weight;
 							}
 						}
 						for(Proposal supporter:cq.getSupporters()){
-							if(this.ASEvaluation(supporter)==ConstValue.Accpeted){
-								aggreeIncreation+=weight;
+							//recursively evaluate supporter 
+							if(this.advancedEvaluation(supporter)==ConstValue.Accpeted){
+								voteIncreation+=weight;
 								}		
 						}
-					if((cq.getAgree()+aggreeIncreation)>=(cq.getDisagree()+disagreeIncreation+p.getAgree())){
+					if((cq.getAgree()+voteIncreation)>=(cq.getDisagree()+negativeVotesIncreation+p.getAgree())){
 							return ConstValue.NotAccpeted;
-
 						}			
 					}
 				}
-		
-
-	
-	
-				return ConstValue.Accpeted;
-
-	
+					return ConstValue.Accpeted;
 	}
 	
 }

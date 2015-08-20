@@ -1,3 +1,9 @@
-#Mon Jul 27 22:49:53 BST 2015
+#Wed Aug 19 19:33:40 BST 2015
 eclipse.preferences.version=1
+encoding//WebContent/JSP/proposals/criticalQuestion/criticalQuestion.jsp=UTF-8
+encoding//WebContent/JSP/proposals/criticalQuestion/statisticOfcriticalQuestion.jsp=UTF-8
+encoding//WebContent/JSP/proposals/evaluationResult.jsp=UTF-8
+encoding//WebContent/JSP/proposals/proposal.jsp=UTF-8
+encoding//WebContent/JSP/proposals/votesOfProposal.jsp=UTF-8
 encoding//WebContent/css/skeleton.css=UTF-8
+encoding//WebContent/index.jsp=UTF-8

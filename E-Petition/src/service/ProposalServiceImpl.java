@@ -66,17 +66,13 @@ public class ProposalServiceImpl   implements IProposalService {
 
 	@Override
 	public void update(Proposal p) {
-		pdao.update(p);
-		
+		pdao.update(p);		
 	}
 
 	@Override
 	public List<Proposal> getGeneralProposals() {
 		List proposals = new ArrayList();
 		proposals =	pdao.getProposalsByType("General Proposal");
-		
-		
-		
 		return proposals;
 	}
 
@@ -84,22 +80,14 @@ public class ProposalServiceImpl   implements IProposalService {
 	public List<Proposal> getNotGeneralProposals() {
 		List<Proposal> proposalsTemp = new ArrayList();
 		proposalsTemp =	pdao.getProposals();
-	 
 		List proposals = new ArrayList();
         for(Proposal p:proposalsTemp){
         	if(!(p.getType().equalsIgnoreCase("General Proposal"))){
         		proposals.add(p);
         	}
         }
-		
 		return proposals;
 	}
-
-
-
-
-
-
 
 	
 }

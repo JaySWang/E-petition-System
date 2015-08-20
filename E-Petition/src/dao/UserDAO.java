@@ -54,7 +54,7 @@ public class UserDAO{
 
 	public User getUserByUserName(String userName){
 		 String hql=" select u from User u where u.userName=(:userName)";
-
+			//set parameter
 		User u = (User) (dao.createQuery(hql).setParameter("userName", userName).list().get(0));
 		return u;
 	}

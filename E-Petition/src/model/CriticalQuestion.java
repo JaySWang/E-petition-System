@@ -25,16 +25,7 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 	@Version
 	private int version;
 	
-	
-	
 
-
-
-
-
-
-	
-	
 	 @OneToMany(fetch=FetchType.EAGER,targetEntity=Proposal.class,cascade={CascadeType.ALL})
 		@JoinColumns(value={@JoinColumn(name="support",referencedColumnName="id")})
 		private Set<Proposal> supporters=new HashSet();
@@ -106,6 +97,53 @@ public class CriticalQuestion  extends BaseEntityBean  implements Serializable {
 		 supporters.add(p);
 	 }
 	  
-	
+		@Override
+		public boolean equals(Object obj) { 
+			CriticalQuestion cq = (CriticalQuestion)obj; 
+			if(!this.value.equals(cq.value)){
+				return false;
+			}
+		
+			if(this.attackers.size()!=cq.attackers.size()){
+				return false;
+			}
+			if(this.supporters.size()!=cq.supporters.size()){
+				return false;
+			}
+			
+			int hashcode1=0;
+			int hashcode2=0;
+			for(Proposal p:attackers){
+				hashcode1=+p.getType().hashCode();
+				for(Proposal p2:cq.attackers){
+					hashcode2=+p2.getType().hashCode();
+			}
+				if(hashcode1!=hashcode2){
+					return false;
+				}	
+			}
+			for(Proposal p:supporters){
+				hashcode1=+p.getType().hashCode();
+				for(Proposal p2:cq.supporters){
+					hashcode2=+p2.getType().hashCode();
+			}
+				if(hashcode1!=hashcode2){
+					return false;
+				}	
+			}
+			
+		
+		    return true; 
+		     
+
+		} 
+		@Override
+		public int hashCode(){
+			int hashCode = this.value.hashCode()*29;
+			hashCode+=this.attackers.size()*13;
+			hashCode+=this.supporters.size()*11;
+
+			return hashCode;
+		}
 	
 }

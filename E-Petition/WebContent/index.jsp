@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html"%>
     
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
@@ -27,11 +26,11 @@
 
 <meta  charset="utf-8">
  <!-- FONT
-  ®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C -->
+  ‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
-  ®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C®C -->
+  ‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì‚Äì -->
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/skeleton.css">
 
@@ -60,25 +59,19 @@
     
 
 
+    		   <sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_OFFICER">
+    		   	hi, 
+                <sec:authentication property ="name"/> !  
+    		   </sec:authorize>
     
-     
-      <br>    
-		hi, 
-    <sec:authentication property ="name"/> !  
-      
-     
- 
-<!-- <sec:authorize ifAllGranted="ROLE_USER">userø…“‘∑√Œ </sec:authorize>
-<sec:authorize ifAllGranted="ROLE_OFFICER">officerø…“‘∑√Œ </sec:authorize>
- -->
-		
+
 		 <div class="row">
-      <div class="one-half column" >
-		
-
-			<p>Welcome to the KCL-Epetition system that allows the government to present 
-			policy proposals to the public and lets the public submit their opinion on the policy .</p>
-
+      <div class="six columns" >
+	
+			<b>Welcome</b> to the KCL E-petition system.
+			 <sec:authorize ifNotGranted="ROLE_ADMIN,ROLE_OFFICER">
+					   			 <p>Your voice will be louder and heard clearly.</p>
+			</sec:authorize>
 
 
 					<h4>Current debates</h4>
@@ -88,6 +81,7 @@
 				</div>
 		</div>
 
+<div class="row">
 
 <table class="u-full-width">
 	
@@ -124,8 +118,7 @@
 
 	
 	</table>
-	
-	
+</div>	
 	<br/>
 	<br/>
 	
@@ -136,22 +129,15 @@
 	
 <sec:authorize ifAllGranted="ROLE_OFFICER">	
 <div class="boxheading">Add proposal
-	
-	
-
-	
-
 			
 			<table >
 	   <tr>
 	   <td>
-	   
- 	
-
+	  
 <form action="getArgumentScheme">
 
 	
-Chose a scheme£∫
+Chose a scheme:
 <Select name="sName">
 <s:iterator value="#session.generalProposalSchemes"
 	var="a">
@@ -175,7 +161,6 @@ Chose a scheme£∫
 	   </table> 
 
 	   
-	
 	</div>
 	</sec:authorize>
 	

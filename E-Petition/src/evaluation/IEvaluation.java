@@ -8,8 +8,8 @@ public interface IEvaluation {
 
 	void setTarget(Proposal p);
 
-	String CQEvaluation();
+	String ordinaryEvaluation();
 
-	String ASEvaluation(Proposal p);
+	String advancedEvaluation(Proposal p);
 
 }

@@ -2,7 +2,10 @@ package action;
 
 
 
+import java.util.Enumeration;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.orm.hibernate3.HibernateOptimisticLockingFailureException;
 
@@ -25,13 +28,6 @@ public class CriticalQuestionAction extends BaseAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
-		
-	
-	
-	
-
 	
     private IAspectService as;
 	private ICriticalQuestionService cqs;
@@ -115,9 +111,10 @@ public class CriticalQuestionAction extends BaseAction {
 	      Proposal p = (Proposal)this.session().getAttribute("proposal");
           List<Aspect> aspects = p.getAspects();          
 	      for(Aspect a:aspects){
-	    	  
-	    	  String cq = this.request().getParameter(a.getType());
-	    	  
+	    	   // in JSP,names of the input just contain the first word before " "	    	   
+	    	    String[] names = a.getType().split(" ");
+	    		String cq = request().getParameter(names[0]);
+	    		System.out.println(cq);
 	    	  if(cq!=""){
 	    	   	addCqs(a,cq);
 	    	  }
@@ -150,15 +147,9 @@ public class CriticalQuestionAction extends BaseAction {
 			 ArgumentScheme as = (ArgumentScheme)this.session().getAttribute("argumentScheme");
          List<AspectType> aspectTypes = as.getAspectTypes();          
 	      for(AspectType at:aspectTypes){
-	    	  
-	    	  
-	    	   // in JSP,names of the input just contain the first word before " "
-	    	   
+	    	   // in JSP,names of the input just contain the first word before " "	    	   
 	    	    String[] names = at.getName().split(" ");
 	    		String cq = request().getParameter(names[0]);
-	    	
-	    	
-	    	  
 	    	  if(cq!=""){
 	    	   	addCqts(at,cq);
 	    	  }

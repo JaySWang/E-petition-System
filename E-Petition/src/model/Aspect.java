@@ -82,6 +82,35 @@ public class Aspect  extends BaseEntityBean  implements Serializable {
 		this.disagree = disagree;
 	}
 	 
+	@Override
+	public boolean equals(Object obj) { 
+		Aspect as = (Aspect)obj; 
+		if(!this.type.equals(as.type)){
+			return false;
+		}
+		if(!this.value.equals(as.value)){
+			return false;
+		}
+		if(this.criticalQuestions.size()!=as.criticalQuestions.size()){
+			return false;
+		}
+		for(CriticalQuestion cq:criticalQuestions){
+			if(!as.criticalQuestions.contains(cq)){
+				return false;
+			}
+		}
+	    return true; 
+	     
 
+	} 
+
+	@Override
+	public int hashCode(){
+		int hashCode = this.type.hashCode()*29;
+		hashCode+=this.value.hashCode()*13;
+		return hashCode;
+	}
+	
+	
 	 
 }

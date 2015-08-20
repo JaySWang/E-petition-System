@@ -15,19 +15,16 @@ import tools.AntUrlPathMatcher;
   
 import tools.UrlMatcher;  
   
-public class MyInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {   
+public class MyInvocationSecurityMetadataSource
+		implements FilterInvocationSecurityMetadataSource {   
     private UrlMatcher urlMatcher = new AntUrlPathMatcher();   
     private static Map<String, Collection<ConfigAttribute>> resourceMap = null;  
-      
-    public MyInvocationSecurityMetadataSource() {  
-        }     
 
+    //parameter is the requested url，return the authority needed for this url  
+    public Collection<ConfigAttribute> getAttributes(Object object) 
+    		throws IllegalArgumentException {   
       
-    //参数是要访问的url，返回这个url对于的所有权限（或角色）  
-    public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {   
-       
-    	//加载所有url和权限（或角色）的对应关系
-    	
+    	//initialize the mapping of url and the authority needed.   	
     	if(resourceMap==null){
     		resourceMap = new HashMap<String, Collection<ConfigAttribute>>();   
             Collection<ConfigAttribute> atts1 = new ArrayList<ConfigAttribute>();   
@@ -40,33 +37,19 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
             atts2.add(ca2);  
             resourceMap.put("/JSP/officer/*", atts2);     
             
-//            Collection<ConfigAttribute> atts3 =new ArrayList<ConfigAttribute>();  
-//            ConfigAttribute ca3 = new SecurityConfig("ROLE_ADMIN");  
-//            atts3.add(ca3);  
-//            resourceMap.put("/**", atts3);   
-            
             Collection<ConfigAttribute> atts4 =new ArrayList<ConfigAttribute>();  
             ConfigAttribute ca4 = new SecurityConfig("ROLE_ADMIN");  
             atts4.add(ca4);  
-            resourceMap.put("/JSP/admin/*", atts4);   
-            
-            
+            resourceMap.put("/JSP/admin/*", atts4);               
     	}
     	
-    	
-    	
-    	
-    	// 将参数转为url      
+    	// transfer url requested      
         String url = ((FilterInvocation)object).getRequestUrl();    
-        
         Iterator<String>ite = resourceMap.keySet().iterator();   
         Collection<ConfigAttribute> cas = new ArrayList<ConfigAttribute>();   
-
-        
         while (ite.hasNext()) {           
             String resURL = ite.next();    
-            if (urlMatcher.pathMatchesUrl(resURL, url)) { 
-            	
+            if (urlMatcher.pathMatchesUrl(resURL, url)) {        	
             	cas.addAll(resourceMap.get(resURL));
                 }         
             }   
@@ -74,6 +57,10 @@ public class MyInvocationSecurityMetadataSource implements FilterInvocationSecur
         }    
     
     
+    
+  public MyInvocationSecurityMetadataSource() {  
+      }     
+
     public boolean supports(Class<?>clazz) {   
             return true;    
             }   

@@ -6,22 +6,14 @@
 	<package name="struts2" extends="struts-default">
 
 		<action name="showProposal" class="showAction" method="show" >
-		
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
-
-
-
 
 	<action name="evaluation" class="proposalAction" method="evaluation" >
-					<result name="success" >/JSP/proposals/evaluationResult.jsp</result>
-		
-			<result name="error" >/JSP/proposals/error.jsp</result>
-			
+					<result name="success" >/JSP/proposals/evaluationResult.jsp</result>	
+			<result name="error" >/JSP/proposals/error.jsp</result>		
 		</action>
-		
-		
-		
+
 		<action name="getASProposals" class="proposalAction" method="getASProposals" >
 		
 			<result name="error" >/JSP/proposals/error.jsp</result>
@@ -32,75 +24,46 @@
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
-	<action name="voteProposal" class="proposalAction" method="voteProposal" >
-		
+	<action name="voteProposal" class="proposalAction" method="voteProposal" >	
 			<result name="success"  >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
-			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
-			
+			<result name="cq" >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>			
 		</action>
 	
-	
 		<action name="addProposal" class="proposalAction" method="addProposal" >
-		
 			<result name="success">/index.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 			<result name="aOrS_success" >/JSP/proposals/success.jsp</result>
-			
-			
-		</action>
+					</action>
 	              
 	<action name="addArgumentScheme" class="argumentSchemeAction" method="addArgumentScheme">
-		
 			<result name="success"  >/JSP/admin/argumentSchemes.jsp</result>
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 		
-		<action name="showArgumentSchemes" class="argumentSchemeAction" method="showArgumentSchemes">
-		
+		<action name="showArgumentSchemes" class="argumentSchemeAction" method="showArgumentSchemes">	
 			<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
-		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">
-		
-					<result name="addProposal">/JSP/officer/addProposal.jsp</result>
-		
-			<result name="error" >/JSP/proposals/error.jsp</result>
+		<action name="getArgumentScheme" class="argumentSchemeAction" method="getArgumentScheme">	
+		<result name="addProposal">/JSP/officer/addProposal.jsp</result>
+		<result name="error" >/JSP/proposals/error.jsp</result>
 		</action>
 	
-	
-	
-
-	
-	<action name="answerCriticalQuestion" class="criticalQuestionAction" method="answerCriticalQuestion" >
-		
+	<action name="answerCriticalQuestion" class="criticalQuestionAction" method="answerCriticalQuestion" >	
 			<result name="success"  >/JSP/proposals/criticalQuestion/statisticOfcriticalQuestion.jsp</result>
-			<result name="error" >/JSP/proposals/error.jsp</result>
-			
+			<result name="error" >/JSP/proposals/error.jsp</result>		
 		</action>
-	<action name="addCriticalQuestion" class="criticalQuestionAction"  method="addCriticalQuestion">
 		
-			<result name="success"  >/JSP/proposals/criticalQuestion/criticalQuestion.jsp</result>
-			
+	<action name="addCriticalQuestion" class="criticalQuestionAction"  method="addCriticalQuestion">	
+			<result name="success"  >/JSP/proposals/evaluationResult.jsp</result>		
 			<result name="error" >/JSP/proposals/error.jsp</result>
-		
-		
 		</action>
+		
 	<action name="addCriticalQuestionTemplate" class="criticalQuestionAction"  method="addCriticalQuestionTemplate">
-		
 			<result name="success"  >/JSP/admin/argumentSchemes.jsp</result>
-			
 			<result name="error" >/JSP/proposals/error.jsp</result>
-		
-		
 		</action>
-
-
-
-
 
 	</package>
 
-	
-	
-	
 </struts>

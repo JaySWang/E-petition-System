@@ -29,8 +29,6 @@ public class DAOImpl<T> extends HibernateDaoSupport implements IDAO<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> list(String hql) {
 		
-
-		
 		return getHibernateTemplate().find(hql);
 
 	}

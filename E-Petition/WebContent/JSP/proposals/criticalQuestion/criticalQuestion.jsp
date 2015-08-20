@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html"%>
  <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>   
     
 <%@ page language="java" import="model.Proposal" import="java.util.List" %>
@@ -49,11 +48,11 @@ document.getElementById("aOrSForm").submit();
 <head>
 <meta  charset="utf-8">
  <!-- FONT
-  ¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C -->
+  â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
   <!-- CSS
-  ¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C¨C -->
+  â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“â€“ -->
   <link rel="stylesheet" href="../../css/normalize.css">
   <link rel="stylesheet" href="../../css/skeleton.css">
   
@@ -86,17 +85,17 @@ document.getElementById("aOrSForm").submit();
 <s:iterator value="#p.aspects" var = "a">
 
 <div class="row">
-      <div class="one-half column" >
+      <div class="four columns" >
 	<h5><s:property value="#a.value" /> </h5>
 		</div>
 	
-<div class="one-half column" >
+<div class="seven columns" >
 	<ol>	
 	<s:iterator value="#a.criticalQuestions" var = "c">
 <li><table class="u-full-width ">
 <tr>
  <th>
-	 <s:property value="#c.value" /> 
+	 <s:property value="#c.value"  escape="false" /> 
 
   <input type="radio"   name= <s:property value="#c.id"/>  value="agree" />agree
 <input type="radio"   name=<s:property value="#c.id"/>  value="disagree" />disagree
@@ -124,7 +123,7 @@ document.getElementById("aOrSForm").submit();
 <tr>
 <td>
 
-Chose a scheme£º
+Chose a scheme:
 <Select class=<s:property value="#c.id"/>  >
 <s:iterator value="#session.notGeneralProposalSchemes"
 	var="as">
